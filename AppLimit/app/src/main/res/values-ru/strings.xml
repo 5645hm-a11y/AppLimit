@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AppLimit</string>
+    <string name="nav_dashboard">Приложения</string>
+    <string name="nav_blocked_apps">Заблокированные приложения</string>
+    <string name="nav_settings">Настройки</string>
+    <string name="nav_select_app">Выбрать приложение</string>
+    <string name="nav_schedule">Расписание</string>
+    <string name="nav_set_password">Установить пароль</string>
+    <string name="nav_menu">Меню</string>
+    <string name="nav_language">Язык</string>
+    <string name="nav_device_admin">Администратор устройства</string>
+    <string name="permissions_required">Требуются разрешения</string>
+    <string name="enable_button">Включить</string>
+    <string name="accessibility_title">Служба специальных возможностей</string>
+    <string name="overlay_title">Разрешение на наложение</string>
+    <string name="usage_access_title">Доступ к использованию</string>
+    <string name="device_admin_title">Администратор устройства</string>
+    <string name="accessibility_service_desc">Позволяет AppLimit блокировать приложения в ограниченное время.</string>
+    <string name="dashboard_title">Панель</string>
+    <string name="lock_apps">Заблокировать приложения</string>
+    <string name="status_active">Активно</string>
+    <string name="status_inactive">Неактивно</string>
+    <string name="add_rule">Добавить правило</string>
+    <string name="delete_rule">Удалить правило</string>
+    <string name="delete_rule_confirmation_title">Удалить правило</string>
+    <string name="delete_rule_confirmation_message">Вы уверены, что хотите удалить это правило?</string>
+    <string name="delete">Удалить</string>
+    <string name="cancel">Отмена</string>
+    <string name="search_apps">Поиск приложений</string>
+    <string name="days_label">Дни</string>
+    <string name="time_label">Время</string>
+    <string name="start_time_label">Время начала</string>
+    <string name="end_time_label">Время окончания</string>
+    <string name="save_rule_button">Сохранить правило</string>
+    <string name="error_app_not_found">Ошибка: приложение не найдено</string>
+    <string name="time_placeholder">--:--</string>
+    <string name="mon">Пн</string>
+    <string name="tue">Вт</string>
+    <string name="wed">Ср</string>
+    <string name="thu">Чт</string>
+    <string name="fri">Пт</string>
+    <string name="sat">Сб</string>
+    <string name="sun">Вс</string>
+    <string name="set_pin">Установить PIN-код</string>
+    <string name="enter_pin">Введите PIN-код</string>
+    <string name="pin_label">PIN-код</string>
+    <string name="confirm">Подтвердить</string>
+    <string name="error_wrong_pin">Неверный PIN-код</string>
+    <string name="enter_current_pin_title">Введите текущий PIN-код</string>
+    <string name="current_pin_label">Текущий PIN-код</string>
+    <string name="incorrect_pin_error">Неверный PIN-код</string>
+    <string name="next_button">Далее</string>
+    <string name="enter_new_pin_title">Введите новый PIN-код</string>
+    <string name="set_new_pin_title">Установить новый PIN-код</string>
+    <string name="new_pin_label">Новый PIN-код</string>
+    <string name="pin_length_error">PIN-код должен состоять из 4 цифр</string>
+    <string name="confirm_new_pin_title">Подтвердите новый PIN-код</string>
+    <string name="confirm_pin_label">Подтвердить PIN-код</string>
+    <string name="pins_do_not_match_error">PIN-коды не совпадают</string>
+    <string name="save_button">Сохранить</string>
+    <string name="lock_screen_title">Введите PIN-код, чтобы продолжить</string>
+    <string name="unlock_button">Разблокировать</string>
+    <string name="app_locked">Приложение заблокировано</string>
+    <string name="available_at">Доступно в %1$s</string>
+    <string name="settings">Настройки</string>
+    <string name="password_section_title">Пароль</string>
+    <string name="change_password_button">Изменить пароль</string>
+    <string name="language_section_title">Язык</string>
+    <string name="change_language_button">Изменить язык</string>
+    <string name="device_admin_section_title">Администратор устройства</string>
+    <string name="enable_device_admin">Включить администратора устройства</string>
+    <string name="device_admin_enabled">Администратор устройства включен</string>
+    <string name="device_admin_prompt">Чтобы предотвратить удаление приложения, необходимо включить администратора устройства.</string>
+    <string name="device_admin_explanation">Включение администратора устройства предотвращает простое удаление приложения.</string>
+    <string name="app_information_section_title">Информация о приложении</string>
+    <string name="version_label">Версия: %1$s</string>
+    <string name="rights_reserved_message">Все права защищены HM APP</string>
+    <string name="language_name">Русский</string>
+
+    <!-- Device Admin & Settings -->
+    <string name="app_icon_description">Значок приложения</string>
+    <string name="nav_grayscale">Режим оттенков серого</string>
+    <string name="device_admin_disable_warning">AppLimit защищена. Чтобы удалить это приложение, вы должны отключить администратора устройства через настройки приложения.</string>
+    
+    <!-- Block Types -->
+    <string name="block_type_title">Тип блокировки</string>
+    <string name="block_type_app">Блокировать приложения</string>
+    <string name="block_type_grayscale">Режим оттенков серого</string>
+    
+    <!-- Grayscale -->
+    <string name="grayscale_info_title">Режим оттенков серого</string>
+    <string name="grayscale_info_message">Исследования показывают, что переведение вашего телефона в режим оттенков серого снижает время использования экрана и улучшает психическое благополучие.</string>
+    <string name="dont_show_again">Больше не показывать</string>
+    <string name="enable_grayscale_mode">Включить режим оттенков серого</string>
+    <string name="reduce_eye_strain">Снизьте усталость глаз в ночные часы</string>
+    
+    <!-- Rules -->
+    <string name="edit_rule">Редактировать правило</string>
+    <string name="block_apps">Блокировать приложения</string>
+    <string name="select_apps_to_block">Выберите приложения для блокировки</string>
+    <string name="show_system_apps">Показать системные приложения</string>
+    <string name="include_system_apps_desc">Включить системные приложения в список</string>
+    <string name="app_to_block">Приложение для блокировки</string>
+    <string name="block_from">Блокировать с</string>
+    <string name="to">до</string>
+    <string name="block_on_days">Блокировать в дни</string>
+    <string name="save_rule">Сохранить правило</string>
+    
+    <!-- Dashboard -->
+    <string name="dashboard_subtitle">Профессиональное управление временем экрана</string>
+    <string name="dashboard_subtitle_desc">Контролируйте время экрана и использование приложений с легкостью</string>
+    <string name="feature_blocker_title">Блокировщик приложений</string>
+    <string name="feature_blocker_desc">Блокируйте приложения в определенное время для повышения продуктивности</string>
+    <string name="feature_grayscale_title">Режим оттенков серого</string>
+    <string name="feature_grayscale_desc">Снизьте усталость глаз, переключившись на отображение в оттенках серого</string>
+    <string name="feature_settings_title">Настройки</string>
+    <string name="feature_settings_desc">Настройте свой опыт имеющимися настройками</string>
+    
+    <!-- Grayscale Not Enabled -->
+    <string name="grayscale_not_enabled">Режим оттенков серого не включен</string>
+    <string name="grayscale_not_enabled_desc">Режим оттенков серого не активен на этом устройстве. Загрузите AppLimit, чтобы включить его.</string>
+    <string name="download_app">Загрузить приложение</string>
+    <string name="copy_download_link">Скопировать ссылку загрузки</string>
+</resources>

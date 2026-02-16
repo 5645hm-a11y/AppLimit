@@ -1,0 +1,25 @@
+# Global ignores for repo root
+Installers/
+firebase-hosting/
+
+# IDE
+**/.idea/
+**/.vscode/
+**/.kotlin/
+
+# Build outputs
+**/build/
+**/out/
+**/bin/
+**/obj/
+**/app/release/
+**/app/build/
+
+# Artifacts
+**/*.apk
+**/*.aab
+**/*.log
+**/*.tmp
+
+# Flutter
+**/.metadata

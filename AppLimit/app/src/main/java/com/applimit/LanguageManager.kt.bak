@@ -1,0 +1,1177 @@
+﻿package com.example.safetimeguard
+
+object LanguageManager {
+    const val ENGLISH = "en"
+    const val HEBREW = "he"
+    const val FRENCH = "fr"
+    const val SPANISH = "es"
+    const val GERMAN = "de"
+    const val ARABIC = "ar"
+    const val CHINESE = "zh"
+    const val KOREAN = "ko"
+    const val JAPANESE = "ja"
+    const val PORTUGUESE = "pt"
+        const val HINDI = "hi"
+    const val RUSSIAN = "ru"
+    const val UKRAINIAN = "uk"
+
+    val SUPPORTED_LANGUAGES =
+            mapOf(
+                    ENGLISH to "English",
+                    HEBREW to "עברית",
+                    FRENCH to "Français",
+                    SPANISH to "Español",
+                    GERMAN to "Deutsch",
+                    ARABIC to "العربية",
+                    CHINESE to "中文",
+                    KOREAN to "한국어",
+                    JAPANESE to "日本語",
+                    PORTUGUESE to "Português",
+                    HINDI to "हिन्दी",
+                    RUSSIAN to "Русский",
+                    UKRAINIAN to "Українська"
+            ,
+                    "track_app_usage" to
+                            mapOf(
+                                    ENGLISH to "Track app usage",
+                                    HEBREW to "×¢×§×•×‘ ××—×¨ ×©×™×ž×•×© ××¤×œ×™×§×¦×™×•×ª",
+                                    FRENCH to "Suivre l'utilisation des applications",
+                                    SPANISH to "Rastrear el uso de aplicaciones",
+                                    GERMAN to "App-Nutzung verfolgen",
+                                    ARABIC to "ØªØªØ¨Ø¹ Ø§Ø³ØªØ®Ø¯Ø§Ù… Ø§Ù„ØªØ·Ø¨ÙŠÙ‚",
+                                    CHINESE to "è·Ÿè¸ªåº”ç”¨ä½¿ç”¨æƒ…å†µ",
+                                    KOREAN to "ì•± ì‚¬ìš© ì¶”ì ",
+                                    JAPANESE to "ã‚¢ãƒ—ãƒªä½¿ç”¨çŠ¶æ³ã‚’è¿½è·¡",
+                                    PORTUGUESE to "Rastrear uso de aplicativo",
+                                    HINDI to "à¤à¤ª à¤‰à¤ªà¤¯à¥‹à¤— à¤Ÿà¥à¤°à¥ˆà¤• à¤•à¤°à¥‡à¤‚",
+                                    RUSSIAN to "ÐžÑ‚ÑÐ»ÐµÐ¶Ð¸Ð²Ð°Ñ‚ÑŒ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸Ð¹",
+                                    UKRAINIAN to "Ð’Ñ–Ð´ÑÑ‚ÐµÐ¶ÑƒÐ²Ð°Ñ‚Ð¸ Ð²Ð¸ÐºÐ¾Ñ€Ð¸ÑÑ‚Ð°Ð½Ð½Ñ Ð´Ð¾Ð´Ð°Ñ‚ÐºÑ–Ð²"
+                            ),
+                    "show_system_alerts" to
+                            mapOf(
+                                    ENGLISH to "Show system alerts",
+                                    HEBREW to "×”×¦×’ ×”×ª×¨××•×ª ×ž×¢×¨×›×ª",
+                                    FRENCH to "Afficher les alertes systÃ¨me",
+                                    SPANISH to "Mostrar alertas del sistema",
+                                    GERMAN to "Systemwarnungen anzeigen",
+                                    ARABIC to "Ø¥Ø¸Ù‡Ø§Ø± ØªÙ†Ø¨ÙŠÙ‡Ø§Øª Ø§Ù„Ù†Ø¸Ø§Ù…",
+                                    CHINESE to "æ˜¾ç¤ºç³»ç»Ÿè­¦æŠ¥",
+                                    KOREAN to "ì‹œìŠ¤í…œ ê²½ê³  í‘œì‹œ",
+                                    JAPANESE to "ã‚·ã‚¹ãƒ†ãƒ ã‚¢ãƒ©ãƒ¼ãƒˆã‚’è¡¨ç¤º",
+                                    PORTUGUESE to "Mostrar alertas do sistema",
+                                    HINDI to "à¤¸à¤¿à¤¸à¥à¤Ÿà¤® à¤¸à¤¤à¤°à¥à¤•à¤¤à¤¾ à¤¦à¤¿à¤–à¤¾à¤à¤‚",
+                                    RUSSIAN to "ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ ÑÐ¸ÑÑ‚ÐµÐ¼Ð½Ñ‹Ðµ ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ",
+                                    UKRAINIAN to "ÐŸÐ¾ÐºÐ°Ð·ÑƒÐ²Ð°Ñ‚Ð¸ ÑÐ¸ÑÑ‚ÐµÐ¼Ð½Ñ– ÑÐ¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ"
+                            ),
+                    "send_notifications" to
+                            mapOf(
+                                    ENGLISH to "Send notifications",
+                                    HEBREW to "×©×œ×— ×”×•×“×¢×•×ª",
+                                    FRENCH to "Envoyer les notifications",
+                                    SPANISH to "Enviar notificaciones",
+                                    GERMAN to "Benachrichtigungen senden",
+                                    ARABIC to "Ø¥Ø±Ø³Ø§Ù„ Ø§Ù„Ø¥Ø®Ø·Ø§Ø±Ø§Øª",
+                                    CHINESE to "å‘é€é€šçŸ¥",
+                                    KOREAN to "ì•Œë¦¼ ì „ì†¡",
+                                    JAPANESE to "é€šçŸ¥ã‚’é€ä¿¡",
+                                    PORTUGUESE to "Enviar notificaÃ§Ãµes",
+                                    HINDI to "à¤¸à¥‚à¤šà¤¨à¤¾à¤à¤‚ à¤­à¥‡à¤œà¥‡à¤‚",
+                                    RUSSIAN to "ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð»ÑÑ‚ÑŒ ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ",
+                                    UKRAINIAN to "ÐÐ°Ð´ÑÐ¸Ð»Ð°Ñ‚Ð¸ ÑÐ¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ"
+                            ),
+                    "enable_accessibility" to
+                            mapOf(
+                                    ENGLISH to "Enable Accessibility Service",
+                                    HEBREW to "×”×¤×¢×œ ×©×™×¨×•×ª × ×’×™×©×•×ª",
+                                    FRENCH to "Activer le service d'accessibilitÃ©",
+                                    SPANISH to "Habilitar servicio de accesibilidad",
+                                    GERMAN to "Eingabehilfen aktivieren",
+                                    ARABIC to "ØªÙØ¹ÙŠÙ„ Ø®Ø¯Ù…Ø© Ø§Ù„ÙˆØµÙˆÙ„",
+                                    CHINESE to "å¯ç”¨æ— éšœç¢æœåŠ¡",
+                                    KOREAN to "ì ‘ê·¼ì„± ì„œë¹„ìŠ¤ í™œì„±í™”",
+                                    JAPANESE to "ã‚¢ã‚¯ã‚»ã‚·ãƒ“ãƒªãƒ†ã‚£ã‚µãƒ¼ãƒ“ã‚¹ã‚’æœ‰åŠ¹ã«ã™ã‚‹",
+                                    PORTUGUESE to "Ativar serviÃ§o de acessibilidade",
+                                    HINDI to "à¤à¤•à¥à¤¸à¥‡à¤¸à¤¿à¤¬à¤¿à¤²à¤¿à¤Ÿà¥€ à¤¸à¥‡à¤µà¤¾ à¤¸à¤•à¥à¤·à¤® à¤•à¤°à¥‡à¤‚",
+                                    RUSSIAN to "Ð’ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ ÑÐ»ÑƒÐ¶Ð±Ñƒ ÑÐ¿ÐµÑ†Ð¸Ð°Ð»ÑŒÐ½Ñ‹Ñ… Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ÑÑ‚ÐµÐ¹",
+                                    UKRAINIAN to "Ð£Ð²Ñ–Ð¼ÐºÐ½ÑƒÑ‚Ð¸ ÑÐ»ÑƒÐ¶Ð±Ñƒ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚Ñ–"
+                            ),
+                    "ask" to
+                            mapOf(
+                                    ENGLISH to "Ask",
+                                    HEBREW to "×‘×§×©",
+                                    FRENCH to "Demander",
+                                    SPANISH to "Preguntar",
+                                    GERMAN to "Fragen",
+                                    ARABIC to "Ø§Ø·Ù„Ø¨",
+                                    CHINESE to "è¯·æ±‚",
+                                    KOREAN to "ìš”ì²­",
+                                    JAPANESE to "æ‰¿èª",
+                                    PORTUGUESE to "Pedir",
+                                    HINDI to "à¤ªà¥‚à¤›à¥‡à¤‚",
+                                    RUSSIAN to "Ð—Ð°Ð¿Ñ€Ð¾ÑÐ¸Ñ‚ÑŒ",
+                                    UKRAINIAN to "Ð—Ð°Ð¿Ð¸Ñ‚Ð°Ñ‚Ð¸"
+                            ),
+                    "enable" to
+                            mapOf(
+                                    ENGLISH to "Enable",
+                                    HEBREW to "×”×¤×¢×œ",
+                                    FRENCH to "Activer",
+                                    SPANISH to "Habilitar",
+                                    GERMAN to "Aktivieren",
+                                    ARABIC to "ØªÙØ¹ÙŠÙ„",
+                                    CHINESE to "å¯ç”¨",
+                                    KOREAN to "í™œì„±í™”",
+                                    JAPANESE to "æœ‰åŠ¹ã«ã™ã‚‹",
+                                    PORTUGUESE to "Ativar",
+                                    HINDI to "à¤¸à¤•à¥à¤·à¤® à¤•à¤°à¥‡à¤‚",
+                                    RUSSIAN to "Ð’ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ",
+                                    UKRAINIAN to "Ð£Ð²Ñ–Ð¼ÐºÐ½ÑƒÑ‚Ð¸"
+                            )
+            )
+
+    val UI_STRINGS =
+            mapOf(
+                    // Common
+                    "next" to
+                            mapOf(
+                                    ENGLISH to "Next",
+                                    HEBREW to "הבא",
+                                    FRENCH to "Suivant",
+                                    SPANISH to "Siguiente",
+                                    GERMAN to "Weiter",
+                                    ARABIC to "التالي",
+                                    CHINESE to "下一步",
+                                    KOREAN to "다음",
+                                    JAPANESE to "次へ",
+                                    PORTUGUESE to "Próximo",
+                                    RUSSIAN to "Далее",
+                                    UKRAINIAN to "Далі"
+                            ,
+                    "track_app_usage" to
+                            mapOf(
+                                    ENGLISH to "Track app usage",
+                                    HEBREW to "×¢×§×•×‘ ××—×¨ ×©×™×ž×•×© ××¤×œ×™×§×¦×™×•×ª",
+                                    FRENCH to "Suivre l'utilisation des applications",
+                                    SPANISH to "Rastrear el uso de aplicaciones",
+                                    GERMAN to "App-Nutzung verfolgen",
+                                    ARABIC to "ØªØªØ¨Ø¹ Ø§Ø³ØªØ®Ø¯Ø§Ù… Ø§Ù„ØªØ·Ø¨ÙŠÙ‚",
+                                    CHINESE to "è·Ÿè¸ªåº”ç”¨ä½¿ç”¨æƒ…å†µ",
+                                    KOREAN to "ì•± ì‚¬ìš© ì¶”ì ",
+                                    JAPANESE to "ã‚¢ãƒ—ãƒªä½¿ç”¨çŠ¶æ³ã‚’è¿½è·¡",
+                                    PORTUGUESE to "Rastrear uso de aplicativo",
+                                    HINDI to "à¤à¤ª à¤‰à¤ªà¤¯à¥‹à¤— à¤Ÿà¥à¤°à¥ˆà¤• à¤•à¤°à¥‡à¤‚",
+                                    RUSSIAN to "ÐžÑ‚ÑÐ»ÐµÐ¶Ð¸Ð²Ð°Ñ‚ÑŒ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸Ð¹",
+                                    UKRAINIAN to "Ð’Ñ–Ð´ÑÑ‚ÐµÐ¶ÑƒÐ²Ð°Ñ‚Ð¸ Ð²Ð¸ÐºÐ¾Ñ€Ð¸ÑÑ‚Ð°Ð½Ð½Ñ Ð´Ð¾Ð´Ð°Ñ‚ÐºÑ–Ð²"
+                            ),
+                    "show_system_alerts" to
+                            mapOf(
+                                    ENGLISH to "Show system alerts",
+                                    HEBREW to "×”×¦×’ ×”×ª×¨××•×ª ×ž×¢×¨×›×ª",
+                                    FRENCH to "Afficher les alertes systÃ¨me",
+                                    SPANISH to "Mostrar alertas del sistema",
+                                    GERMAN to "Systemwarnungen anzeigen",
+                                    ARABIC to "Ø¥Ø¸Ù‡Ø§Ø± ØªÙ†Ø¨ÙŠÙ‡Ø§Øª Ø§Ù„Ù†Ø¸Ø§Ù…",
+                                    CHINESE to "æ˜¾ç¤ºç³»ç»Ÿè­¦æŠ¥",
+                                    KOREAN to "ì‹œìŠ¤í…œ ê²½ê³  í‘œì‹œ",
+                                    JAPANESE to "ã‚·ã‚¹ãƒ†ãƒ ã‚¢ãƒ©ãƒ¼ãƒˆã‚’è¡¨ç¤º",
+                                    PORTUGUESE to "Mostrar alertas do sistema",
+                                    HINDI to "à¤¸à¤¿à¤¸à¥à¤Ÿà¤® à¤¸à¤¤à¤°à¥à¤•à¤¤à¤¾ à¤¦à¤¿à¤–à¤¾à¤à¤‚",
+                                    RUSSIAN to "ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ ÑÐ¸ÑÑ‚ÐµÐ¼Ð½Ñ‹Ðµ ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ",
+                                    UKRAINIAN to "ÐŸÐ¾ÐºÐ°Ð·ÑƒÐ²Ð°Ñ‚Ð¸ ÑÐ¸ÑÑ‚ÐµÐ¼Ð½Ñ– ÑÐ¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ"
+                            ),
+                    "send_notifications" to
+                            mapOf(
+                                    ENGLISH to "Send notifications",
+                                    HEBREW to "×©×œ×— ×”×•×“×¢×•×ª",
+                                    FRENCH to "Envoyer les notifications",
+                                    SPANISH to "Enviar notificaciones",
+                                    GERMAN to "Benachrichtigungen senden",
+                                    ARABIC to "Ø¥Ø±Ø³Ø§Ù„ Ø§Ù„Ø¥Ø®Ø·Ø§Ø±Ø§Øª",
+                                    CHINESE to "å‘é€é€šçŸ¥",
+                                    KOREAN to "ì•Œë¦¼ ì „ì†¡",
+                                    JAPANESE to "é€šçŸ¥ã‚’é€ä¿¡",
+                                    PORTUGUESE to "Enviar notificaÃ§Ãµes",
+                                    HINDI to "à¤¸à¥‚à¤šà¤¨à¤¾à¤à¤‚ à¤­à¥‡à¤œà¥‡à¤‚",
+                                    RUSSIAN to "ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð»ÑÑ‚ÑŒ ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ",
+                                    UKRAINIAN to "ÐÐ°Ð´ÑÐ¸Ð»Ð°Ñ‚Ð¸ ÑÐ¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ"
+                            ),
+                    "enable_accessibility" to
+                            mapOf(
+                                    ENGLISH to "Enable Accessibility Service",
+                                    HEBREW to "×”×¤×¢×œ ×©×™×¨×•×ª × ×’×™×©×•×ª",
+                                    FRENCH to "Activer le service d'accessibilitÃ©",
+                                    SPANISH to "Habilitar servicio de accesibilidad",
+                                    GERMAN to "Eingabehilfen aktivieren",
+                                    ARABIC to "ØªÙØ¹ÙŠÙ„ Ø®Ø¯Ù…Ø© Ø§Ù„ÙˆØµÙˆÙ„",
+                                    CHINESE to "å¯ç”¨æ— éšœç¢æœåŠ¡",
+                                    KOREAN to "ì ‘ê·¼ì„± ì„œë¹„ìŠ¤ í™œì„±í™”",
+                                    JAPANESE to "ã‚¢ã‚¯ã‚»ã‚·ãƒ“ãƒªãƒ†ã‚£ã‚µãƒ¼ãƒ“ã‚¹ã‚’æœ‰åŠ¹ã«ã™ã‚‹",
+                                    PORTUGUESE to "Ativar serviÃ§o de acessibilidade",
+                                    HINDI to "à¤à¤•à¥à¤¸à¥‡à¤¸à¤¿à¤¬à¤¿à¤²à¤¿à¤Ÿà¥€ à¤¸à¥‡à¤µà¤¾ à¤¸à¤•à¥à¤·à¤® à¤•à¤°à¥‡à¤‚",
+                                    RUSSIAN to "Ð’ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ ÑÐ»ÑƒÐ¶Ð±Ñƒ ÑÐ¿ÐµÑ†Ð¸Ð°Ð»ÑŒÐ½Ñ‹Ñ… Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ÑÑ‚ÐµÐ¹",
+                                    UKRAINIAN to "Ð£Ð²Ñ–Ð¼ÐºÐ½ÑƒÑ‚Ð¸ ÑÐ»ÑƒÐ¶Ð±Ñƒ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚Ñ–"
+                            ),
+                    "ask" to
+                            mapOf(
+                                    ENGLISH to "Ask",
+                                    HEBREW to "×‘×§×©",
+                                    FRENCH to "Demander",
+                                    SPANISH to "Preguntar",
+                                    GERMAN to "Fragen",
+                                    ARABIC to "Ø§Ø·Ù„Ø¨",
+                                    CHINESE to "è¯·æ±‚",
+                                    KOREAN to "ìš”ì²­",
+                                    JAPANESE to "æ‰¿èª",
+                                    PORTUGUESE to "Pedir",
+                                    HINDI to "à¤ªà¥‚à¤›à¥‡à¤‚",
+                                    RUSSIAN to "Ð—Ð°Ð¿Ñ€Ð¾ÑÐ¸Ñ‚ÑŒ",
+                                    UKRAINIAN to "Ð—Ð°Ð¿Ð¸Ñ‚Ð°Ñ‚Ð¸"
+                            ),
+                    "enable" to
+                            mapOf(
+                                    ENGLISH to "Enable",
+                                    HEBREW to "×”×¤×¢×œ",
+                                    FRENCH to "Activer",
+                                    SPANISH to "Habilitar",
+                                    GERMAN to "Aktivieren",
+                                    ARABIC to "ØªÙØ¹ÙŠÙ„",
+                                    CHINESE to "å¯ç”¨",
+                                    KOREAN to "í™œì„±í™”",
+                                    JAPANESE to "æœ‰åŠ¹ã«ã™ã‚‹",
+                                    PORTUGUESE to "Ativar",
+                                    HINDI to "à¤¸à¤•à¥à¤·à¤® à¤•à¤°à¥‡à¤‚",
+                                    RUSSIAN to "Ð’ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ",
+                                    UKRAINIAN to "Ð£Ð²Ñ–Ð¼ÐºÐ½ÑƒÑ‚Ð¸"
+                            )
+            ),
+                    "continue" to
+                            mapOf(
+                                    ENGLISH to "Continue",
+                                    HEBREW to "המשך",
+                                    FRENCH to "Continuer",
+                                    SPANISH to "Continuar",
+                                    GERMAN to "Fortfahren",
+                                    ARABIC to "متابعة",
+                                    CHINESE to "继续",
+                                    KOREAN to "계속",
+                                    JAPANESE to "続行",
+                                    PORTUGUESE to "Continuar",
+                                    RUSSIAN to "Продолжить",
+                                    UKRAINIAN to "Продовжити"
+                            ,
+                    "track_app_usage" to
+                            mapOf(
+                                    ENGLISH to "Track app usage",
+                                    HEBREW to "×¢×§×•×‘ ××—×¨ ×©×™×ž×•×© ××¤×œ×™×§×¦×™×•×ª",
+                                    FRENCH to "Suivre l'utilisation des applications",
+                                    SPANISH to "Rastrear el uso de aplicaciones",
+                                    GERMAN to "App-Nutzung verfolgen",
+                                    ARABIC to "ØªØªØ¨Ø¹ Ø§Ø³ØªØ®Ø¯Ø§Ù… Ø§Ù„ØªØ·Ø¨ÙŠÙ‚",
+                                    CHINESE to "è·Ÿè¸ªåº”ç”¨ä½¿ç”¨æƒ…å†µ",
+                                    KOREAN to "ì•± ì‚¬ìš© ì¶”ì ",
+                                    JAPANESE to "ã‚¢ãƒ—ãƒªä½¿ç”¨çŠ¶æ³ã‚’è¿½è·¡",
+                                    PORTUGUESE to "Rastrear uso de aplicativo",
+                                    HINDI to "à¤à¤ª à¤‰à¤ªà¤¯à¥‹à¤— à¤Ÿà¥à¤°à¥ˆà¤• à¤•à¤°à¥‡à¤‚",
+                                    RUSSIAN to "ÐžÑ‚ÑÐ»ÐµÐ¶Ð¸Ð²Ð°Ñ‚ÑŒ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸Ð¹",
+                                    UKRAINIAN to "Ð’Ñ–Ð´ÑÑ‚ÐµÐ¶ÑƒÐ²Ð°Ñ‚Ð¸ Ð²Ð¸ÐºÐ¾Ñ€Ð¸ÑÑ‚Ð°Ð½Ð½Ñ Ð´Ð¾Ð´Ð°Ñ‚ÐºÑ–Ð²"
+                            ),
+                    "show_system_alerts" to
+                            mapOf(
+                                    ENGLISH to "Show system alerts",
+                                    HEBREW to "×”×¦×’ ×”×ª×¨××•×ª ×ž×¢×¨×›×ª",
+                                    FRENCH to "Afficher les alertes systÃ¨me",
+                                    SPANISH to "Mostrar alertas del sistema",
+                                    GERMAN to "Systemwarnungen anzeigen",
+                                    ARABIC to "Ø¥Ø¸Ù‡Ø§Ø± ØªÙ†Ø¨ÙŠÙ‡Ø§Øª Ø§Ù„Ù†Ø¸Ø§Ù…",
+                                    CHINESE to "æ˜¾ç¤ºç³»ç»Ÿè­¦æŠ¥",
+                                    KOREAN to "ì‹œìŠ¤í…œ ê²½ê³  í‘œì‹œ",
+                                    JAPANESE to "ã‚·ã‚¹ãƒ†ãƒ ã‚¢ãƒ©ãƒ¼ãƒˆã‚’è¡¨ç¤º",
+                                    PORTUGUESE to "Mostrar alertas do sistema",
+                                    HINDI to "à¤¸à¤¿à¤¸à¥à¤Ÿà¤® à¤¸à¤¤à¤°à¥à¤•à¤¤à¤¾ à¤¦à¤¿à¤–à¤¾à¤à¤‚",
+                                    RUSSIAN to "ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ ÑÐ¸ÑÑ‚ÐµÐ¼Ð½Ñ‹Ðµ ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ",
+                                    UKRAINIAN to "ÐŸÐ¾ÐºÐ°Ð·ÑƒÐ²Ð°Ñ‚Ð¸ ÑÐ¸ÑÑ‚ÐµÐ¼Ð½Ñ– ÑÐ¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ"
+                            ),
+                    "send_notifications" to
+                            mapOf(
+                                    ENGLISH to "Send notifications",
+                                    HEBREW to "×©×œ×— ×”×•×“×¢×•×ª",
+                                    FRENCH to "Envoyer les notifications",
+                                    SPANISH to "Enviar notificaciones",
+                                    GERMAN to "Benachrichtigungen senden",
+                                    ARABIC to "Ø¥Ø±Ø³Ø§Ù„ Ø§Ù„Ø¥Ø®Ø·Ø§Ø±Ø§Øª",
+                                    CHINESE to "å‘é€é€šçŸ¥",
+                                    KOREAN to "ì•Œë¦¼ ì „ì†¡",
+                                    JAPANESE to "é€šçŸ¥ã‚’é€ä¿¡",
+                                    PORTUGUESE to "Enviar notificaÃ§Ãµes",
+                                    HINDI to "à¤¸à¥‚à¤šà¤¨à¤¾à¤à¤‚ à¤­à¥‡à¤œà¥‡à¤‚",
+                                    RUSSIAN to "ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð»ÑÑ‚ÑŒ ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ",
+                                    UKRAINIAN to "ÐÐ°Ð´ÑÐ¸Ð»Ð°Ñ‚Ð¸ ÑÐ¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ"
+                            ),
+                    "enable_accessibility" to
+                            mapOf(
+                                    ENGLISH to "Enable Accessibility Service",
+                                    HEBREW to "×”×¤×¢×œ ×©×™×¨×•×ª × ×’×™×©×•×ª",
+                                    FRENCH to "Activer le service d'accessibilitÃ©",
+                                    SPANISH to "Habilitar servicio de accesibilidad",
+                                    GERMAN to "Eingabehilfen aktivieren",
+                                    ARABIC to "ØªÙØ¹ÙŠÙ„ Ø®Ø¯Ù…Ø© Ø§Ù„ÙˆØµÙˆÙ„",
+                                    CHINESE to "å¯ç”¨æ— éšœç¢æœåŠ¡",
+                                    KOREAN to "ì ‘ê·¼ì„± ì„œë¹„ìŠ¤ í™œì„±í™”",
+                                    JAPANESE to "ã‚¢ã‚¯ã‚»ã‚·ãƒ“ãƒªãƒ†ã‚£ã‚µãƒ¼ãƒ“ã‚¹ã‚’æœ‰åŠ¹ã«ã™ã‚‹",
+                                    PORTUGUESE to "Ativar serviÃ§o de acessibilidade",
+                                    HINDI to "à¤à¤•à¥à¤¸à¥‡à¤¸à¤¿à¤¬à¤¿à¤²à¤¿à¤Ÿà¥€ à¤¸à¥‡à¤µà¤¾ à¤¸à¤•à¥à¤·à¤® à¤•à¤°à¥‡à¤‚",
+                                    RUSSIAN to "Ð’ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ ÑÐ»ÑƒÐ¶Ð±Ñƒ ÑÐ¿ÐµÑ†Ð¸Ð°Ð»ÑŒÐ½Ñ‹Ñ… Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ÑÑ‚ÐµÐ¹",
+                                    UKRAINIAN to "Ð£Ð²Ñ–Ð¼ÐºÐ½ÑƒÑ‚Ð¸ ÑÐ»ÑƒÐ¶Ð±Ñƒ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚Ñ–"
+                            ),
+                    "ask" to
+                            mapOf(
+                                    ENGLISH to "Ask",
+                                    HEBREW to "×‘×§×©",
+                                    FRENCH to "Demander",
+                                    SPANISH to "Preguntar",
+                                    GERMAN to "Fragen",
+                                    ARABIC to "Ø§Ø·Ù„Ø¨",
+                                    CHINESE to "è¯·æ±‚",
+                                    KOREAN to "ìš”ì²­",
+                                    JAPANESE to "æ‰¿èª",
+                                    PORTUGUESE to "Pedir",
+                                    HINDI to "à¤ªà¥‚à¤›à¥‡à¤‚",
+                                    RUSSIAN to "Ð—Ð°Ð¿Ñ€Ð¾ÑÐ¸Ñ‚ÑŒ",
+                                    UKRAINIAN to "Ð—Ð°Ð¿Ð¸Ñ‚Ð°Ñ‚Ð¸"
+                            ),
+                    "enable" to
+                            mapOf(
+                                    ENGLISH to "Enable",
+                                    HEBREW to "×”×¤×¢×œ",
+                                    FRENCH to "Activer",
+                                    SPANISH to "Habilitar",
+                                    GERMAN to "Aktivieren",
+                                    ARABIC to "ØªÙØ¹ÙŠÙ„",
+                                    CHINESE to "å¯ç”¨",
+                                    KOREAN to "í™œì„±í™”",
+                                    JAPANESE to "æœ‰åŠ¹ã«ã™ã‚‹",
+                                    PORTUGUESE to "Ativar",
+                                    HINDI to "à¤¸à¤•à¥à¤·à¤® à¤•à¤°à¥‡à¤‚",
+                                    RUSSIAN to "Ð’ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ",
+                                    UKRAINIAN to "Ð£Ð²Ñ–Ð¼ÐºÐ½ÑƒÑ‚Ð¸"
+                            )
+            ),
+                    "back" to
+                            mapOf(
+                                    ENGLISH to "Back",
+                                    HEBREW to "חזור",
+                                    FRENCH to "Retour",
+                                    SPANISH to "Atrás",
+                                    GERMAN to "Zurück",
+                                    ARABIC to "رجوع",
+                                    CHINESE to "返回",
+                                    KOREAN to "뒤로",
+                                    JAPANESE to "戻る",
+                                    PORTUGUESE to "Voltar",
+                                    RUSSIAN to "Назад",
+                                    UKRAINIAN to "Назад"
+                            ,
+                    "track_app_usage" to
+                            mapOf(
+                                    ENGLISH to "Track app usage",
+                                    HEBREW to "×¢×§×•×‘ ××—×¨ ×©×™×ž×•×© ××¤×œ×™×§×¦×™×•×ª",
+                                    FRENCH to "Suivre l'utilisation des applications",
+                                    SPANISH to "Rastrear el uso de aplicaciones",
+                                    GERMAN to "App-Nutzung verfolgen",
+                                    ARABIC to "ØªØªØ¨Ø¹ Ø§Ø³ØªØ®Ø¯Ø§Ù… Ø§Ù„ØªØ·Ø¨ÙŠÙ‚",
+                                    CHINESE to "è·Ÿè¸ªåº”ç”¨ä½¿ç”¨æƒ…å†µ",
+                                    KOREAN to "ì•± ì‚¬ìš© ì¶”ì ",
+                                    JAPANESE to "ã‚¢ãƒ—ãƒªä½¿ç”¨çŠ¶æ³ã‚’è¿½è·¡",
+                                    PORTUGUESE to "Rastrear uso de aplicativo",
+                                    HINDI to "à¤à¤ª à¤‰à¤ªà¤¯à¥‹à¤— à¤Ÿà¥à¤°à¥ˆà¤• à¤•à¤°à¥‡à¤‚",
+                                    RUSSIAN to "ÐžÑ‚ÑÐ»ÐµÐ¶Ð¸Ð²Ð°Ñ‚ÑŒ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸Ð¹",
+                                    UKRAINIAN to "Ð’Ñ–Ð´ÑÑ‚ÐµÐ¶ÑƒÐ²Ð°Ñ‚Ð¸ Ð²Ð¸ÐºÐ¾Ñ€Ð¸ÑÑ‚Ð°Ð½Ð½Ñ Ð´Ð¾Ð´Ð°Ñ‚ÐºÑ–Ð²"
+                            ),
+                    "show_system_alerts" to
+                            mapOf(
+                                    ENGLISH to "Show system alerts",
+                                    HEBREW to "×”×¦×’ ×”×ª×¨××•×ª ×ž×¢×¨×›×ª",
+                                    FRENCH to "Afficher les alertes systÃ¨me",
+                                    SPANISH to "Mostrar alertas del sistema",
+                                    GERMAN to "Systemwarnungen anzeigen",
+                                    ARABIC to "Ø¥Ø¸Ù‡Ø§Ø± ØªÙ†Ø¨ÙŠÙ‡Ø§Øª Ø§Ù„Ù†Ø¸Ø§Ù…",
+                                    CHINESE to "æ˜¾ç¤ºç³»ç»Ÿè­¦æŠ¥",
+                                    KOREAN to "ì‹œìŠ¤í…œ ê²½ê³  í‘œì‹œ",
+                                    JAPANESE to "ã‚·ã‚¹ãƒ†ãƒ ã‚¢ãƒ©ãƒ¼ãƒˆã‚’è¡¨ç¤º",
+                                    PORTUGUESE to "Mostrar alertas do sistema",
+                                    HINDI to "à¤¸à¤¿à¤¸à¥à¤Ÿà¤® à¤¸à¤¤à¤°à¥à¤•à¤¤à¤¾ à¤¦à¤¿à¤–à¤¾à¤à¤‚",
+                                    RUSSIAN to "ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ ÑÐ¸ÑÑ‚ÐµÐ¼Ð½Ñ‹Ðµ ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ",
+                                    UKRAINIAN to "ÐŸÐ¾ÐºÐ°Ð·ÑƒÐ²Ð°Ñ‚Ð¸ ÑÐ¸ÑÑ‚ÐµÐ¼Ð½Ñ– ÑÐ¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ"
+                            ),
+                    "send_notifications" to
+                            mapOf(
+                                    ENGLISH to "Send notifications",
+                                    HEBREW to "×©×œ×— ×”×•×“×¢×•×ª",
+                                    FRENCH to "Envoyer les notifications",
+                                    SPANISH to "Enviar notificaciones",
+                                    GERMAN to "Benachrichtigungen senden",
+                                    ARABIC to "Ø¥Ø±Ø³Ø§Ù„ Ø§Ù„Ø¥Ø®Ø·Ø§Ø±Ø§Øª",
+                                    CHINESE to "å‘é€é€šçŸ¥",
+                                    KOREAN to "ì•Œë¦¼ ì „ì†¡",
+                                    JAPANESE to "é€šçŸ¥ã‚’é€ä¿¡",
+                                    PORTUGUESE to "Enviar notificaÃ§Ãµes",
+                                    HINDI to "à¤¸à¥‚à¤šà¤¨à¤¾à¤à¤‚ à¤­à¥‡à¤œà¥‡à¤‚",
+                                    RUSSIAN to "ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð»ÑÑ‚ÑŒ ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ",
+                                    UKRAINIAN to "ÐÐ°Ð´ÑÐ¸Ð»Ð°Ñ‚Ð¸ ÑÐ¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ"
+                            ),
+                    "enable_accessibility" to
+                            mapOf(
+                                    ENGLISH to "Enable Accessibility Service",
+                                    HEBREW to "×”×¤×¢×œ ×©×™×¨×•×ª × ×’×™×©×•×ª",
+                                    FRENCH to "Activer le service d'accessibilitÃ©",
+                                    SPANISH to "Habilitar servicio de accesibilidad",
+                                    GERMAN to "Eingabehilfen aktivieren",
+                                    ARABIC to "ØªÙØ¹ÙŠÙ„ Ø®Ø¯Ù…Ø© Ø§Ù„ÙˆØµÙˆÙ„",
+                                    CHINESE to "å¯ç”¨æ— éšœç¢æœåŠ¡",
+                                    KOREAN to "ì ‘ê·¼ì„± ì„œë¹„ìŠ¤ í™œì„±í™”",
+                                    JAPANESE to "ã‚¢ã‚¯ã‚»ã‚·ãƒ“ãƒªãƒ†ã‚£ã‚µãƒ¼ãƒ“ã‚¹ã‚’æœ‰åŠ¹ã«ã™ã‚‹",
+                                    PORTUGUESE to "Ativar serviÃ§o de acessibilidade",
+                                    HINDI to "à¤à¤•à¥à¤¸à¥‡à¤¸à¤¿à¤¬à¤¿à¤²à¤¿à¤Ÿà¥€ à¤¸à¥‡à¤µà¤¾ à¤¸à¤•à¥à¤·à¤® à¤•à¤°à¥‡à¤‚",
+                                    RUSSIAN to "Ð’ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ ÑÐ»ÑƒÐ¶Ð±Ñƒ ÑÐ¿ÐµÑ†Ð¸Ð°Ð»ÑŒÐ½Ñ‹Ñ… Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ÑÑ‚ÐµÐ¹",
+                                    UKRAINIAN to "Ð£Ð²Ñ–Ð¼ÐºÐ½ÑƒÑ‚Ð¸ ÑÐ»ÑƒÐ¶Ð±Ñƒ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚Ñ–"
+                            ),
+                    "ask" to
+                            mapOf(
+                                    ENGLISH to "Ask",
+                                    HEBREW to "×‘×§×©",
+                                    FRENCH to "Demander",
+                                    SPANISH to "Preguntar",
+                                    GERMAN to "Fragen",
+                                    ARABIC to "Ø§Ø·Ù„Ø¨",
+                                    CHINESE to "è¯·æ±‚",
+                                    KOREAN to "ìš”ì²­",
+                                    JAPANESE to "æ‰¿èª",
+                                    PORTUGUESE to "Pedir",
+                                    HINDI to "à¤ªà¥‚à¤›à¥‡à¤‚",
+                                    RUSSIAN to "Ð—Ð°Ð¿Ñ€Ð¾ÑÐ¸Ñ‚ÑŒ",
+                                    UKRAINIAN to "Ð—Ð°Ð¿Ð¸Ñ‚Ð°Ñ‚Ð¸"
+                            ),
+                    "enable" to
+                            mapOf(
+                                    ENGLISH to "Enable",
+                                    HEBREW to "×”×¤×¢×œ",
+                                    FRENCH to "Activer",
+                                    SPANISH to "Habilitar",
+                                    GERMAN to "Aktivieren",
+                                    ARABIC to "ØªÙØ¹ÙŠÙ„",
+                                    CHINESE to "å¯ç”¨",
+                                    KOREAN to "í™œì„±í™”",
+                                    JAPANESE to "æœ‰åŠ¹ã«ã™ã‚‹",
+                                    PORTUGUESE to "Ativar",
+                                    HINDI to "à¤¸à¤•à¥à¤·à¤® à¤•à¤°à¥‡à¤‚",
+                                    RUSSIAN to "Ð’ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ",
+                                    UKRAINIAN to "Ð£Ð²Ñ–Ð¼ÐºÐ½ÑƒÑ‚Ð¸"
+                            )
+            ),
+
+                    // Welcome Screen
+                    "welcome_title" to
+                            mapOf(
+                                    ENGLISH to "AppLimit",
+                                    HEBREW to "AppLimit",
+                                    FRENCH to "AppLimit",
+                                    SPANISH to "AppLimit",
+                                    GERMAN to "AppLimit",
+                                    ARABIC to "AppLimit",
+                                    CHINESE to "AppLimit",
+                                    KOREAN to "AppLimit",
+                                    JAPANESE to "AppLimit",
+                                    PORTUGUESE to "AppLimit",
+                                    RUSSIAN to "AppLimit",
+                                    UKRAINIAN to "AppLimit"
+                            ,
+                    "track_app_usage" to
+                            mapOf(
+                                    ENGLISH to "Track app usage",
+                                    HEBREW to "×¢×§×•×‘ ××—×¨ ×©×™×ž×•×© ××¤×œ×™×§×¦×™×•×ª",
+                                    FRENCH to "Suivre l'utilisation des applications",
+                                    SPANISH to "Rastrear el uso de aplicaciones",
+                                    GERMAN to "App-Nutzung verfolgen",
+                                    ARABIC to "ØªØªØ¨Ø¹ Ø§Ø³ØªØ®Ø¯Ø§Ù… Ø§Ù„ØªØ·Ø¨ÙŠÙ‚",
+                                    CHINESE to "è·Ÿè¸ªåº”ç”¨ä½¿ç”¨æƒ…å†µ",
+                                    KOREAN to "ì•± ì‚¬ìš© ì¶”ì ",
+                                    JAPANESE to "ã‚¢ãƒ—ãƒªä½¿ç”¨çŠ¶æ³ã‚’è¿½è·¡",
+                                    PORTUGUESE to "Rastrear uso de aplicativo",
+                                    HINDI to "à¤à¤ª à¤‰à¤ªà¤¯à¥‹à¤— à¤Ÿà¥à¤°à¥ˆà¤• à¤•à¤°à¥‡à¤‚",
+                                    RUSSIAN to "ÐžÑ‚ÑÐ»ÐµÐ¶Ð¸Ð²Ð°Ñ‚ÑŒ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸Ð¹",
+                                    UKRAINIAN to "Ð’Ñ–Ð´ÑÑ‚ÐµÐ¶ÑƒÐ²Ð°Ñ‚Ð¸ Ð²Ð¸ÐºÐ¾Ñ€Ð¸ÑÑ‚Ð°Ð½Ð½Ñ Ð´Ð¾Ð´Ð°Ñ‚ÐºÑ–Ð²"
+                            ),
+                    "show_system_alerts" to
+                            mapOf(
+                                    ENGLISH to "Show system alerts",
+                                    HEBREW to "×”×¦×’ ×”×ª×¨××•×ª ×ž×¢×¨×›×ª",
+                                    FRENCH to "Afficher les alertes systÃ¨me",
+                                    SPANISH to "Mostrar alertas del sistema",
+                                    GERMAN to "Systemwarnungen anzeigen",
+                                    ARABIC to "Ø¥Ø¸Ù‡Ø§Ø± ØªÙ†Ø¨ÙŠÙ‡Ø§Øª Ø§Ù„Ù†Ø¸Ø§Ù…",
+                                    CHINESE to "æ˜¾ç¤ºç³»ç»Ÿè­¦æŠ¥",
+                                    KOREAN to "ì‹œìŠ¤í…œ ê²½ê³  í‘œì‹œ",
+                                    JAPANESE to "ã‚·ã‚¹ãƒ†ãƒ ã‚¢ãƒ©ãƒ¼ãƒˆã‚’è¡¨ç¤º",
+                                    PORTUGUESE to "Mostrar alertas do sistema",
+                                    HINDI to "à¤¸à¤¿à¤¸à¥à¤Ÿà¤® à¤¸à¤¤à¤°à¥à¤•à¤¤à¤¾ à¤¦à¤¿à¤–à¤¾à¤à¤‚",
+                                    RUSSIAN to "ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ ÑÐ¸ÑÑ‚ÐµÐ¼Ð½Ñ‹Ðµ ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ",
+                                    UKRAINIAN to "ÐŸÐ¾ÐºÐ°Ð·ÑƒÐ²Ð°Ñ‚Ð¸ ÑÐ¸ÑÑ‚ÐµÐ¼Ð½Ñ– ÑÐ¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ"
+                            ),
+                    "send_notifications" to
+                            mapOf(
+                                    ENGLISH to "Send notifications",
+                                    HEBREW to "×©×œ×— ×”×•×“×¢×•×ª",
+                                    FRENCH to "Envoyer les notifications",
+                                    SPANISH to "Enviar notificaciones",
+                                    GERMAN to "Benachrichtigungen senden",
+                                    ARABIC to "Ø¥Ø±Ø³Ø§Ù„ Ø§Ù„Ø¥Ø®Ø·Ø§Ø±Ø§Øª",
+                                    CHINESE to "å‘é€é€šçŸ¥",
+                                    KOREAN to "ì•Œë¦¼ ì „ì†¡",
+                                    JAPANESE to "é€šçŸ¥ã‚’é€ä¿¡",
+                                    PORTUGUESE to "Enviar notificaÃ§Ãµes",
+                                    HINDI to "à¤¸à¥‚à¤šà¤¨à¤¾à¤à¤‚ à¤­à¥‡à¤œà¥‡à¤‚",
+                                    RUSSIAN to "ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð»ÑÑ‚ÑŒ ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ",
+                                    UKRAINIAN to "ÐÐ°Ð´ÑÐ¸Ð»Ð°Ñ‚Ð¸ ÑÐ¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ"
+                            ),
+                    "enable_accessibility" to
+                            mapOf(
+                                    ENGLISH to "Enable Accessibility Service",
+                                    HEBREW to "×”×¤×¢×œ ×©×™×¨×•×ª × ×’×™×©×•×ª",
+                                    FRENCH to "Activer le service d'accessibilitÃ©",
+                                    SPANISH to "Habilitar servicio de accesibilidad",
+                                    GERMAN to "Eingabehilfen aktivieren",
+                                    ARABIC to "ØªÙØ¹ÙŠÙ„ Ø®Ø¯Ù…Ø© Ø§Ù„ÙˆØµÙˆÙ„",
+                                    CHINESE to "å¯ç”¨æ— éšœç¢æœåŠ¡",
+                                    KOREAN to "ì ‘ê·¼ì„± ì„œë¹„ìŠ¤ í™œì„±í™”",
+                                    JAPANESE to "ã‚¢ã‚¯ã‚»ã‚·ãƒ“ãƒªãƒ†ã‚£ã‚µãƒ¼ãƒ“ã‚¹ã‚’æœ‰åŠ¹ã«ã™ã‚‹",
+                                    PORTUGUESE to "Ativar serviÃ§o de acessibilidade",
+                                    HINDI to "à¤à¤•à¥à¤¸à¥‡à¤¸à¤¿à¤¬à¤¿à¤²à¤¿à¤Ÿà¥€ à¤¸à¥‡à¤µà¤¾ à¤¸à¤•à¥à¤·à¤® à¤•à¤°à¥‡à¤‚",
+                                    RUSSIAN to "Ð’ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ ÑÐ»ÑƒÐ¶Ð±Ñƒ ÑÐ¿ÐµÑ†Ð¸Ð°Ð»ÑŒÐ½Ñ‹Ñ… Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ÑÑ‚ÐµÐ¹",
+                                    UKRAINIAN to "Ð£Ð²Ñ–Ð¼ÐºÐ½ÑƒÑ‚Ð¸ ÑÐ»ÑƒÐ¶Ð±Ñƒ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚Ñ–"
+                            ),
+                    "ask" to
+                            mapOf(
+                                    ENGLISH to "Ask",
+                                    HEBREW to "×‘×§×©",
+                                    FRENCH to "Demander",
+                                    SPANISH to "Preguntar",
+                                    GERMAN to "Fragen",
+                                    ARABIC to "Ø§Ø·Ù„Ø¨",
+                                    CHINESE to "è¯·æ±‚",
+                                    KOREAN to "ìš”ì²­",
+                                    JAPANESE to "æ‰¿èª",
+                                    PORTUGUESE to "Pedir",
+                                    HINDI to "à¤ªà¥‚à¤›à¥‡à¤‚",
+                                    RUSSIAN to "Ð—Ð°Ð¿Ñ€Ð¾ÑÐ¸Ñ‚ÑŒ",
+                                    UKRAINIAN to "Ð—Ð°Ð¿Ð¸Ñ‚Ð°Ñ‚Ð¸"
+                            ),
+                    "enable" to
+                            mapOf(
+                                    ENGLISH to "Enable",
+                                    HEBREW to "×”×¤×¢×œ",
+                                    FRENCH to "Activer",
+                                    SPANISH to "Habilitar",
+                                    GERMAN to "Aktivieren",
+                                    ARABIC to "ØªÙØ¹ÙŠÙ„",
+                                    CHINESE to "å¯ç”¨",
+                                    KOREAN to "í™œì„±í™”",
+                                    JAPANESE to "æœ‰åŠ¹ã«ã™ã‚‹",
+                                    PORTUGUESE to "Ativar",
+                                    HINDI to "à¤¸à¤•à¥à¤·à¤® à¤•à¤°à¥‡à¤‚",
+                                    RUSSIAN to "Ð’ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ",
+                                    UKRAINIAN to "Ð£Ð²Ñ–Ð¼ÐºÐ½ÑƒÑ‚Ð¸"
+                            )
+            ),
+                    "welcome_subtitle" to
+                            mapOf(
+                                    ENGLISH to "Professional App Control & Device Protection",
+                                    HEBREW to "בקרה מקצועית בתוכניות והגנה על המכשיר",
+                                    FRENCH to
+                                            "Contrôle professionnel des applications et protection des appareils",
+                                    SPANISH to
+                                            "Control profesional de aplicaciones y protección de dispositivos",
+                                    GERMAN to "Professionelle App-Kontrolle und Geräteschutz",
+                                    ARABIC to "التحكم الاحترافي بالتطبيقات وحماية الجهاز",
+                                    CHINESE to "专业应用程序控制和设备保护",
+                                    KOREAN to "전문적인 앱 제어 및 장치 보호",
+                                    JAPANESE to "プロフェッショナルなアプリ制御とデバイス保護",
+                                    PORTUGUESE to
+                                            "Controle profissional de aplicativos e proteção de dispositivos",
+                                    RUSSIAN to
+                                            "Профессиональное управление приложениями и защита устройства",
+                                    UKRAINIAN to "Професійне керування додатками та захист пристрою"
+                            ,
+                    "track_app_usage" to
+                            mapOf(
+                                    ENGLISH to "Track app usage",
+                                    HEBREW to "×¢×§×•×‘ ××—×¨ ×©×™×ž×•×© ××¤×œ×™×§×¦×™×•×ª",
+                                    FRENCH to "Suivre l'utilisation des applications",
+                                    SPANISH to "Rastrear el uso de aplicaciones",
+                                    GERMAN to "App-Nutzung verfolgen",
+                                    ARABIC to "ØªØªØ¨Ø¹ Ø§Ø³ØªØ®Ø¯Ø§Ù… Ø§Ù„ØªØ·Ø¨ÙŠÙ‚",
+                                    CHINESE to "è·Ÿè¸ªåº”ç”¨ä½¿ç”¨æƒ…å†µ",
+                                    KOREAN to "ì•± ì‚¬ìš© ì¶”ì ",
+                                    JAPANESE to "ã‚¢ãƒ—ãƒªä½¿ç”¨çŠ¶æ³ã‚’è¿½è·¡",
+                                    PORTUGUESE to "Rastrear uso de aplicativo",
+                                    HINDI to "à¤à¤ª à¤‰à¤ªà¤¯à¥‹à¤— à¤Ÿà¥à¤°à¥ˆà¤• à¤•à¤°à¥‡à¤‚",
+                                    RUSSIAN to "ÐžÑ‚ÑÐ»ÐµÐ¶Ð¸Ð²Ð°Ñ‚ÑŒ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸Ð¹",
+                                    UKRAINIAN to "Ð’Ñ–Ð´ÑÑ‚ÐµÐ¶ÑƒÐ²Ð°Ñ‚Ð¸ Ð²Ð¸ÐºÐ¾Ñ€Ð¸ÑÑ‚Ð°Ð½Ð½Ñ Ð´Ð¾Ð´Ð°Ñ‚ÐºÑ–Ð²"
+                            ),
+                    "show_system_alerts" to
+                            mapOf(
+                                    ENGLISH to "Show system alerts",
+                                    HEBREW to "×”×¦×’ ×”×ª×¨××•×ª ×ž×¢×¨×›×ª",
+                                    FRENCH to "Afficher les alertes systÃ¨me",
+                                    SPANISH to "Mostrar alertas del sistema",
+                                    GERMAN to "Systemwarnungen anzeigen",
+                                    ARABIC to "Ø¥Ø¸Ù‡Ø§Ø± ØªÙ†Ø¨ÙŠÙ‡Ø§Øª Ø§Ù„Ù†Ø¸Ø§Ù…",
+                                    CHINESE to "æ˜¾ç¤ºç³»ç»Ÿè­¦æŠ¥",
+                                    KOREAN to "ì‹œìŠ¤í…œ ê²½ê³  í‘œì‹œ",
+                                    JAPANESE to "ã‚·ã‚¹ãƒ†ãƒ ã‚¢ãƒ©ãƒ¼ãƒˆã‚’è¡¨ç¤º",
+                                    PORTUGUESE to "Mostrar alertas do sistema",
+                                    HINDI to "à¤¸à¤¿à¤¸à¥à¤Ÿà¤® à¤¸à¤¤à¤°à¥à¤•à¤¤à¤¾ à¤¦à¤¿à¤–à¤¾à¤à¤‚",
+                                    RUSSIAN to "ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ ÑÐ¸ÑÑ‚ÐµÐ¼Ð½Ñ‹Ðµ ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ",
+                                    UKRAINIAN to "ÐŸÐ¾ÐºÐ°Ð·ÑƒÐ²Ð°Ñ‚Ð¸ ÑÐ¸ÑÑ‚ÐµÐ¼Ð½Ñ– ÑÐ¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ"
+                            ),
+                    "send_notifications" to
+                            mapOf(
+                                    ENGLISH to "Send notifications",
+                                    HEBREW to "×©×œ×— ×”×•×“×¢×•×ª",
+                                    FRENCH to "Envoyer les notifications",
+                                    SPANISH to "Enviar notificaciones",
+                                    GERMAN to "Benachrichtigungen senden",
+                                    ARABIC to "Ø¥Ø±Ø³Ø§Ù„ Ø§Ù„Ø¥Ø®Ø·Ø§Ø±Ø§Øª",
+                                    CHINESE to "å‘é€é€šçŸ¥",
+                                    KOREAN to "ì•Œë¦¼ ì „ì†¡",
+                                    JAPANESE to "é€šçŸ¥ã‚’é€ä¿¡",
+                                    PORTUGUESE to "Enviar notificaÃ§Ãµes",
+                                    HINDI to "à¤¸à¥‚à¤šà¤¨à¤¾à¤à¤‚ à¤­à¥‡à¤œà¥‡à¤‚",
+                                    RUSSIAN to "ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð»ÑÑ‚ÑŒ ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ",
+                                    UKRAINIAN to "ÐÐ°Ð´ÑÐ¸Ð»Ð°Ñ‚Ð¸ ÑÐ¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ"
+                            ),
+                    "enable_accessibility" to
+                            mapOf(
+                                    ENGLISH to "Enable Accessibility Service",
+                                    HEBREW to "×”×¤×¢×œ ×©×™×¨×•×ª × ×’×™×©×•×ª",
+                                    FRENCH to "Activer le service d'accessibilitÃ©",
+                                    SPANISH to "Habilitar servicio de accesibilidad",
+                                    GERMAN to "Eingabehilfen aktivieren",
+                                    ARABIC to "ØªÙØ¹ÙŠÙ„ Ø®Ø¯Ù…Ø© Ø§Ù„ÙˆØµÙˆÙ„",
+                                    CHINESE to "å¯ç”¨æ— éšœç¢æœåŠ¡",
+                                    KOREAN to "ì ‘ê·¼ì„± ì„œë¹„ìŠ¤ í™œì„±í™”",
+                                    JAPANESE to "ã‚¢ã‚¯ã‚»ã‚·ãƒ“ãƒªãƒ†ã‚£ã‚µãƒ¼ãƒ“ã‚¹ã‚’æœ‰åŠ¹ã«ã™ã‚‹",
+                                    PORTUGUESE to "Ativar serviÃ§o de acessibilidade",
+                                    HINDI to "à¤à¤•à¥à¤¸à¥‡à¤¸à¤¿à¤¬à¤¿à¤²à¤¿à¤Ÿà¥€ à¤¸à¥‡à¤µà¤¾ à¤¸à¤•à¥à¤·à¤® à¤•à¤°à¥‡à¤‚",
+                                    RUSSIAN to "Ð’ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ ÑÐ»ÑƒÐ¶Ð±Ñƒ ÑÐ¿ÐµÑ†Ð¸Ð°Ð»ÑŒÐ½Ñ‹Ñ… Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ÑÑ‚ÐµÐ¹",
+                                    UKRAINIAN to "Ð£Ð²Ñ–Ð¼ÐºÐ½ÑƒÑ‚Ð¸ ÑÐ»ÑƒÐ¶Ð±Ñƒ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚Ñ–"
+                            ),
+                    "ask" to
+                            mapOf(
+                                    ENGLISH to "Ask",
+                                    HEBREW to "×‘×§×©",
+                                    FRENCH to "Demander",
+                                    SPANISH to "Preguntar",
+                                    GERMAN to "Fragen",
+                                    ARABIC to "Ø§Ø·Ù„Ø¨",
+                                    CHINESE to "è¯·æ±‚",
+                                    KOREAN to "ìš”ì²­",
+                                    JAPANESE to "æ‰¿èª",
+                                    PORTUGUESE to "Pedir",
+                                    HINDI to "à¤ªà¥‚à¤›à¥‡à¤‚",
+                                    RUSSIAN to "Ð—Ð°Ð¿Ñ€Ð¾ÑÐ¸Ñ‚ÑŒ",
+                                    UKRAINIAN to "Ð—Ð°Ð¿Ð¸Ñ‚Ð°Ñ‚Ð¸"
+                            ),
+                    "enable" to
+                            mapOf(
+                                    ENGLISH to "Enable",
+                                    HEBREW to "×”×¤×¢×œ",
+                                    FRENCH to "Activer",
+                                    SPANISH to "Habilitar",
+                                    GERMAN to "Aktivieren",
+                                    ARABIC to "ØªÙØ¹ÙŠÙ„",
+                                    CHINESE to "å¯ç”¨",
+                                    KOREAN to "í™œì„±í™”",
+                                    JAPANESE to "æœ‰åŠ¹ã«ã™ã‚‹",
+                                    PORTUGUESE to "Ativar",
+                                    HINDI to "à¤¸à¤•à¥à¤·à¤® à¤•à¤°à¥‡à¤‚",
+                                    RUSSIAN to "Ð’ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ",
+                                    UKRAINIAN to "Ð£Ð²Ñ–Ð¼ÐºÐ½ÑƒÑ‚Ð¸"
+                            )
+            ),
+                    "welcome_description" to
+                            mapOf(
+                                    ENGLISH to
+                                            "Block distracting apps during work hours, apply grayscale filters, and protect your device with advanced security.",
+                                    HEBREW to
+                                            "חסום אפליקציות מחלידות בשעות העבודה, החל מסננים בגווני אפור, והגן על המכשיר שלך בעזרת אבטחה מתקדמת.",
+                                    FRENCH to
+                                            "Bloquez les applications distrayantes pendant les heures de travail, appliquez des filtres en niveaux de gris et protégez votre appareil avec une sécurité avancée.",
+                                    SPANISH to
+                                            "Bloquea aplicaciones distractoras durante las horas de trabajo, aplica filtros en escala de grises y protege tu dispositivo con seguridad avanzada.",
+                                    GERMAN to
+                                            "Blockieren Sie ablenkende Apps während der Arbeitszeit, wenden Sie Graustufen-Filter an und schützen Sie Ihr Gerät mit fortschrittlicher Sicherheit.",
+                                    ARABIC to
+                                            "احجب التطبيقات المشتتة للانتباه أثناء ساعات العمل، وطبق مرشحات الرمادي، وحماية جهازك بأمان متقدم.",
+                                    CHINESE to "在工作时间阻止分散注意力的应用程序，应用灰度过滤器，并使用高级安全性保护您的设备。",
+                                    KOREAN to
+                                            "업무 시간 동안 주의산만한 앱을 차단하고, 그레이스케일 필터를 적용하고, 고급 보안으로 기기를 보호하세요.",
+                                    JAPANESE to
+                                            "仕事中に気を散らすアプリをブロックし、グレースケールフィルターを適用し、高度なセキュリティでデバイスを保護します。",
+                                    PORTUGUESE to
+                                            "Bloqueie aplicativos distratores durante as horas de trabalho, aplique filtros em escala de cinza e proteja seu dispositivo com segurança avançada.",
+                                    RUSSIAN to
+                                            "Блокируйте отвлекающие приложения во время рабочих часов, применяйте фильтры оттенков серого и защищайте свое устройство с помощью расширенной безопасности.",
+                                    UKRAINIAN to
+                                            "Блокуйте розсіювальні додатки під час робочих годин, застосовуйте фільтри в градаціях сірого та захищайте свій пристрій за допомогою розширеного захисту."
+                            ),
+                    "get_started" to
+                            mapOf(
+                                    ENGLISH to "Get Started",
+                                    HEBREW to "בואו נתחיל",
+                                    FRENCH to "Commencer",
+                                    SPANISH to "Comenzar",
+                                    GERMAN to "Loslegen",
+                                    ARABIC to "ابدأ الآن",
+                                    CHINESE to "开始",
+                                    KOREAN to "시작",
+                                    JAPANESE to "スタート",
+                                    PORTUGUESE to "Começar",
+                                    RUSSIAN to "Начать",
+                                    UKRAINIAN to "Почати"
+                            ,
+                    "track_app_usage" to
+                            mapOf(
+                                    ENGLISH to "Track app usage",
+                                    HEBREW to "×¢×§×•×‘ ××—×¨ ×©×™×ž×•×© ××¤×œ×™×§×¦×™×•×ª",
+                                    FRENCH to "Suivre l'utilisation des applications",
+                                    SPANISH to "Rastrear el uso de aplicaciones",
+                                    GERMAN to "App-Nutzung verfolgen",
+                                    ARABIC to "ØªØªØ¨Ø¹ Ø§Ø³ØªØ®Ø¯Ø§Ù… Ø§Ù„ØªØ·Ø¨ÙŠÙ‚",
+                                    CHINESE to "è·Ÿè¸ªåº”ç”¨ä½¿ç”¨æƒ…å†µ",
+                                    KOREAN to "ì•± ì‚¬ìš© ì¶”ì ",
+                                    JAPANESE to "ã‚¢ãƒ—ãƒªä½¿ç”¨çŠ¶æ³ã‚’è¿½è·¡",
+                                    PORTUGUESE to "Rastrear uso de aplicativo",
+                                    HINDI to "à¤à¤ª à¤‰à¤ªà¤¯à¥‹à¤— à¤Ÿà¥à¤°à¥ˆà¤• à¤•à¤°à¥‡à¤‚",
+                                    RUSSIAN to "ÐžÑ‚ÑÐ»ÐµÐ¶Ð¸Ð²Ð°Ñ‚ÑŒ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸Ð¹",
+                                    UKRAINIAN to "Ð’Ñ–Ð´ÑÑ‚ÐµÐ¶ÑƒÐ²Ð°Ñ‚Ð¸ Ð²Ð¸ÐºÐ¾Ñ€Ð¸ÑÑ‚Ð°Ð½Ð½Ñ Ð´Ð¾Ð´Ð°Ñ‚ÐºÑ–Ð²"
+                            ),
+                    "show_system_alerts" to
+                            mapOf(
+                                    ENGLISH to "Show system alerts",
+                                    HEBREW to "×”×¦×’ ×”×ª×¨××•×ª ×ž×¢×¨×›×ª",
+                                    FRENCH to "Afficher les alertes systÃ¨me",
+                                    SPANISH to "Mostrar alertas del sistema",
+                                    GERMAN to "Systemwarnungen anzeigen",
+                                    ARABIC to "Ø¥Ø¸Ù‡Ø§Ø± ØªÙ†Ø¨ÙŠÙ‡Ø§Øª Ø§Ù„Ù†Ø¸Ø§Ù…",
+                                    CHINESE to "æ˜¾ç¤ºç³»ç»Ÿè­¦æŠ¥",
+                                    KOREAN to "ì‹œìŠ¤í…œ ê²½ê³  í‘œì‹œ",
+                                    JAPANESE to "ã‚·ã‚¹ãƒ†ãƒ ã‚¢ãƒ©ãƒ¼ãƒˆã‚’è¡¨ç¤º",
+                                    PORTUGUESE to "Mostrar alertas do sistema",
+                                    HINDI to "à¤¸à¤¿à¤¸à¥à¤Ÿà¤® à¤¸à¤¤à¤°à¥à¤•à¤¤à¤¾ à¤¦à¤¿à¤–à¤¾à¤à¤‚",
+                                    RUSSIAN to "ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ ÑÐ¸ÑÑ‚ÐµÐ¼Ð½Ñ‹Ðµ ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ",
+                                    UKRAINIAN to "ÐŸÐ¾ÐºÐ°Ð·ÑƒÐ²Ð°Ñ‚Ð¸ ÑÐ¸ÑÑ‚ÐµÐ¼Ð½Ñ– ÑÐ¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ"
+                            ),
+                    "send_notifications" to
+                            mapOf(
+                                    ENGLISH to "Send notifications",
+                                    HEBREW to "×©×œ×— ×”×•×“×¢×•×ª",
+                                    FRENCH to "Envoyer les notifications",
+                                    SPANISH to "Enviar notificaciones",
+                                    GERMAN to "Benachrichtigungen senden",
+                                    ARABIC to "Ø¥Ø±Ø³Ø§Ù„ Ø§Ù„Ø¥Ø®Ø·Ø§Ø±Ø§Øª",
+                                    CHINESE to "å‘é€é€šçŸ¥",
+                                    KOREAN to "ì•Œë¦¼ ì „ì†¡",
+                                    JAPANESE to "é€šçŸ¥ã‚’é€ä¿¡",
+                                    PORTUGUESE to "Enviar notificaÃ§Ãµes",
+                                    HINDI to "à¤¸à¥‚à¤šà¤¨à¤¾à¤à¤‚ à¤­à¥‡à¤œà¥‡à¤‚",
+                                    RUSSIAN to "ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð»ÑÑ‚ÑŒ ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ",
+                                    UKRAINIAN to "ÐÐ°Ð´ÑÐ¸Ð»Ð°Ñ‚Ð¸ ÑÐ¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ"
+                            ),
+                    "enable_accessibility" to
+                            mapOf(
+                                    ENGLISH to "Enable Accessibility Service",
+                                    HEBREW to "×”×¤×¢×œ ×©×™×¨×•×ª × ×’×™×©×•×ª",
+                                    FRENCH to "Activer le service d'accessibilitÃ©",
+                                    SPANISH to "Habilitar servicio de accesibilidad",
+                                    GERMAN to "Eingabehilfen aktivieren",
+                                    ARABIC to "ØªÙØ¹ÙŠÙ„ Ø®Ø¯Ù…Ø© Ø§Ù„ÙˆØµÙˆÙ„",
+                                    CHINESE to "å¯ç”¨æ— éšœç¢æœåŠ¡",
+                                    KOREAN to "ì ‘ê·¼ì„± ì„œë¹„ìŠ¤ í™œì„±í™”",
+                                    JAPANESE to "ã‚¢ã‚¯ã‚»ã‚·ãƒ“ãƒªãƒ†ã‚£ã‚µãƒ¼ãƒ“ã‚¹ã‚’æœ‰åŠ¹ã«ã™ã‚‹",
+                                    PORTUGUESE to "Ativar serviÃ§o de acessibilidade",
+                                    HINDI to "à¤à¤•à¥à¤¸à¥‡à¤¸à¤¿à¤¬à¤¿à¤²à¤¿à¤Ÿà¥€ à¤¸à¥‡à¤µà¤¾ à¤¸à¤•à¥à¤·à¤® à¤•à¤°à¥‡à¤‚",
+                                    RUSSIAN to "Ð’ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ ÑÐ»ÑƒÐ¶Ð±Ñƒ ÑÐ¿ÐµÑ†Ð¸Ð°Ð»ÑŒÐ½Ñ‹Ñ… Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ÑÑ‚ÐµÐ¹",
+                                    UKRAINIAN to "Ð£Ð²Ñ–Ð¼ÐºÐ½ÑƒÑ‚Ð¸ ÑÐ»ÑƒÐ¶Ð±Ñƒ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚Ñ–"
+                            ),
+                    "ask" to
+                            mapOf(
+                                    ENGLISH to "Ask",
+                                    HEBREW to "×‘×§×©",
+                                    FRENCH to "Demander",
+                                    SPANISH to "Preguntar",
+                                    GERMAN to "Fragen",
+                                    ARABIC to "Ø§Ø·Ù„Ø¨",
+                                    CHINESE to "è¯·æ±‚",
+                                    KOREAN to "ìš”ì²­",
+                                    JAPANESE to "æ‰¿èª",
+                                    PORTUGUESE to "Pedir",
+                                    HINDI to "à¤ªà¥‚à¤›à¥‡à¤‚",
+                                    RUSSIAN to "Ð—Ð°Ð¿Ñ€Ð¾ÑÐ¸Ñ‚ÑŒ",
+                                    UKRAINIAN to "Ð—Ð°Ð¿Ð¸Ñ‚Ð°Ñ‚Ð¸"
+                            ),
+                    "enable" to
+                            mapOf(
+                                    ENGLISH to "Enable",
+                                    HEBREW to "×”×¤×¢×œ",
+                                    FRENCH to "Activer",
+                                    SPANISH to "Habilitar",
+                                    GERMAN to "Aktivieren",
+                                    ARABIC to "ØªÙØ¹ÙŠÙ„",
+                                    CHINESE to "å¯ç”¨",
+                                    KOREAN to "í™œì„±í™”",
+                                    JAPANESE to "æœ‰åŠ¹ã«ã™ã‚‹",
+                                    PORTUGUESE to "Ativar",
+                                    HINDI to "à¤¸à¤•à¥à¤·à¤® à¤•à¤°à¥‡à¤‚",
+                                    RUSSIAN to "Ð’ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ",
+                                    UKRAINIAN to "Ð£Ð²Ñ–Ð¼ÐºÐ½ÑƒÑ‚Ð¸"
+                            )
+            ),
+
+                    // PIN Setup
+                    "create_master_pin" to
+                            mapOf(
+                                    ENGLISH to "Create Master PIN",
+                                    HEBREW to "יצור PIN ראשי",
+                                    FRENCH to "Créer un PIN maître",
+                                    SPANISH to "Crear PIN maestro",
+                                    GERMAN to "Master-PIN erstellen",
+                                    ARABIC to "إنشاء PIN رئيسي",
+                                    CHINESE to "创建主PIN",
+                                    KOREAN to "마스터 PIN 생성",
+                                    JAPANESE to "マスターPINを作成",
+                                    PORTUGUESE to "Criar PIN mestre",
+                                    RUSSIAN to "Создать главный PIN",
+                                    UKRAINIAN to "Створити головний PIN"
+                            ,
+                    "track_app_usage" to
+                            mapOf(
+                                    ENGLISH to "Track app usage",
+                                    HEBREW to "×¢×§×•×‘ ××—×¨ ×©×™×ž×•×© ××¤×œ×™×§×¦×™×•×ª",
+                                    FRENCH to "Suivre l'utilisation des applications",
+                                    SPANISH to "Rastrear el uso de aplicaciones",
+                                    GERMAN to "App-Nutzung verfolgen",
+                                    ARABIC to "ØªØªØ¨Ø¹ Ø§Ø³ØªØ®Ø¯Ø§Ù… Ø§Ù„ØªØ·Ø¨ÙŠÙ‚",
+                                    CHINESE to "è·Ÿè¸ªåº”ç”¨ä½¿ç”¨æƒ…å†µ",
+                                    KOREAN to "ì•± ì‚¬ìš© ì¶”ì ",
+                                    JAPANESE to "ã‚¢ãƒ—ãƒªä½¿ç”¨çŠ¶æ³ã‚’è¿½è·¡",
+                                    PORTUGUESE to "Rastrear uso de aplicativo",
+                                    HINDI to "à¤à¤ª à¤‰à¤ªà¤¯à¥‹à¤— à¤Ÿà¥à¤°à¥ˆà¤• à¤•à¤°à¥‡à¤‚",
+                                    RUSSIAN to "ÐžÑ‚ÑÐ»ÐµÐ¶Ð¸Ð²Ð°Ñ‚ÑŒ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸Ð¹",
+                                    UKRAINIAN to "Ð’Ñ–Ð´ÑÑ‚ÐµÐ¶ÑƒÐ²Ð°Ñ‚Ð¸ Ð²Ð¸ÐºÐ¾Ñ€Ð¸ÑÑ‚Ð°Ð½Ð½Ñ Ð´Ð¾Ð´Ð°Ñ‚ÐºÑ–Ð²"
+                            ),
+                    "show_system_alerts" to
+                            mapOf(
+                                    ENGLISH to "Show system alerts",
+                                    HEBREW to "×”×¦×’ ×”×ª×¨××•×ª ×ž×¢×¨×›×ª",
+                                    FRENCH to "Afficher les alertes systÃ¨me",
+                                    SPANISH to "Mostrar alertas del sistema",
+                                    GERMAN to "Systemwarnungen anzeigen",
+                                    ARABIC to "Ø¥Ø¸Ù‡Ø§Ø± ØªÙ†Ø¨ÙŠÙ‡Ø§Øª Ø§Ù„Ù†Ø¸Ø§Ù…",
+                                    CHINESE to "æ˜¾ç¤ºç³»ç»Ÿè­¦æŠ¥",
+                                    KOREAN to "ì‹œìŠ¤í…œ ê²½ê³  í‘œì‹œ",
+                                    JAPANESE to "ã‚·ã‚¹ãƒ†ãƒ ã‚¢ãƒ©ãƒ¼ãƒˆã‚’è¡¨ç¤º",
+                                    PORTUGUESE to "Mostrar alertas do sistema",
+                                    HINDI to "à¤¸à¤¿à¤¸à¥à¤Ÿà¤® à¤¸à¤¤à¤°à¥à¤•à¤¤à¤¾ à¤¦à¤¿à¤–à¤¾à¤à¤‚",
+                                    RUSSIAN to "ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ ÑÐ¸ÑÑ‚ÐµÐ¼Ð½Ñ‹Ðµ ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ",
+                                    UKRAINIAN to "ÐŸÐ¾ÐºÐ°Ð·ÑƒÐ²Ð°Ñ‚Ð¸ ÑÐ¸ÑÑ‚ÐµÐ¼Ð½Ñ– ÑÐ¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ"
+                            ),
+                    "send_notifications" to
+                            mapOf(
+                                    ENGLISH to "Send notifications",
+                                    HEBREW to "×©×œ×— ×”×•×“×¢×•×ª",
+                                    FRENCH to "Envoyer les notifications",
+                                    SPANISH to "Enviar notificaciones",
+                                    GERMAN to "Benachrichtigungen senden",
+                                    ARABIC to "Ø¥Ø±Ø³Ø§Ù„ Ø§Ù„Ø¥Ø®Ø·Ø§Ø±Ø§Øª",
+                                    CHINESE to "å‘é€é€šçŸ¥",
+                                    KOREAN to "ì•Œë¦¼ ì „ì†¡",
+                                    JAPANESE to "é€šçŸ¥ã‚’é€ä¿¡",
+                                    PORTUGUESE to "Enviar notificaÃ§Ãµes",
+                                    HINDI to "à¤¸à¥‚à¤šà¤¨à¤¾à¤à¤‚ à¤­à¥‡à¤œà¥‡à¤‚",
+                                    RUSSIAN to "ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð»ÑÑ‚ÑŒ ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ",
+                                    UKRAINIAN to "ÐÐ°Ð´ÑÐ¸Ð»Ð°Ñ‚Ð¸ ÑÐ¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ"
+                            ),
+                    "enable_accessibility" to
+                            mapOf(
+                                    ENGLISH to "Enable Accessibility Service",
+                                    HEBREW to "×”×¤×¢×œ ×©×™×¨×•×ª × ×’×™×©×•×ª",
+                                    FRENCH to "Activer le service d'accessibilitÃ©",
+                                    SPANISH to "Habilitar servicio de accesibilidad",
+                                    GERMAN to "Eingabehilfen aktivieren",
+                                    ARABIC to "ØªÙØ¹ÙŠÙ„ Ø®Ø¯Ù…Ø© Ø§Ù„ÙˆØµÙˆÙ„",
+                                    CHINESE to "å¯ç”¨æ— éšœç¢æœåŠ¡",
+                                    KOREAN to "ì ‘ê·¼ì„± ì„œë¹„ìŠ¤ í™œì„±í™”",
+                                    JAPANESE to "ã‚¢ã‚¯ã‚»ã‚·ãƒ“ãƒªãƒ†ã‚£ã‚µãƒ¼ãƒ“ã‚¹ã‚’æœ‰åŠ¹ã«ã™ã‚‹",
+                                    PORTUGUESE to "Ativar serviÃ§o de acessibilidade",
+                                    HINDI to "à¤à¤•à¥à¤¸à¥‡à¤¸à¤¿à¤¬à¤¿à¤²à¤¿à¤Ÿà¥€ à¤¸à¥‡à¤µà¤¾ à¤¸à¤•à¥à¤·à¤® à¤•à¤°à¥‡à¤‚",
+                                    RUSSIAN to "Ð’ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ ÑÐ»ÑƒÐ¶Ð±Ñƒ ÑÐ¿ÐµÑ†Ð¸Ð°Ð»ÑŒÐ½Ñ‹Ñ… Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ÑÑ‚ÐµÐ¹",
+                                    UKRAINIAN to "Ð£Ð²Ñ–Ð¼ÐºÐ½ÑƒÑ‚Ð¸ ÑÐ»ÑƒÐ¶Ð±Ñƒ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚Ñ–"
+                            ),
+                    "ask" to
+                            mapOf(
+                                    ENGLISH to "Ask",
+                                    HEBREW to "×‘×§×©",
+                                    FRENCH to "Demander",
+                                    SPANISH to "Preguntar",
+                                    GERMAN to "Fragen",
+                                    ARABIC to "Ø§Ø·Ù„Ø¨",
+                                    CHINESE to "è¯·æ±‚",
+                                    KOREAN to "ìš”ì²­",
+                                    JAPANESE to "æ‰¿èª",
+                                    PORTUGUESE to "Pedir",
+                                    HINDI to "à¤ªà¥‚à¤›à¥‡à¤‚",
+                                    RUSSIAN to "Ð—Ð°Ð¿Ñ€Ð¾ÑÐ¸Ñ‚ÑŒ",
+                                    UKRAINIAN to "Ð—Ð°Ð¿Ð¸Ñ‚Ð°Ñ‚Ð¸"
+                            ),
+                    "enable" to
+                            mapOf(
+                                    ENGLISH to "Enable",
+                                    HEBREW to "×”×¤×¢×œ",
+                                    FRENCH to "Activer",
+                                    SPANISH to "Habilitar",
+                                    GERMAN to "Aktivieren",
+                                    ARABIC to "ØªÙØ¹ÙŠÙ„",
+                                    CHINESE to "å¯ç”¨",
+                                    KOREAN to "í™œì„±í™”",
+                                    JAPANESE to "æœ‰åŠ¹ã«ã™ã‚‹",
+                                    PORTUGUESE to "Ativar",
+                                    HINDI to "à¤¸à¤•à¥à¤·à¤® à¤•à¤°à¥‡à¤‚",
+                                    RUSSIAN to "Ð’ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ",
+                                    UKRAINIAN to "Ð£Ð²Ñ–Ð¼ÐºÐ½ÑƒÑ‚Ð¸"
+                            )
+            ),
+                    "pin_description" to
+                            mapOf(
+                                    ENGLISH to
+                                            "Your PIN protects all app settings and blocks. Set a strong PIN (minimum 6 digits).",
+                                    HEBREW to
+                                            "ה-PIN שלך מגן על כל הגדרות התוכנה וחסימות. הגדר PIN חזק (מינימום 6 ספרות).",
+                                    FRENCH to
+                                            "Votre PIN protège tous les paramètres et blocages de l'application. Définissez un PIN fort (minimum 6 chiffres).",
+                                    SPANISH to
+                                            "Tu PIN protege todos los ajustes y bloqueos de la aplicación. Establece un PIN fuerte (mínimo 6 dígitos).",
+                                    GERMAN to
+                                            "Ihre PIN schützt alle App-Einstellungen und Sperren. Legen Sie eine starke PIN fest (mindestens 6 Ziffern).",
+                                    ARABIC to
+                                            "يحمي PIN الخاص بك جميع إعدادات التطبيق والقفل. حدد PIN قويًا (6 أرقام على الأقل).",
+                                    CHINESE to "您的PIN保护所有应用设置和块。设置强PIN（最少6位数字）。",
+                                    KOREAN to
+                                            "귀하의 PIN은 모든 앱 설정과 잠금을 보호합니다. 강력한 PIN을 설정하세요 (최소 6자리).",
+                                    JAPANESE to
+                                            "あなたのPINはすべてのアプリ設定とロックを保護します。強力なPINを設定してください（最小6桁）。",
+                                    PORTUGUESE to
+                                            "Seu PIN protege todas as configurações do aplicativo e bloqueios. Defina um PIN forte (mínimo 6 dígitos).",
+                                    RUSSIAN to
+                                            "Ваш PIN защищает все параметры приложения и блокировку. Установите надежный PIN (минимум 6 цифр).",
+                                    UKRAINIAN to
+                                            "Ваш PIN захищає всі параметри та блокування програми. Встановіть надійний PIN (мінімум 6 цифр)."
+                            ),
+                    "enter_pin" to
+                            mapOf(
+                                    ENGLISH to "Enter PIN",
+                                    HEBREW to "הזן PIN",
+                                    FRENCH to "Entrez le PIN",
+                                    SPANISH to "Ingresa el PIN",
+                                    GERMAN to "PIN eingeben",
+                                    ARABIC to "أدخل رمز PIN",
+                                    CHINESE to "输入PIN",
+                                    KOREAN to "PIN 입력",
+                                    JAPANESE to "PINを入力",
+                                    PORTUGUESE to "Digite o PIN",
+                                    RUSSIAN to "Введите PIN",
+                                    UKRAINIAN to "Введіть PIN"
+                            ,
+                    "track_app_usage" to
+                            mapOf(
+                                    ENGLISH to "Track app usage",
+                                    HEBREW to "×¢×§×•×‘ ××—×¨ ×©×™×ž×•×© ××¤×œ×™×§×¦×™×•×ª",
+                                    FRENCH to "Suivre l'utilisation des applications",
+                                    SPANISH to "Rastrear el uso de aplicaciones",
+                                    GERMAN to "App-Nutzung verfolgen",
+                                    ARABIC to "ØªØªØ¨Ø¹ Ø§Ø³ØªØ®Ø¯Ø§Ù… Ø§Ù„ØªØ·Ø¨ÙŠÙ‚",
+                                    CHINESE to "è·Ÿè¸ªåº”ç”¨ä½¿ç”¨æƒ…å†µ",
+                                    KOREAN to "ì•± ì‚¬ìš© ì¶”ì ",
+                                    JAPANESE to "ã‚¢ãƒ—ãƒªä½¿ç”¨çŠ¶æ³ã‚’è¿½è·¡",
+                                    PORTUGUESE to "Rastrear uso de aplicativo",
+                                    HINDI to "à¤à¤ª à¤‰à¤ªà¤¯à¥‹à¤— à¤Ÿà¥à¤°à¥ˆà¤• à¤•à¤°à¥‡à¤‚",
+                                    RUSSIAN to "ÐžÑ‚ÑÐ»ÐµÐ¶Ð¸Ð²Ð°Ñ‚ÑŒ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸Ð¹",
+                                    UKRAINIAN to "Ð’Ñ–Ð´ÑÑ‚ÐµÐ¶ÑƒÐ²Ð°Ñ‚Ð¸ Ð²Ð¸ÐºÐ¾Ñ€Ð¸ÑÑ‚Ð°Ð½Ð½Ñ Ð´Ð¾Ð´Ð°Ñ‚ÐºÑ–Ð²"
+                            ),
+                    "show_system_alerts" to
+                            mapOf(
+                                    ENGLISH to "Show system alerts",
+                                    HEBREW to "×”×¦×’ ×”×ª×¨××•×ª ×ž×¢×¨×›×ª",
+                                    FRENCH to "Afficher les alertes systÃ¨me",
+                                    SPANISH to "Mostrar alertas del sistema",
+                                    GERMAN to "Systemwarnungen anzeigen",
+                                    ARABIC to "Ø¥Ø¸Ù‡Ø§Ø± ØªÙ†Ø¨ÙŠÙ‡Ø§Øª Ø§Ù„Ù†Ø¸Ø§Ù…",
+                                    CHINESE to "æ˜¾ç¤ºç³»ç»Ÿè­¦æŠ¥",
+                                    KOREAN to "ì‹œìŠ¤í…œ ê²½ê³  í‘œì‹œ",
+                                    JAPANESE to "ã‚·ã‚¹ãƒ†ãƒ ã‚¢ãƒ©ãƒ¼ãƒˆã‚’è¡¨ç¤º",
+                                    PORTUGUESE to "Mostrar alertas do sistema",
+                                    HINDI to "à¤¸à¤¿à¤¸à¥à¤Ÿà¤® à¤¸à¤¤à¤°à¥à¤•à¤¤à¤¾ à¤¦à¤¿à¤–à¤¾à¤à¤‚",
+                                    RUSSIAN to "ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ ÑÐ¸ÑÑ‚ÐµÐ¼Ð½Ñ‹Ðµ ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ",
+                                    UKRAINIAN to "ÐŸÐ¾ÐºÐ°Ð·ÑƒÐ²Ð°Ñ‚Ð¸ ÑÐ¸ÑÑ‚ÐµÐ¼Ð½Ñ– ÑÐ¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ"
+                            ),
+                    "send_notifications" to
+                            mapOf(
+                                    ENGLISH to "Send notifications",
+                                    HEBREW to "×©×œ×— ×”×•×“×¢×•×ª",
+                                    FRENCH to "Envoyer les notifications",
+                                    SPANISH to "Enviar notificaciones",
+                                    GERMAN to "Benachrichtigungen senden",
+                                    ARABIC to "Ø¥Ø±Ø³Ø§Ù„ Ø§Ù„Ø¥Ø®Ø·Ø§Ø±Ø§Øª",
+                                    CHINESE to "å‘é€é€šçŸ¥",
+                                    KOREAN to "ì•Œë¦¼ ì „ì†¡",
+                                    JAPANESE to "é€šçŸ¥ã‚’é€ä¿¡",
+                                    PORTUGUESE to "Enviar notificaÃ§Ãµes",
+                                    HINDI to "à¤¸à¥‚à¤šà¤¨à¤¾à¤à¤‚ à¤­à¥‡à¤œà¥‡à¤‚",
+                                    RUSSIAN to "ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð»ÑÑ‚ÑŒ ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ",
+                                    UKRAINIAN to "ÐÐ°Ð´ÑÐ¸Ð»Ð°Ñ‚Ð¸ ÑÐ¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ"
+                            ),
+                    "enable_accessibility" to
+                            mapOf(
+                                    ENGLISH to "Enable Accessibility Service",
+                                    HEBREW to "×”×¤×¢×œ ×©×™×¨×•×ª × ×’×™×©×•×ª",
+                                    FRENCH to "Activer le service d'accessibilitÃ©",
+                                    SPANISH to "Habilitar servicio de accesibilidad",
+                                    GERMAN to "Eingabehilfen aktivieren",
+                                    ARABIC to "ØªÙØ¹ÙŠÙ„ Ø®Ø¯Ù…Ø© Ø§Ù„ÙˆØµÙˆÙ„",
+                                    CHINESE to "å¯ç”¨æ— éšœç¢æœåŠ¡",
+                                    KOREAN to "ì ‘ê·¼ì„± ì„œë¹„ìŠ¤ í™œì„±í™”",
+                                    JAPANESE to "ã‚¢ã‚¯ã‚»ã‚·ãƒ“ãƒªãƒ†ã‚£ã‚µãƒ¼ãƒ“ã‚¹ã‚’æœ‰åŠ¹ã«ã™ã‚‹",
+                                    PORTUGUESE to "Ativar serviÃ§o de acessibilidade",
+                                    HINDI to "à¤à¤•à¥à¤¸à¥‡à¤¸à¤¿à¤¬à¤¿à¤²à¤¿à¤Ÿà¥€ à¤¸à¥‡à¤µà¤¾ à¤¸à¤•à¥à¤·à¤® à¤•à¤°à¥‡à¤‚",
+                                    RUSSIAN to "Ð’ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ ÑÐ»ÑƒÐ¶Ð±Ñƒ ÑÐ¿ÐµÑ†Ð¸Ð°Ð»ÑŒÐ½Ñ‹Ñ… Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ÑÑ‚ÐµÐ¹",
+                                    UKRAINIAN to "Ð£Ð²Ñ–Ð¼ÐºÐ½ÑƒÑ‚Ð¸ ÑÐ»ÑƒÐ¶Ð±Ñƒ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚Ñ–"
+                            ),
+                    "ask" to
+                            mapOf(
+                                    ENGLISH to "Ask",
+                                    HEBREW to "×‘×§×©",
+                                    FRENCH to "Demander",
+                                    SPANISH to "Preguntar",
+                                    GERMAN to "Fragen",
+                                    ARABIC to "Ø§Ø·Ù„Ø¨",
+                                    CHINESE to "è¯·æ±‚",
+                                    KOREAN to "ìš”ì²­",
+                                    JAPANESE to "æ‰¿èª",
+                                    PORTUGUESE to "Pedir",
+                                    HINDI to "à¤ªà¥‚à¤›à¥‡à¤‚",
+                                    RUSSIAN to "Ð—Ð°Ð¿Ñ€Ð¾ÑÐ¸Ñ‚ÑŒ",
+                                    UKRAINIAN to "Ð—Ð°Ð¿Ð¸Ñ‚Ð°Ñ‚Ð¸"
+                            ),
+                    "enable" to
+                            mapOf(
+                                    ENGLISH to "Enable",
+                                    HEBREW to "×”×¤×¢×œ",
+                                    FRENCH to "Activer",
+                                    SPANISH to "Habilitar",
+                                    GERMAN to "Aktivieren",
+                                    ARABIC to "ØªÙØ¹ÙŠÙ„",
+                                    CHINESE to "å¯ç”¨",
+                                    KOREAN to "í™œì„±í™”",
+                                    JAPANESE to "æœ‰åŠ¹ã«ã™ã‚‹",
+                                    PORTUGUESE to "Ativar",
+                                    HINDI to "à¤¸à¤•à¥à¤·à¤® à¤•à¤°à¥‡à¤‚",
+                                    RUSSIAN to "Ð’ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ",
+                                    UKRAINIAN to "Ð£Ð²Ñ–Ð¼ÐºÐ½ÑƒÑ‚Ð¸"
+                            )
+            ),
+                    "confirm_pin" to
+                            mapOf(
+                                    ENGLISH to "Confirm PIN",
+                                    HEBREW to "אשר PIN",
+                                    FRENCH to "Confirmer le PIN",
+                                    SPANISH to "Confirmar PIN",
+                                    GERMAN to "PIN bestätigen",
+                                    ARABIC to "تأكيد رمز PIN",
+                                    CHINESE to "确认PIN",
+                                    KOREAN to "PIN 확인",
+                                    JAPANESE to "PINを確認",
+                                    PORTUGUESE to "Confirmar PIN",
+                                    RUSSIAN to "Подтвердить PIN",
+                                    UKRAINIAN to "Підтвердьте PIN"
+                            ,
+                    "track_app_usage" to
+                            mapOf(
+                                    ENGLISH to "Track app usage",
+                                    HEBREW to "×¢×§×•×‘ ××—×¨ ×©×™×ž×•×© ××¤×œ×™×§×¦×™×•×ª",
+                                    FRENCH to "Suivre l'utilisation des applications",
+                                    SPANISH to "Rastrear el uso de aplicaciones",
+                                    GERMAN to "App-Nutzung verfolgen",
+                                    ARABIC to "ØªØªØ¨Ø¹ Ø§Ø³ØªØ®Ø¯Ø§Ù… Ø§Ù„ØªØ·Ø¨ÙŠÙ‚",
+                                    CHINESE to "è·Ÿè¸ªåº”ç”¨ä½¿ç”¨æƒ…å†µ",
+                                    KOREAN to "ì•± ì‚¬ìš© ì¶”ì ",
+                                    JAPANESE to "ã‚¢ãƒ—ãƒªä½¿ç”¨çŠ¶æ³ã‚’è¿½è·¡",
+                                    PORTUGUESE to "Rastrear uso de aplicativo",
+                                    HINDI to "à¤à¤ª à¤‰à¤ªà¤¯à¥‹à¤— à¤Ÿà¥à¤°à¥ˆà¤• à¤•à¤°à¥‡à¤‚",
+                                    RUSSIAN to "ÐžÑ‚ÑÐ»ÐµÐ¶Ð¸Ð²Ð°Ñ‚ÑŒ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸Ð¹",
+                                    UKRAINIAN to "Ð’Ñ–Ð´ÑÑ‚ÐµÐ¶ÑƒÐ²Ð°Ñ‚Ð¸ Ð²Ð¸ÐºÐ¾Ñ€Ð¸ÑÑ‚Ð°Ð½Ð½Ñ Ð´Ð¾Ð´Ð°Ñ‚ÐºÑ–Ð²"
+                            ),
+                    "show_system_alerts" to
+                            mapOf(
+                                    ENGLISH to "Show system alerts",
+                                    HEBREW to "×”×¦×’ ×”×ª×¨××•×ª ×ž×¢×¨×›×ª",
+                                    FRENCH to "Afficher les alertes systÃ¨me",
+                                    SPANISH to "Mostrar alertas del sistema",
+                                    GERMAN to "Systemwarnungen anzeigen",
+                                    ARABIC to "Ø¥Ø¸Ù‡Ø§Ø± ØªÙ†Ø¨ÙŠÙ‡Ø§Øª Ø§Ù„Ù†Ø¸Ø§Ù…",
+                                    CHINESE to "æ˜¾ç¤ºç³»ç»Ÿè­¦æŠ¥",
+                                    KOREAN to "ì‹œìŠ¤í…œ ê²½ê³  í‘œì‹œ",
+                                    JAPANESE to "ã‚·ã‚¹ãƒ†ãƒ ã‚¢ãƒ©ãƒ¼ãƒˆã‚’è¡¨ç¤º",
+                                    PORTUGUESE to "Mostrar alertas do sistema",
+                                    HINDI to "à¤¸à¤¿à¤¸à¥à¤Ÿà¤® à¤¸à¤¤à¤°à¥à¤•à¤¤à¤¾ à¤¦à¤¿à¤–à¤¾à¤à¤‚",
+                                    RUSSIAN to "ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ ÑÐ¸ÑÑ‚ÐµÐ¼Ð½Ñ‹Ðµ ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ",
+                                    UKRAINIAN to "ÐŸÐ¾ÐºÐ°Ð·ÑƒÐ²Ð°Ñ‚Ð¸ ÑÐ¸ÑÑ‚ÐµÐ¼Ð½Ñ– ÑÐ¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ"
+                            ),
+                    "send_notifications" to
+                            mapOf(
+                                    ENGLISH to "Send notifications",
+                                    HEBREW to "×©×œ×— ×”×•×“×¢×•×ª",
+                                    FRENCH to "Envoyer les notifications",
+                                    SPANISH to "Enviar notificaciones",
+                                    GERMAN to "Benachrichtigungen senden",
+                                    ARABIC to "Ø¥Ø±Ø³Ø§Ù„ Ø§Ù„Ø¥Ø®Ø·Ø§Ø±Ø§Øª",
+                                    CHINESE to "å‘é€é€šçŸ¥",
+                                    KOREAN to "ì•Œë¦¼ ì „ì†¡",
+                                    JAPANESE to "é€šçŸ¥ã‚’é€ä¿¡",
+                                    PORTUGUESE to "Enviar notificaÃ§Ãµes",
+                                    HINDI to "à¤¸à¥‚à¤šà¤¨à¤¾à¤à¤‚ à¤­à¥‡à¤œà¥‡à¤‚",
+                                    RUSSIAN to "ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð»ÑÑ‚ÑŒ ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ",
+                                    UKRAINIAN to "ÐÐ°Ð´ÑÐ¸Ð»Ð°Ñ‚Ð¸ ÑÐ¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ"
+                            ),
+                    "enable_accessibility" to
+                            mapOf(
+                                    ENGLISH to "Enable Accessibility Service",
+                                    HEBREW to "×”×¤×¢×œ ×©×™×¨×•×ª × ×’×™×©×•×ª",
+                                    FRENCH to "Activer le service d'accessibilitÃ©",
+                                    SPANISH to "Habilitar servicio de accesibilidad",
+                                    GERMAN to "Eingabehilfen aktivieren",
+                                    ARABIC to "ØªÙØ¹ÙŠÙ„ Ø®Ø¯Ù…Ø© Ø§Ù„ÙˆØµÙˆÙ„",
+                                    CHINESE to "å¯ç”¨æ— éšœç¢æœåŠ¡",
+                                    KOREAN to "ì ‘ê·¼ì„± ì„œë¹„ìŠ¤ í™œì„±í™”",
+                                    JAPANESE to "ã‚¢ã‚¯ã‚»ã‚·ãƒ“ãƒªãƒ†ã‚£ã‚µãƒ¼ãƒ“ã‚¹ã‚’æœ‰åŠ¹ã«ã™ã‚‹",
+                                    PORTUGUESE to "Ativar serviÃ§o de acessibilidade",
+                                    HINDI to "à¤à¤•à¥à¤¸à¥‡à¤¸à¤¿à¤¬à¤¿à¤²à¤¿à¤Ÿà¥€ à¤¸à¥‡à¤µà¤¾ à¤¸à¤•à¥à¤·à¤® à¤•à¤°à¥‡à¤‚",
+                                    RUSSIAN to "Ð’ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ ÑÐ»ÑƒÐ¶Ð±Ñƒ ÑÐ¿ÐµÑ†Ð¸Ð°Ð»ÑŒÐ½Ñ‹Ñ… Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ÑÑ‚ÐµÐ¹",
+                                    UKRAINIAN to "Ð£Ð²Ñ–Ð¼ÐºÐ½ÑƒÑ‚Ð¸ ÑÐ»ÑƒÐ¶Ð±Ñƒ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚Ñ–"
+                            ),
+                    "ask" to
+                            mapOf(
+                                    ENGLISH to "Ask",
+                                    HEBREW to "×‘×§×©",
+                                    FRENCH to "Demander",
+                                    SPANISH to "Preguntar",
+                                    GERMAN to "Fragen",
+                                    ARABIC to "Ø§Ø·Ù„Ø¨",

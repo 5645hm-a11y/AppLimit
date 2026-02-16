@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">AppLimit</string>
+
+    <!-- Navigation -->
+    <string name="nav_dashboard">יישומים</string>
+    <string name="nav_blocked_apps">יישומים חסומים</string>
+    <string name="nav_settings">הגדרות</string>
+    <string name="nav_select_app">בחר יישום</string>
+    <string name="nav_schedule">לוח זמנים</string>
+    <string name="nav_set_password">הגדר סיסמה</string>
+    <string name="nav_menu">תפריט</string>
+    <string name="nav_language">שפה</string>
+    <string name="nav_device_admin">מנהל מכשיר</string>
+
+    <!-- Permissions -->
+    <string name="permissions_required">נדרשות הרשאות</string>
+    <string name="enable_button">הפעל</string>
+    <string name="accessibility_title">שירות נגישות</string>
+    <string name="overlay_title">הצגה מעל יישומים אחרים</string>
+    <string name="usage_access_title">גישה לנתוני שימוש</string>
+    <string name="device_admin_title">מנהל מכשיר</string>
+    <string name="accessibility_service_desc">
+        מאפשר ל-AppLimit לחסום יישומים בזמנים מוגבלים.
+    </string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_title">לוח מחוונים</string>
+    <string name="lock_apps">נעל יישומים</string>
+    <string name="status_active">פעיל</string>
+    <string name="status_inactive">לא פעיל</string>
+    <string name="add_rule">הוסף כלל</string>
+
+    <!-- Rule item -->
+    <string name="delete_rule">מחק כלל</string>
+    <string name="delete_rule_confirmation_title">מחיקת כלל</string>
+    <string name="delete_rule_confirmation_message">האם אתה בטוח שברצונך למחוק את הכלל הזה?</string>
+    <string name="delete">מחק</string>
+    <string name="cancel">ביטול</string>
+
+    <!-- App Picker -->
+    <string name="search_apps">חפש יישומים</string>
+
+    <!-- Schedule -->
+    <string name="days_label">ימים</string>
+    <string name="time_label">זמן</string>
+    <string name="start_time_label">שעת התחלה</string>
+    <string name="end_time_label">שעת סיום</string>
+    <string name="save_rule_button">שמור כלל</string>
+    <string name="error_app_not_found">שגיאה: היישום לא נמצא</string>
+    <string name="time_placeholder">--:--</string>
+
+    <!-- Days -->
+    <string name="mon">ב׳</string>
+    <string name="tue">ג׳</string>
+    <string name="wed">ד׳</string>
+    <string name="thu">ה׳</string>
+    <string name="fri">ו׳</string>
+    <string name="sat">ש׳</string>
+    <string name="sun">א׳</string>
+
+    <!-- PIN -->
+    <string name="set_pin">הגדר קוד</string>
+    <string name="enter_pin">הכנס קוד</string>
+    <string name="pin_label">קוד</string>
+    <string name="confirm">אישור</string>
+    <string name="error_wrong_pin">קוד שגוי</string>
+
+    <!-- Password Setup -->
+    <string name="enter_current_pin_title">הכנס את הקוד הנוכחי</string>
+    <string name="current_pin_label">קוד נוכחי</string>
+    <string name="incorrect_pin_error">קוד שגוי</string>
+    <string name="next_button">הבא</string>
+    <string name="enter_new_pin_title">הכנס קוד חדש</string>
+    <string name="set_new_pin_title">הגדר קוד חדש</string>
+    <string name="new_pin_label">קוד חדש</string>
+    <string name="pin_length_error">הקוד חייב להכיל 4 ספרות</string>
+    <string name="confirm_new_pin_title">אשר את הקוד החדש</string>
+    <string name="confirm_pin_label">אשר קוד</string>
+    <string name="pins_do_not_match_error">הקודים אינם תואמים</string>
+    <string name="save_button">שמור</string>
+
+    <!-- Lock screen -->
+    <string name="lock_screen_title">הכנס קוד כדי להמשיך</string>
+    <string name="unlock_button">בטל נעילה</string>
+    <string name="app_locked">היישום נעול</string>
+    <string name="available_at">זמין בשעה %1$s</string>
+
+    <!-- Settings -->
+    <string name="settings">הגדרות</string>
+    <string name="password_section_title">סיסמה</string>
+    <string name="change_password_button">שנה סיסמה</string>
+    <string name="language_section_title">שפה</string>
+    <string name="change_language_button">שנה שפה</string>
+    <string name="device_admin_section_title">מנהל מכשיר</string>
+    <string name="enable_device_admin">הפעל את מנהל המכשיר</string>
+    <string name="device_admin_enabled">מנהל המכשיר מופעל</string>
+    <string name="device_admin_prompt">כדי למנוע את הסרת האפליקציה, עליך להפעיל את מנהל המכשיר.</string>
+    <string name="device_admin_explanation">הפעלת מנהל המכשיר מונעת הסרה קלה של האפליקציה.</string>
+    <string name="device_admin_disable_warning">AppLimit מוגן. כדי להסיר את היישום הזה, עליך להשבית את מנהל המכשיר דרך הגדרות היישום.</string>
+    <string name="app_information_section_title">מידע על היישום</string>
+    <string name="version_label">גרסה: %1$s</string>
+    <string name="rights_reserved_message">כל הזכויות שמורות ל-HM APP</string>
+    <string name="language_name">עברית</string>
+
+    <!-- Device Admin & Settings -->
+    <string name="app_icon_description">אייקון האפליקציה</string>
+    <string name="nav_grayscale">מצב בקנה מידה אפור</string>
+    
+    <!-- Block Types -->
+    <string name="block_type_title">סוג חסימה</string>
+    <string name="block_type_app">חסום אפליקציות</string>
+    <string name="block_type_grayscale">מצב בקנה מידה אפור</string>
+    
+    <!-- Grayscale -->
+    <string name="grayscale_info_title">מצב בקנה מידה אפור</string>
+    <string name="grayscale_info_message">הפחת עייפות עיניים בשעות הלילה</string>
+    <string name="dont_show_again">אל תראה שוב</string>
+    
+    <!-- Rules -->
+    <string name="edit_rule">ערוך כלל</string>
+    <string name="block_apps">חסום אפליקציות</string>
+    <string name="select_apps_to_block">בחר אפליקציות לחסימה</string>
+    <string name="show_system_apps">הצג אפליקציות מערכת</string>
+    <string name="include_system_apps_desc">כלול אפליקציות מערכת ברשימה</string>
+    <string name="app_to_block">אפליקציה לחסימה</string>
+    <string name="block_from">חסום מ</string>
+    <string name="to">עד</string>
+    <string name="block_on_days">חסום בימים</string>
+    <string name="save_rule">שמור כלל</string>
+    
+    <!-- Dashboard -->
+    <string name="dashboard_subtitle">ניהול מקצועי של זמן המסך</string>
+    <string name="dashboard_subtitle_desc">שלוט בזמן המסך שלך והשתמוש באפליקציות בקלות</string>
+    <string name="feature_blocker_title">חוסם אפליקציות</string>
+    <string name="feature_blocker_desc">חסום אפליקציות בזמנים ספציפיים לפרודוקטיביות טובה יותר</string>
+    <string name="feature_grayscale_title">מצב בקנה מידה אפור</string>
+    <string name="feature_grayscale_desc">הפחת עייפות עיניים על ידי עברור להצגה בקנה מידה אפור</string>
+    <string name="feature_settings_title">הגדרות</string>
+    <string name="feature_settings_desc">התאם את ההשקעה שלך עם ההגדרות הזמינות</string>
+    
+    <!-- Grayscale Screen -->
+    <string name="enable_grayscale_mode">הפעל מצב בקנה מידה אפור</string>
+    <string name="reduce_eye_strain">הפחת עייפות עיניים בשעות הלילה</string>
+    
+    <!-- Grayscale Not Enabled -->
+    <string name="grayscale_not_enabled">מצב בקנה מידה אפור לא מופעל</string>
+    <string name="grayscale_not_enabled_desc">מצב בקנה מידה אפור לא פעיל כרגע בהתקן זה. הורד את AppLimit כדי להפעיל אותו.</string>
+    <string name="download_app">הורד יישום</string>
+    <string name="copy_download_link">העתק קישור הורדה</string>
+    <string name="download_started">ההורדה התחילה</string>
+    <string name="download_failed">ההורדה נכשלה</string>
+    <string name="link_copied">הקישור הועתק</string>
+</resources>

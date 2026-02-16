@@ -1,0 +1,223 @@
+<Application x:Class="GrayscaleDesktopApp.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:GrayscaleDesktopApp"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <!-- Material Design 3 Color Palette -->
+        <Color x:Key="Primary">#FF00D4AA</Color>
+        <Color x:Key="OnPrimary">#FF0F1419</Color>
+        <Color x:Key="PrimaryContainer">#FF004D42</Color>
+        <Color x:Key="OnPrimaryContainer">#FF7FFFF0</Color>
+        <Color x:Key="Secondary">#FF7DD4C7</Color>
+        <Color x:Key="OnSecondary">#FF003A35</Color>
+        <Color x:Key="SecondaryContainer">#FF005048</Color>
+        <Color x:Key="Tertiary">#FF4CAF50</Color>
+        <Color x:Key="Background">#FF0F1419</Color>
+        <Color x:Key="Surface">#FF1A2A3F</Color>
+        <Color x:Key="SurfaceVariant">#FF2A3F4F</Color>
+        <Color x:Key="OnSurface">#FFFFFFFF</Color>
+        <Color x:Key="OnBackground">#FFFFFFFF</Color>
+        <Color x:Key="Error">#FFFF5555</Color>
+        <Color x:Key="Success">#FF4CAF50</Color>
+        <Color x:Key="Outline">#FF4A5A6A</Color>
+
+        <!-- Solid Brushes -->
+        <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
+        <SolidColorBrush x:Key="OnPrimaryBrush" Color="{StaticResource OnPrimary}"/>
+        <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}"/>
+        <SolidColorBrush x:Key="OnSecondaryBrush" Color="{StaticResource OnSecondary}"/>
+        <SolidColorBrush x:Key="TertiaryBrush" Color="{StaticResource Tertiary}"/>
+        <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource Background}"/>
+        <SolidColorBrush x:Key="SurfaceBrush" Color="{StaticResource Surface}"/>
+        <SolidColorBrush x:Key="SurfaceVariantBrush" Color="{StaticResource SurfaceVariant}"/>
+        <SolidColorBrush x:Key="OnSurfaceBrush" Color="{StaticResource OnSurface}"/>
+        <SolidColorBrush x:Key="OnBackgroundBrush" Color="{StaticResource OnBackground}"/>
+        <SolidColorBrush x:Key="ErrorBrush" Color="{StaticResource Error}"/>
+        <SolidColorBrush x:Key="SuccessBrush" Color="{StaticResource Success}"/>
+        <SolidColorBrush x:Key="OutlineBrush" Color="{StaticResource Outline}"/>
+
+        <!-- Typography System - Material Design 3 with Google Fonts -->
+        <FontFamily x:Key="FontFamily">Roboto, Segoe UI, -apple-system, system-ui, sans-serif</FontFamily>
+
+        <!-- Display Large: 57sp / 64dp, weight 400 -->
+        <Style x:Key="DisplayLarge" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="57"/>
+            <Setter Property="FontWeight" Value="400"/>
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}"/>
+            <Setter Property="Foreground" Value="{StaticResource OnBackgroundBrush}"/>
+            <Setter Property="LineHeight" Value="64"/>
+        </Style>
+
+        <!-- Display Medium: 45sp / 52dp, weight 400 -->
+        <Style x:Key="DisplayMedium" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="45"/>
+            <Setter Property="FontWeight" Value="400"/>
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}"/>
+            <Setter Property="Foreground" Value="{StaticResource OnBackgroundBrush}"/>
+            <Setter Property="LineHeight" Value="52"/>
+        </Style>
+
+        <!-- Headline Large: 32sp / 40dp, weight 400 -->
+        <Style x:Key="HeadlineLarge" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="32"/>
+            <Setter Property="FontWeight" Value="400"/>
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}"/>
+            <Setter Property="Foreground" Value="{StaticResource OnBackgroundBrush}"/>
+            <Setter Property="LineHeight" Value="40"/>
+        </Style>
+
+        <!-- Headline Medium: 28sp / 36dp, weight 500 -->
+        <Style x:Key="HeadlineMedium" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="FontWeight" Value="500"/>
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}"/>
+            <Setter Property="Foreground" Value="{StaticResource OnBackgroundBrush}"/>
+            <Setter Property="LineHeight" Value="36"/>
+        </Style>
+
+        <!-- Title Large: 22sp / 28dp, weight 500 -->
+        <Style x:Key="TitleLarge" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="FontWeight" Value="500"/>
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}"/>
+            <Setter Property="Foreground" Value="{StaticResource OnBackgroundBrush}"/>
+            <Setter Property="LineHeight" Value="28"/>
+        </Style>
+
+        <!-- Title Medium: 16sp / 24dp, weight 500 -->
+        <Style x:Key="TitleMedium" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="500"/>
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}"/>
+            <Setter Property="Foreground" Value="{StaticResource OnBackgroundBrush}"/>
+            <Setter Property="LineHeight" Value="24"/>
+        </Style>
+
+        <!-- Body Large: 16sp / 24dp, weight 400 -->
+        <Style x:Key="BodyLarge" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="400"/>
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}"/>
+            <Setter Property="Foreground" Value="{StaticResource OnBackgroundBrush}"/>
+            <Setter Property="LineHeight" Value="24"/>
+        </Style>
+
+        <!-- Body Medium: 14sp / 20dp, weight 500 -->
+        <Style x:Key="BodyMedium" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="500"/>
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}"/>
+            <Setter Property="Foreground" Value="{StaticResource OnBackgroundBrush}"/>
+            <Setter Property="LineHeight" Value="20"/>
+        </Style>
+
+        <!-- Body Small: 12sp / 16dp, weight 500 -->
+        <Style x:Key="BodySmall" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="500"/>
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}"/>
+            <Setter Property="Foreground" Value="{StaticResource OnBackgroundBrush}"/>
+            <Setter Property="LineHeight" Value="16"/>
+        </Style>
+
+        <!-- Label Large: 14sp / 20dp, weight 500 -->
+        <Style x:Key="LabelLarge" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="500"/>
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}"/>
+            <Setter Property="Foreground" Value="{StaticResource OnBackgroundBrush}"/>
+        </Style>
+
+        <!-- Label Small: 11sp / 16dp, weight 500 -->
+        <Style x:Key="LabelSmall" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="FontWeight" Value="500"/>
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}"/>
+            <Setter Property="Foreground" Value="{StaticResource OnBackgroundBrush}"/>
+        </Style>
+
+        <!-- Shadows & Effects -->
+        <DropShadowEffect x:Key="Elevation1" BlurRadius="3" ShadowDepth="1" Opacity="0.12"/>
+        <DropShadowEffect x:Key="Elevation2" BlurRadius="8" ShadowDepth="2" Opacity="0.15"/>
+        <DropShadowEffect x:Key="Elevation3" BlurRadius="12" ShadowDepth="4" Opacity="0.15"/>
+
+        <!-- Filled Button - Material Design 3 -->
+        <Style x:Key="FilledButton" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="500"/>
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}"/>
+            <Setter Property="Padding" Value="24,12"/>
+            <Setter Property="MinHeight" Value="40"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="bg" Background="{TemplateBinding Background}" 
+                                CornerRadius="8"
+                                Padding="{TemplateBinding Padding}"
+                                Effect="{StaticResource Elevation1}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bg" Property="Background" Value="#FF00E5C3"/>
+                                <Setter TargetName="bg" Property="Effect" Value="{StaticResource Elevation2}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bg" Property="Background" Value="#FF00B399"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="bg" Property="Opacity" Value="0.38"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Filled Tonal Button - Material Design 3 -->
+        <Style x:Key="FilledTonalButton" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource SecondaryBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource OnSecondaryBrush}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="500"/>
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}"/>
+            <Setter Property="Padding" Value="24,12"/>
+            <Setter Property="MinHeight" Value="40"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="bg" Background="{TemplateBinding Background}" 
+                                CornerRadius="8"
+                                Padding="{TemplateBinding Padding}"
+                                Effect="{StaticResource Elevation1}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bg" Property="Background" Value="#FF8FE5DC"/>
+                                <Setter TargetName="bg" Property="Effect" Value="{StaticResource Elevation2}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bg" Property="Background" Value="#FF6DD4C7"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="bg" Property="Opacity" Value="0.38"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Primary Button Alias for compatibility -->
+        <Style x:Key="PrimaryButtonStyle" TargetType="Button" BasedOn="{StaticResource FilledButton}"/>
+
+    </Application.Resources>
+</Application>

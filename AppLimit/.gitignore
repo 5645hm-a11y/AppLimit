@@ -1,0 +1,41 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+**/.idea/
+**/.vscode/
+**/.kotlin/
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# Build outputs
+**/build/
+**/out/
+**/bin/
+**/obj/
+**/app/release/
+**/app/build/
+
+# Artifacts
+**/*.apk
+**/*.aab
+**/*.log
+**/*.tmp
+
+# Installers and packaging
+/Installers/
+
+# Hosting artifacts
+/firebase-hosting/
+
+# Flutter
+**/.metadata

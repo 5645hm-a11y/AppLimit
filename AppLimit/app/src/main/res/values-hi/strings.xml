@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AppLimit</string>
+    <string name="nav_dashboard">ऐप्स</string>
+    <string name="nav_blocked_apps">ब्लॉक किए गए ऐप्स</string>
+    <string name="nav_settings">सेटिंग्स</string>
+    <string name="nav_select_app">ऐप चुनें</string>
+    <string name="nav_schedule">अनुसूची</string>
+    <string name="nav_set_password">पासवर्ड सेट करें</string>
+    <string name="nav_menu">मेनू</string>
+    <string name="nav_language">भाषा</string>
+    <string name="nav_device_admin">डिवाइस व्यवस्थापक</string>
+    <string name="permissions_required">अनुमतियाँ आवश्यक हैं</string>
+    <string name="enable_button">सक्षम करें</string>
+    <string name="accessibility_title">अभिगम्यता सेवा</string>
+    <string name="overlay_title">ओवरले अनुमति</string>
+    <string name="usage_access_title">उपयोग पहुंच</string>
+    <string name="device_admin_title">डिवाइस व्यवस्थापक</string>
+    <string name="accessibility_service_desc">AppLimit को प्रतिबंधित समय के दौरान ऐप्स को ब्लॉक करने की अनुमति देता है।</string>
+    <string name="dashboard_title">डैशबोर्ड</string>
+    <string name="lock_apps">ऐप्स लॉक करें</string>
+    <string name="status_active">सक्रिय</string>
+    <string name="status_inactive">निष्क्रिय</string>
+    <string name="add_rule">नियम जोड़ें</string>
+    <string name="delete_rule">नियम हटाएं</string>
+    <string name="delete_rule_confirmation_title">नियम हटाएं</string>
+    <string name="delete_rule_confirmation_message">क्या आप वाकई इस नियम को हटाना चाहते हैं?</string>
+    <string name="delete">हटाएं</string>
+    <string name="cancel">रद्द करें</string>
+    <string name="search_apps">ऐप्स खोजें</string>
+    <string name="days_label">दिन</string>
+    <string name="time_label">समय</string>
+    <string name="start_time_label">प्रारंभ समय</string>
+    <string name="end_time_label">समाप्ति समय</string>
+    <string name="save_rule_button">नियम सहेजें</string>
+    <string name="error_app_not_found">त्रुटि: ऐप नहीं मिला</string>
+    <string name="time_placeholder">--:--</string>
+    <string name="mon">सोम</string>
+    <string name="tue">मंगल</string>
+    <string name="wed">बुध</string>
+    <string name="thu">गुरु</string>
+    <string name="fri">शुक्र</string>
+    <string name="sat">शनि</string>
+    <string name="sun">रवि</string>
+    <string name="set_pin">पिन सेट करें</string>
+    <string name="enter_pin">पिन दर्ज करें</string>
+    <string name="pin_label">पिन</string>
+    <string name="confirm">पुष्टि करें</string>
+    <string name="error_wrong_pin">गलत पिन</string>
+    <string name="enter_current_pin_title">अपना वर्तमान पिन दर्ज करें</string>
+    <string name="current_pin_label">वर्तमान पिन</string>
+    <string name="incorrect_pin_error">गलत पिन</string>
+    <string name="next_button">अगला</string>
+    <string name="enter_new_pin_title">अपना नया पिन दर्ज करें</string>
+    <string name="set_new_pin_title">नया पिन सेट करें</string>
+    <string name="new_pin_label">नया पिन</string>
+    <string name="pin_length_error">पिन 4 अंकों का होना चाहिए</string>
+    <string name="confirm_new_pin_title">अपने नए पिन की पुष्टि करें</string>
+    <string name="confirm_pin_label">पिन की पुष्टि करें</string>
+    <string name="pins_do_not_match_error">पिन मेल नहीं खाते</string>
+    <string name="save_button">सहेजें</string>
+    <string name="lock_screen_title">जारी रखने के लिए पिन दर्ज करें</string>
+    <string name="unlock_button">अनलॉक करें</string>
+    <string name="app_locked">ऐप लॉक है</string>
+    <string name="available_at">%1$s पर उपलब्ध है</string>
+    <string name="settings">सेटिंग्स</string>
+    <string name="password_section_title">पासवर्ड</string>
+    <string name="change_password_button">पासवर्ड बदलें</string>
+    <string name="language_section_title">भाषा</string>
+    <string name="change_language_button">भाषा बदलें</string>
+    <string name="device_admin_section_title">डिवाइस व्यवस्थापक</string>
+    <string name="enable_device_admin">डिवाइस व्यवस्थापक सक्षम करें</string>
+    <string name="device_admin_enabled">डिवाइस व्यवस्थापक सक्षम है</string>
+    <string name="device_admin_prompt">ऐप को अनइंस्टॉल होने से बचाने के लिए, आपको डिवाइस एडमिनिस्ट्रेटर को सक्षम करना होगा।</string>
+    <string name="device_admin_explanation">डिवाइस एडमिनिस्ट्रेटर को सक्षम करने से ऐप को आसानी से अनइंस्टॉल होने से रोका जा सकता है।</string>
+    <string name="app_information_section_title">ऐप की जानकारी</string>
+    <string name="version_label">संस्करण: %1$s</string>
+    <string name="rights_reserved_message">सर्वाधिकार एचएम ऐप के लिए आरक्षित हैं</string>
+    <string name="language_name">हिन्दी</string>
+
+    <!-- Device Admin & Settings -->
+    <string name="app_icon_description">एप्लिकेशन आइकन</string>
+    <string name="nav_grayscale">ग्रेस्केल मोड</string>
+    <string name="device_admin_disable_warning">AppLimit सुरक्षित है। इस ऐप को अनइंस्टॉल करने के लिए, आपको ऐप सेटिंग के माध्यम से डिवाइस एडमिन को अक्षम करना होगा।</string>
+    
+    <!-- Block Types -->
+    <string name="block_type_title">ब्लॉक प्रकार</string>
+    <string name="block_type_app">ऐप्स को ब्लॉक करें</string>
+    <string name="block_type_grayscale">ग्रेस्केल मोड</string>
+    
+    <!-- Grayscale -->
+    <string name="grayscale_info_title">ग्रेस्केल मोड</string>
+    <string name="grayscale_info_message">अनुसंधान से पता चलता है कि अपने फोन को ग्रेस्केल में स्विच करने से स्क्रीन समय कम होता है।</string>
+    <string name="dont_show_again">फिर से न दिखाएं</string>
+    <string name="enable_grayscale_mode">ग्रेस्केल मोड सक्षम करें</string>
+    <string name="reduce_eye_strain">रात के समय आंखों की थकान कम करें</string>
+    
+    <!-- Rules -->
+    <string name="edit_rule">नियम संपादित करें</string>
+    <string name="block_apps">ऐप्स को ब्लॉक करें</string>
+    <string name="select_apps_to_block">ब्लॉक करने के लिए ऐप्स चुनें</string>
+    <string name="show_system_apps">सिस्टम ऐप्स दिखाएं</string>
+    <string name="include_system_apps_desc">सूची में सिस्टम ऐप्स शामिल करें</string>
+    <string name="app_to_block">ब्लॉक करने के लिए ऐप</string>
+    <string name="block_from">से ब्लॉक करें</string>
+    <string name="to">को</string>
+    <string name="block_on_days">दिनों पर ब्लॉक करें</string>
+    <string name="save_rule">नियम सहेजें</string>
+    
+    <!-- Dashboard -->
+    <string name="dashboard_subtitle">व्यावहारिक स्क्रीन समय प्रबंधन</string>
+    <string name="dashboard_subtitle_desc">अपने स्क्रीन समय और ऐप उपयोग को आसानी से नियंत्रित करें</string>
+    <string name="feature_blocker_title">ऐप ब्लॉकर</string>
+    <string name="feature_blocker_desc">बेहतर उत्पादकता के लिए विशिष्ट समय पर ऐप्स को ब्लॉक करें</string>
+    <string name="feature_grayscale_title">ग्रेस्केल मोड</string>
+    <string name="feature_grayscale_desc">ग्रेस्केल डिस्प्ले पर स्विच करके आंखों की थकान कम करें</string>
+    <string name="feature_settings_title">सेटिंग्स</string>
+    <string name="feature_settings_desc">उपलब्ध सेटिंग्स के साथ अपने अनुभव को अनुकूलित करें</string>
+    
+    <!-- Grayscale Not Enabled -->
+    <string name="grayscale_not_enabled">ग्रेस्केल मोड सक्षम नहीं है</string>
+    <string name="grayscale_not_enabled_desc">ग्रेस्केल मोड इस डिवाइस पर सक्रिय नहीं है। इसे सक्रिय करने के लिए AppLimit डाउनलोड करें।</string>
+    <string name="download_app">ऐप डाउनलोड करें</string>
+    <string name="copy_download_link">डाउनलोड लिंक कॉपी करें</string>
+    <string name="download_started">डाउनलोड शुरू हुआ</string>
+    <string name="download_failed">डाउनलोड विफल</string>
+    <string name="link_copied">लिंक कॉपी हो गया</string>
+</resources>

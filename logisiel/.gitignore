@@ -1,0 +1,32 @@
+# Build results
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+
+# Visual Studio temporary files
+.vs/
+.vscode/
+*.user
+*.sln.docstates
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
+# Test Results
+TestResults/
+
+# Local environment variables
+.env
+.env.local
+
+# macOS
+.DS_Store
+
+# Misc
+*.log
+*.tmp

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AppLimit</string>
+    <string name="nav_dashboard">Aplicaciones</string>
+    <string name="nav_blocked_apps">Aplicaciones bloqueadas</string>
+    <string name="nav_settings">Ajustes</string>
+    <string name="nav_select_app">Seleccionar aplicación</string>
+    <string name="nav_schedule">Horario</string>
+    <string name="nav_set_password">Establecer contraseña</string>
+    <string name="nav_menu">Menú</string>
+    <string name="nav_language">Idioma</string>
+    <string name="nav_device_admin">Administrador de dispositivos</string>
+    <string name="permissions_required">Permisos requeridos</string>
+    <string name="enable_button">Habilitar</string>
+    <string name="accessibility_title">Servicio de accesibilidad</string>
+    <string name="overlay_title">Permiso de superposición</string>
+    <string name="usage_access_title">Acceso de uso</string>
+    <string name="device_admin_title">Administrador de dispositivos</string>
+    <string name="accessibility_service_desc">Permite a AppLimit bloquear aplicaciones durante horarios restringidos.</string>
+    <string name="dashboard_title">Panel</string>
+    <string name="lock_apps">Bloquear aplicaciones</string>
+    <string name="status_active">Activo</string>
+    <string name="status_inactive">Inactivo</string>
+    <string name="add_rule">Añadir regla</string>
+    <string name="delete_rule">Eliminar regla</string>
+    <string name="delete_rule_confirmation_title">Eliminar regla</string>
+    <string name="delete_rule_confirmation_message">¿Estás seguro de que quieres eliminar esta regla?</string>
+    <string name="delete">Eliminar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="search_apps">Buscar aplicaciones</string>
+    <string name="days_label">Días</string>
+    <string name="time_label">Hora</string>
+    <string name="start_time_label">Hora de inicio</string>
+    <string name="end_time_label">Hora de finalización</string>
+    <string name="save_rule_button">Guardar regla</string>
+    <string name="error_app_not_found">Error: Aplicación no encontrada</string>
+    <string name="time_placeholder">--:--</string>
+    <string name="mon">Lun</string>
+    <string name="tue">Mar</string>
+    <string name="wed">Mié</string>
+    <string name="thu">Jue</string>
+    <string name="fri">Vie</string>
+    <string name="sat">Sáb</string>
+    <string name="sun">Dom</string>
+    <string name="set_pin">Establecer PIN</string>
+    <string name="enter_pin">Ingresar PIN</string>
+    <string name="pin_label">PIN</string>
+    <string name="confirm">Confirmar</string>
+    <string name="error_wrong_pin">PIN incorrecto</string>
+    <string name="enter_current_pin_title">Ingresa tu PIN actual</string>
+    <string name="current_pin_label">PIN actual</string>
+    <string name="incorrect_pin_error">PIN incorrecto</string>
+    <string name="next_button">Siguiente</string>
+    <string name="enter_new_pin_title">Ingresa tu nuevo PIN</string>
+    <string name="set_new_pin_title">Establecer un nuevo PIN</string>
+    <string name="new_pin_label">Nuevo PIN</string>
+    <string name="pin_length_error">El PIN debe tener 4 dígitos</string>
+    <string name="confirm_new_pin_title">Confirma tu nuevo PIN</string>
+    <string name="confirm_pin_label">Confirmar PIN</string>
+    <string name="pins_do_not_match_error">Los PIN no coinciden</string>
+    <string name="save_button">Guardar</string>
+    <string name="lock_screen_title">Ingresar PIN para continuar</string>
+    <string name="unlock_button">Desbloquear</string>
+    <string name="app_locked">Aplicación bloqueada</string>
+    <string name="available_at">Disponible a las %1$s</string>
+    <string name="settings">Ajustes</string>
+    <string name="password_section_title">Contraseña</string>
+    <string name="change_password_button">Cambiar contraseña</string>
+    <string name="language_section_title">Idioma</string>
+    <string name="change_language_button">Cambiar idioma</string>
+    <string name="device_admin_section_title">Administrador de dispositivos</string>
+    <string name="enable_device_admin">Habilitar administrador de dispositivos</string>
+    <string name="device_admin_enabled">El administrador de dispositivos está habilitado</string>
+    <string name="device_admin_prompt">Para evitar que se desinstale la aplicación, debe habilitar el Administrador de dispositivos.</string>
+    <string name="device_admin_explanation">Habilitar el Administrador de dispositivos evita que la aplicación se desinstale fácilmente.</string>
+    <string name="app_information_section_title">Información de la aplicación</string>
+    <string name="version_label">Versión: %1$s</string>
+    <string name="rights_reserved_message">Todos los derechos reservados a HM APP</string>
+    <string name="language_name">Español</string>
+    
+    <!-- Device Admin & Settings -->
+    <string name="app_icon_description">Icono de la aplicación</string>
+    <string name="nav_grayscale">Modo Escala de Grises</string>
+    
+    <!-- Block Types -->
+    <string name="block_type_title">Tipo de bloqueo</string>
+    <string name="block_type_app">Bloquear aplicaciones</string>
+    <string name="block_type_grayscale">Modo escala de grises</string>
+    
+    <!-- Grayscale -->
+    <string name="grayscale_info_title">Modo Escala de Grises</string>
+    <string name="grayscale_info_message">Reducir la fatiga ocular durante las horas nocturnas</string>
+    <string name="dont_show_again">No volver a mostrar</string>
+    
+    <!-- Rules -->
+    <string name="edit_rule">Editar regla</string>
+    <string name="block_apps">Bloquear aplicaciones</string>
+    <string name="select_apps_to_block">Seleccionar aplicaciones para bloquear</string>
+    <string name="show_system_apps">Mostrar aplicaciones del sistema</string>
+    <string name="include_system_apps_desc">Incluir aplicaciones del sistema en la lista</string>
+    <string name="app_to_block">Aplicación a bloquear</string>
+    <string name="block_from">Bloquear desde</string>
+    <string name="to">hasta</string>
+    <string name="block_on_days">Bloquear en días</string>
+    <string name="save_rule">Guardar regla</string>
+    
+    <!-- Dashboard -->
+    <string name="dashboard_subtitle">Gestión profesional del tiempo de pantalla</string>
+    <string name="dashboard_subtitle_desc">Controle su tiempo de pantalla y el uso de aplicaciones fácilmente</string>
+    <string name="feature_blocker_title">Bloqueador de aplicaciones</string>
+    <string name="feature_blocker_desc">Bloquee aplicaciones en momentos específicos para una mejor productividad</string>
+    <string name="feature_grayscale_title">Modo Escala de Grises</string>
+    <string name="feature_grayscale_desc">Reduzca la fatiga ocular cambiando a pantalla en escala de grises</string>
+    <string name="feature_settings_title">Configuración</string>
+    <string name="feature_settings_desc">Personalice su experiencia con la configuración disponible</string>
+    
+    <!-- Grayscale Screen -->
+    <string name="enable_grayscale_mode">Habilitar modo escala de grises</string>
+    <string name="reduce_eye_strain">Reducir la fatiga ocular durante las horas nocturnas</string>
+    
+    <!-- Grayscale Not Enabled -->
+    <string name="grayscale_not_enabled">Modo escala de grises no activado</string>
+    <string name="grayscale_not_enabled_desc">El modo de escala de grises no está activo en este dispositivo. Descarga AppLimit para activarlo.</string>
+    <string name="download_app">Descargar aplicación</string>
+    <string name="copy_download_link">Copiar enlace de descarga</string>
+    <string name="download_started">Descarga iniciada</string>
+    <string name="download_failed">Descarga fallida</string>
+    <string name="link_copied">Enlace copiado</string>
+</resources>
