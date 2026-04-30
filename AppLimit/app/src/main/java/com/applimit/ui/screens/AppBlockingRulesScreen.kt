@@ -447,7 +447,8 @@ private fun BlockTimeConfigurationScreen(
                             hour = selectedStartHour,
                             minute = selectedStartMinute,
                             onTimeChange = { h, m -> selectedStartHour = h; selectedStartMinute = m },
-                            modifier = Modifier.weight(1f)
+                            modifier = Modifier.weight(1f),
+                            language = language
                         )
                         Text(
                             text = LanguageManager.getString("to", language),
@@ -458,7 +459,8 @@ private fun BlockTimeConfigurationScreen(
                             hour = selectedEndHour,
                             minute = selectedEndMinute,
                             onTimeChange = { h, m -> selectedEndHour = h; selectedEndMinute = m },
-                            modifier = Modifier.weight(1f)
+                            modifier = Modifier.weight(1f),
+                            language = language
                         )
                     }
                 }
@@ -615,7 +617,8 @@ private fun TimePickerButton(
     hour: Int,
     minute: Int,
     onTimeChange: (Int, Int) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    language: String = "en"
 ) {
     var showDialog by remember { mutableStateOf(false) }
     var tempHour by remember(hour) { mutableStateOf(hour) }
@@ -671,7 +674,7 @@ private fun TimePickerButton(
                         verticalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
                         Text(
-                            text = LanguageManager.getString("hour", LanguageManager.ENGLISH),
+                            text = LanguageManager.getString("hour", language),
                             style = MaterialTheme.typography.labelSmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -708,7 +711,7 @@ private fun TimePickerButton(
                         verticalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
                         Text(
-                            text = LanguageManager.getString("minute", LanguageManager.ENGLISH),
+                            text = LanguageManager.getString("minute", language),
                             style = MaterialTheme.typography.labelSmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -740,7 +743,7 @@ private fun TimePickerButton(
                         showDialog = false
                     },
                     modifier = Modifier.fillMaxWidth()
-                ) { Text(LanguageManager.getString("save_rule", LanguageManager.ENGLISH)) }
+                ) { Text(LanguageManager.getString("save_rule", language)) }
             }
         )
     }
