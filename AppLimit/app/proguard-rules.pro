@@ -34,5 +34,9 @@
 -dontwarn okhttp3.**
 -dontwarn okio.**
 
+# ── Google Tink (transitive from security-crypto) ─────────────────────────────
+-dontwarn com.google.errorprone.annotations.**
+-dontwarn com.google.crypto.tink.**
+
 # ── Suppress common R8 warnings ───────────────────────────────────────────────
 -dontwarn java.lang.invoke.StringConcatFactory
