@@ -2,8 +2,10 @@ package com.applimit.security
 
 import android.content.Context
 import android.util.Base64
+import android.util.Log
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
+import com.applimit.BuildConfig
 import java.security.MessageDigest
 import java.security.SecureRandom
 
@@ -46,8 +48,8 @@ object SecurePinManager {
     fun setupPin(context: Context, pin: String): Boolean {
         return try {
             val cleanPin = pin.trim()
-            android.util.Log.d("SecurePinManager", "Setting up PIN - Length: ${cleanPin.length}, First char: ${cleanPin.firstOrNull()?.code}")
-            
+            if (BuildConfig.DEBUG) Log.d("SecurePinManager", "Setting up PIN")
+
             if (cleanPin.length < 6) return false
 
             val salt = generateSalt()
@@ -62,10 +64,10 @@ object SecurePinManager {
                 putInt(KEY_FAILED_ATTEMPTS, 0)
                 commit()
             }
-            android.util.Log.d("SecurePinManager", "PIN setup successful - Hash: ${hash.take(16)}...")
+            if (BuildConfig.DEBUG) Log.d("SecurePinManager", "PIN setup successful")
             true
         } catch (e: Exception) {
-            android.util.Log.e("SecurePinManager", "PIN setup failed: ${e.message}")
+            Log.e("SecurePinManager", "PIN setup failed: ${e.message}")
             false
         }
     }
@@ -74,8 +76,8 @@ object SecurePinManager {
     fun verifyPin(context: Context, pin: String): Boolean {
         return try {
             val cleanPin = pin.trim()
-            android.util.Log.d("SecurePinManager", "Verifying PIN - Length: ${cleanPin.length}, First char: ${cleanPin.firstOrNull()?.code}")
-            
+            if (BuildConfig.DEBUG) Log.d("SecurePinManager", "Verifying PIN")
+
             val prefs = getEncryptedPrefs(context)
 
             // Check lockout
@@ -84,10 +86,7 @@ object SecurePinManager {
                 val lastFailedTime = prefs.getLong(KEY_LAST_FAILED_TIME, 0)
                 val timeSinceFailed = (System.currentTimeMillis() - lastFailedTime) / 1000
                 if (timeSinceFailed < LOCKOUT_DURATION_SECONDS) {
-                    android.util.Log.w(
-                            "SecurePinManager",
-                            "Account locked due to too many failed attempts"
-                    )
+                    if (BuildConfig.DEBUG) Log.w("SecurePinManager", "Account locked")
                     return false
                 } else {
                     // Reset attempts after lockout period
@@ -100,29 +99,23 @@ object SecurePinManager {
             val salt = Base64.decode(saltBase64, Base64.DEFAULT)
 
             val providedHash = hashPin(cleanPin, salt)
-            
-            android.util.Log.d("SecurePinManager", "Stored hash: ${storedHash.take(16)}...")
-            android.util.Log.d("SecurePinManager", "Provided hash: ${providedHash.take(16)}...")
-
             val isValid = storedHash == providedHash
 
             if (!isValid) {
-                android.util.Log.w("SecurePinManager", "PIN verification FAILED - hashes don't match")
-                // Record failed attempt
+                if (BuildConfig.DEBUG) Log.w("SecurePinManager", "PIN verification failed")
                 prefs.edit().apply {
                     putInt(KEY_FAILED_ATTEMPTS, failedAttempts + 1)
                     putLong(KEY_LAST_FAILED_TIME, System.currentTimeMillis())
                     commit()
                 }
             } else {
-                android.util.Log.d("SecurePinManager", "PIN verification SUCCESS")
-                // Reset failed attempts on success
+                if (BuildConfig.DEBUG) Log.d("SecurePinManager", "PIN verification success")
                 prefs.edit().putInt(KEY_FAILED_ATTEMPTS, 0).commit()
             }
 
             isValid
         } catch (e: Exception) {
-            android.util.Log.e("SecurePinManager", "PIN verification failed: ${e.message}")
+            Log.e("SecurePinManager", "PIN verification failed: ${e.message}")
             false
         }
     }
@@ -145,7 +138,7 @@ object SecurePinManager {
 
             setupPin(context, newPin)
         } catch (e: Exception) {
-            android.util.Log.e("SecurePinManager", "PIN change failed: ${e.message}")
+            Log.e("SecurePinManager", "PIN change failed: ${e.message}")
             false
         }
     }
@@ -203,7 +196,7 @@ object SecurePinManager {
             prefs.edit().putInt(KEY_FAILED_ATTEMPTS, MAX_FAILED_ATTEMPTS).commit()
             prefs.edit().putLong(KEY_LAST_FAILED_TIME, System.currentTimeMillis()).commit()
         } catch (e: Exception) {
-            android.util.Log.e("SecurePinManager", "Force logout failed: ${e.message}")
+            Log.e("SecurePinManager", "Force logout failed: ${e.message}")
         }
     }
 }

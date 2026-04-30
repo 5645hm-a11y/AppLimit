@@ -1,164 +1,150 @@
 package com.applimit.ui.screens
 
 import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.EaseInOutCubic
-import androidx.compose.animation.core.Easing
-import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.runtime.*
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.scale
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.applimit.LanguageManager
+import com.applimit.ui.theme.ProgressSizes
 import kotlinx.coroutines.delay
 
-/** Beautiful animated splash screen with Material Design */
 @Composable
 fun SplashScreen(onComplete: () -> Unit, language: String = "en") {
-    val scaleAnimation = remember { Animatable(0.3f) }
-    val alphaAnimation = remember { Animatable(0f) }
-    val rotationAnimation = remember { Animatable(0f) }
+    val iconScale  = remember { Animatable(0.4f) }
+    val titleAlpha = remember { Animatable(0f) }
+    val subtitleOffset = remember { Animatable(20f) }
+    val subtitleAlpha  = remember { Animatable(0f) }
+    var ringProgress by remember { mutableFloatStateOf(0f) }
+    val ringAnim   = remember { Animatable(0f) }
 
     LaunchedEffect(Unit) {
-        // Animate scale in
-        scaleAnimation.animateTo(
+        // 1. Icon springs in
+        iconScale.animateTo(
             targetValue = 1f,
-            animationSpec = tween(1000, easing = EaseInOutCubic)
+            animationSpec = spring(dampingRatio = Spring.DampingRatioLowBouncy, stiffness = Spring.StiffnessMediumLow)
         )
-        
-        // Animate alpha in
-        alphaAnimation.animateTo(
-            targetValue = 1f,
-            animationSpec = tween(800, easing = LinearEasing)
-        )
-        
-        // Delay before completion - reduced for faster app launch
-        delay(1500)
+        // 2. Title fades in + ring starts filling
+        titleAlpha.animateTo(1f, animationSpec = tween(300, easing = FastOutSlowInEasing))
+        // 3. Subtitle slides up
+        kotlinx.coroutines.coroutineScope {
+            kotlinx.coroutines.launch {
+                subtitleAlpha.animateTo(1f, animationSpec = tween(350, easing = FastOutSlowInEasing))
+            }
+            kotlinx.coroutines.launch {
+                subtitleOffset.animateTo(0f, animationSpec = tween(350, easing = FastOutSlowInEasing))
+            }
+            kotlinx.coroutines.launch {
+                ringAnim.animateTo(1f, animationSpec = tween(900, easing = FastOutSlowInEasing))
+            }
+        }
+        delay(400)
         onComplete()
     }
 
-    // Rotation animation runs continuously
-    LaunchedEffect(Unit) {
-        while (true) {
-            rotationAnimation.animateTo(
-                targetValue = 360f,
-                animationSpec = tween(2000, easing = LinearEasing)
-            )
-            rotationAnimation.snapTo(0f)
-        }
-    }
+    val primary = MaterialTheme.colorScheme.primary
+    val primaryContainer = MaterialTheme.colorScheme.primaryContainer
 
-    Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(
-                    Brush.verticalGradient(
-                        colors = listOf(
-                            Color(0xFF0F1419),
-                            Color(0xFF1A2A3F)
-                        )
-                    )
-                ),
-            contentAlignment = Alignment.Center
+    Surface(
+        modifier = Modifier.fillMaxSize(),
+        color = MaterialTheme.colorScheme.background
     ) {
         Column(
+            modifier = Modifier.fillMaxSize().padding(horizontal = 32.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(24.dp, Alignment.CenterVertically),
-            modifier = Modifier.fillMaxSize()
+            verticalArrangement = Arrangement.Center
         ) {
-            // Animated Icon
-            Surface(
-                modifier = Modifier
-                    .size(120.dp)
-                    .clip(CircleShape)
-                    .scale(scaleAnimation.value),
-                color = Color(0xFF00D4AA).copy(alpha = 0.15f)
+            // Icon + ring
+            Box(
+                modifier = Modifier.size(140.dp),
+                contentAlignment = Alignment.Center
             ) {
-                Box(contentAlignment = Alignment.Center) {
-                    Icon(
-                        imageVector = Icons.Default.Lock,
-                        contentDescription = "AppLimit",
-                        modifier = Modifier
-                            .size(60.dp)
-                            .scale(alphaAnimation.value),
-                        tint = Color(0xFF00D4AA)
+                Canvas(modifier = Modifier.fillMaxSize()) {
+                    val strokePx = ProgressSizes.strokeThick.toPx()
+                    val diameter = size.minDimension - strokePx
+                    val topLeft = Offset((size.width - diameter) / 2f, (size.height - diameter) / 2f)
+                    val arcSize = Size(diameter, diameter)
+                    drawArc(
+                        color = primaryContainer,
+                        startAngle = -90f, sweepAngle = 360f,
+                        useCenter = false, topLeft = topLeft, size = arcSize,
+                        style = Stroke(width = strokePx, cap = StrokeCap.Round)
                     )
+                    if (ringAnim.value > 0f) {
+                        drawArc(
+                            color = primary,
+                            startAngle = -90f, sweepAngle = ringAnim.value * 360f,
+                            useCenter = false, topLeft = topLeft, size = arcSize,
+                            style = Stroke(width = strokePx, cap = StrokeCap.Round)
+                        )
+                    }
                 }
+                Icon(
+                    imageVector = Icons.Default.Lock,
+                    contentDescription = "AppLimit",
+                    modifier = Modifier
+                        .size(52.dp)
+                        .graphicsLayer {
+                            scaleX = iconScale.value
+                            scaleY = iconScale.value
+                        },
+                    tint = MaterialTheme.colorScheme.primary
+                )
             }
-
-            // Title
-            Text(
-                text = "AppLimit",
-                fontSize = 36.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color.White,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 24.dp)
-            )
-
-            // Subtitle
-            Text(
-                text = LanguageManager.getString("welcome_subtitle", language),
-                fontSize = 16.sp,
-                color = Color.White.copy(alpha = 0.7f),
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 24.dp),
-                maxLines = 2
-            )
 
             Spacer(modifier = Modifier.height(32.dp))
 
-            // Loading dots animation
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                repeat(3) { index ->
-                    val dotScale = remember { Animatable(0.5f) }
-                    
-                    LaunchedEffect(Unit) {
-                        delay(index * 200L)
-                        while (true) {
-                            dotScale.animateTo(
-                                targetValue = 1f,
-                                animationSpec = tween(600, easing = EaseInOutCubic)
-                            )
-                            dotScale.animateTo(
-                                targetValue = 0.5f,
-                                animationSpec = tween(600, easing = EaseInOutCubic)
-                            )
-                        }
-                    }
+            Text(
+                text = "AppLimit",
+                style = MaterialTheme.typography.headlineLarge,
+                color = MaterialTheme.colorScheme.onBackground.copy(alpha = titleAlpha.value),
+                textAlign = TextAlign.Center
+            )
 
-                    Surface(
-                        modifier = Modifier
-                            .size(8.dp)
-                            .scale(dotScale.value),
-                        shape = CircleShape,
-                        color = Color(0xFF00D4AA)
-                    ) {}
-                }
-            }
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Text(
+                text = LanguageManager.getString("welcome_subtitle", language),
+                style = MaterialTheme.typography.bodyLarge,
+                color = MaterialTheme.colorScheme.onBackground.copy(
+                    alpha = 0.7f * subtitleAlpha.value
+                ),
+                textAlign = TextAlign.Center,
+                modifier = Modifier.padding(
+                    top = subtitleOffset.value.dp
+                ),
+                maxLines = 2
+            )
         }
     }
 }

@@ -2,77 +2,92 @@ package com.applimit.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// ========== MATERIAL DESIGN 3 - Material You Color System ==========
-// Dynamic Color Palette based on Material You principles
-// Vibrant, Accessible, and Cohesive across all platforms
+// ===== LIGHT SCHEME =====
 
-// ===== PRIMARY COLOR FAMILY =====
-val Primary = Color(0xFF3366FF)           // Primary Blue (Vibrant)
-val OnPrimary = Color(0xFFFFFFFF)         // Text on Primary
-val PrimaryContainer = Color(0xFF004BD6)  // Primary Container (darker)
-val OnPrimaryContainer = Color(0xFFE3F2FD) // Text on Primary Container
+val LightPrimary          = Color(0xFF3D50E0)
+val LightOnPrimary        = Color(0xFFFFFFFF)
+val LightPrimaryContainer = Color(0xFFDDE1FF)
+val LightOnPrimaryContainer = Color(0xFF00107A)
 
-// ===== SECONDARY COLOR FAMILY =====
-val Secondary = Color(0xFF7C63F6)         // Secondary Purple (Vibrant)
-val OnSecondary = Color(0xFFFFFFFF)       // Text on Secondary
-val SecondaryContainer = Color(0xFF5C4FBF) // Secondary Container
-val OnSecondaryContainer = Color(0xFFF3E5FF) // Text on Secondary Container
+val LightSecondary          = Color(0xFF5B5B9F)
+val LightOnSecondary        = Color(0xFFFFFFFF)
+val LightSecondaryContainer = Color(0xFFE2E0FF)
+val LightOnSecondaryContainer = Color(0xFF171659)
 
-// ===== TERTIARY COLOR FAMILY =====
-val Tertiary = Color(0xFF06B6D4)          // Tertiary Cyan (Accent)
-val OnTertiary = Color(0xFFFFFFFF)        // Text on Tertiary
-val TertiaryContainer = Color(0xFF0891B2) // Tertiary Container
-val OnTertiaryContainer = Color(0xFFE0F7FA) // Text on Tertiary Container
+val LightTertiary          = Color(0xFF006B5E)
+val LightOnTertiary        = Color(0xFFFFFFFF)
+val LightTertiaryContainer = Color(0xFF9CF2E2)
+val LightOnTertiaryContainer = Color(0xFF00201B)
 
-// ===== NEUTRAL COLOR FAMILY (Backgrounds & Surfaces) =====
-val Background = Color(0xFF0F1419)        // Background (Dark Navy)
-val OnBackground = Color(0xFFE8E8ED)      // Text on Background
-val Surface = Color(0xFF121217)           // Surface (Darker)
-val OnSurface = Color(0xFFE8E8ED)         // Text on Surface
-val SurfaceDim = Color(0xFF0F1419)        // Dim Surface
-val SurfaceBright = Color(0xFF383C44)     // Bright Surface
-val SurfaceContainerLowest = Color(0xFF0A0E13) // Lowest Container
-val SurfaceContainerLow = Color(0xFF17191F)    // Low Container
-val SurfaceContainer = Color(0xFF1C1F26)       // Container
-val SurfaceContainerHigh = Color(0xFF262A31)   // High Container
-val SurfaceContainerHighest = Color(0xFF31353C) // Highest Container
+val LightBackground           = Color(0xFFFBF8FF)
+val LightOnBackground         = Color(0xFF1B1B23)
+val LightSurface              = Color(0xFFFBF8FF)
+val LightOnSurface            = Color(0xFF1B1B23)
+val LightSurfaceDim           = Color(0xFFDCD9E4)
+val LightSurfaceBright        = Color(0xFFFBF8FF)
+val LightSurfaceContainerLowest  = Color(0xFFFFFFFF)
+val LightSurfaceContainerLow     = Color(0xFFF5F3FE)
+val LightSurfaceContainer        = Color(0xFFEFEDF8)
+val LightSurfaceContainerHigh    = Color(0xFFEAE7F2)
+val LightSurfaceContainerHighest = Color(0xFFE4E2EC)
+val LightSurfaceVariant       = Color(0xFFE4E1EC)
+val LightOnSurfaceVariant     = Color(0xFF46464F)
+val LightOutline              = Color(0xFF77767F)
+val LightOutlineVariant       = Color(0xFFC8C5D0)
 
-val SurfaceVariant = Color(0xFF48484F)    // Surface Variant
-val OnSurfaceVariant = Color(0xFFC8C7CE)  // Text on Surface Variant
+val LightError             = Color(0xFFBA1A1A)
+val LightOnError           = Color(0xFFFFFFFF)
+val LightErrorContainer    = Color(0xFFFFDAD6)
+val LightOnErrorContainer  = Color(0xFF410002)
 
-// ===== ERROR COLORS =====
-val Error = Color(0xFFFF5555)             // Error Red (Material 3)
-val OnError = Color(0xFFFFFFFF)           // Text on Error
-val ErrorContainer = Color(0xFFCC0000)    // Error Container
-val OnErrorContainer = Color(0xFFFFEAEA)  // Text on Error Container
+// ===== DARK SCHEME =====
 
-// ===== SUCCESS COLORS =====
-val Success = Color(0xFF10B981)           // Success Green
-val OnSuccess = Color(0xFFFFFFFF)         // Text on Success
-val SuccessContainer = Color(0xFF059669)  // Success Container
-val OnSuccessContainer = Color(0xFFD1F0E0) // Text on Success Container
+val DarkPrimary           = Color(0xFFBCC3FF)
+val DarkOnPrimary         = Color(0xFF0B1F9B)
+val DarkPrimaryContainer  = Color(0xFF2236C5)
+val DarkOnPrimaryContainer = Color(0xFFDDE1FF)
 
-// ===== WARNING COLORS =====
-val Warning = Color(0xFFFB923C)           // Warning Orange
-val OnWarning = Color(0xFFFFFFFF)         // Text on Warning
-val WarningContainer = Color(0xFFEA580C)  // Warning Container
-val OnWarningContainer = Color(0xFFFFE8D1) // Text on Warning Container
+val DarkSecondary          = Color(0xFFC5C3FF)
+val DarkOnSecondary        = Color(0xFF2C2C6E)
+val DarkSecondaryContainer = Color(0xFF434386)
+val DarkOnSecondaryContainer = Color(0xFFE2E0FF)
 
-// ===== INFO COLORS =====
-val Info = Color(0xFF3B82F6)              // Info Blue
-val OnInfo = Color(0xFFFFFFFF)            // Text on Info
-val InfoContainer = Color(0xFF1D4ED8)     // Info Container
-val OnInfoContainer = Color(0xFFE0E7FF)   // Text on Info Container
+val DarkTertiary           = Color(0xFF80D6C7)
+val DarkOnTertiary         = Color(0xFF003730)
+val DarkTertiaryContainer  = Color(0xFF005047)
+val DarkOnTertiaryContainer = Color(0xFF9CF2E2)
 
-// ===== UTILITY COLORS =====
-val Divider = Color(0xFF48484F)           // Subtle Divider
-val Scrim = Color(0xFF000000)             // Scrim (for modals/overlays)
-val Outline = Color(0xFF79747E)           // Outline for components
-val OutlineVariant = Color(0xFF49454E)    // Outline Variant
+val DarkBackground            = Color(0xFF131318)
+val DarkOnBackground          = Color(0xFFE5E1EC)
+val DarkSurface               = Color(0xFF131318)
+val DarkOnSurface             = Color(0xFFE5E1EC)
+val DarkSurfaceDim            = Color(0xFF131318)
+val DarkSurfaceBright         = Color(0xFF39373F)
+val DarkSurfaceContainerLowest   = Color(0xFF0E0D13)
+val DarkSurfaceContainerLow      = Color(0xFF1B1B21)
+val DarkSurfaceContainer         = Color(0xFF1F1F26)
+val DarkSurfaceContainerHigh     = Color(0xFF2A2930)
+val DarkSurfaceContainerHighest  = Color(0xFF34333B)
+val DarkSurfaceVariant        = Color(0xFF46464F)
+val DarkOnSurfaceVariant      = Color(0xFFC8C5D0)
+val DarkOutline               = Color(0xFF908F99)
+val DarkOutlineVariant        = Color(0xFF46464F)
 
-// ===== SPECIAL COLORS FOR APP-SPECIFIC USE =====
-val BlockingRed = Color(0xFFEF4444)       // For app blocking indicators
-val ScreenTimeBlue = Color(0xFF3B82F6)    // For screen time tracking
-val FocusPurple = Color(0xFF8B5CF6)       // For focus mode
-val BalanceGreen = Color(0xFF10B981)      // For healthy balance indicators
+val DarkError             = Color(0xFFFFB4AB)
+val DarkOnError           = Color(0xFF690005)
+val DarkErrorContainer    = Color(0xFF93000A)
+val DarkOnErrorContainer  = Color(0xFFFFDAD6)
 
+// ===== SEMANTIC COLORS (fixed — never change with dynamic color) =====
+
+val SemanticBlocking  = Color(0xFFE53935)
+val SemanticBalance   = Color(0xFF43A047)
+val SemanticWarning   = Color(0xFFF57C00)
+val SemanticInfo      = Color(0xFF1E88E5)
+val SemanticGrayscale = Color(0xFF757575)
+
+// Kept for backward-compat references in screens not yet migrated
+val BlockingRed    = SemanticBlocking
+val BalanceGreen   = SemanticBalance
+val ScreenTimeBlue = SemanticInfo
+val FocusPurple    = Color(0xFF8B5CF6)

@@ -2,27 +2,12 @@ package com.applimit.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.applimit.R
 
-// ========== RUBIK FONT FAMILY (Professional Font) ==========
-val RubikFontFamily = FontFamily(
-    Font(R.font.rubik_regular, FontWeight.Normal),
-    Font(R.font.rubik_italic, FontWeight.Normal),
-    Font(R.font.rubik_bold, FontWeight.Bold)
-)
-
-// Primary font family using Rubik (modern and professional)
-val PrimaryFontFamily = RubikFontFamily
-
-// ========== MATERIAL 3 TYPOGRAPHY SCALE (Material You) ==========
-// Comprehensive typography system following Material Design 3 specifications
+val PrimaryFontFamily = Rubik
 
 val SafeTimeGuardTypography = Typography(
-    // ===== DISPLAY STYLES (Headings) =====
     displayLarge = TextStyle(
         fontFamily = PrimaryFontFamily,
         fontWeight = FontWeight.Bold,
@@ -44,8 +29,6 @@ val SafeTimeGuardTypography = Typography(
         lineHeight = 44.sp,
         letterSpacing = 0.sp
     ),
-    
-    // ===== HEADLINE STYLES =====
     headlineLarge = TextStyle(
         fontFamily = PrimaryFontFamily,
         fontWeight = FontWeight.Bold,
@@ -55,7 +38,7 @@ val SafeTimeGuardTypography = Typography(
     ),
     headlineMedium = TextStyle(
         fontFamily = PrimaryFontFamily,
-        fontWeight = FontWeight.SemiBold,
+        fontWeight = FontWeight.Bold,
         fontSize = 28.sp,
         lineHeight = 36.sp,
         letterSpacing = 0.sp
@@ -67,8 +50,6 @@ val SafeTimeGuardTypography = Typography(
         lineHeight = 32.sp,
         letterSpacing = 0.sp
     ),
-    
-    // ===== TITLE STYLES =====
     titleLarge = TextStyle(
         fontFamily = PrimaryFontFamily,
         fontWeight = FontWeight.SemiBold,
@@ -78,20 +59,18 @@ val SafeTimeGuardTypography = Typography(
     ),
     titleMedium = TextStyle(
         fontFamily = PrimaryFontFamily,
-        fontWeight = FontWeight.SemiBold,
+        fontWeight = FontWeight.Medium,
         fontSize = 16.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.15.sp
     ),
     titleSmall = TextStyle(
         fontFamily = PrimaryFontFamily,
-        fontWeight = FontWeight.SemiBold,
+        fontWeight = FontWeight.Medium,
         fontSize = 14.sp,
         lineHeight = 20.sp,
         letterSpacing = 0.1.sp
     ),
-    
-    // ===== BODY STYLES (Main Content) =====
     bodyLarge = TextStyle(
         fontFamily = PrimaryFontFamily,
         fontWeight = FontWeight.Normal,
@@ -111,35 +90,39 @@ val SafeTimeGuardTypography = Typography(
         fontWeight = FontWeight.Normal,
         fontSize = 12.sp,
         lineHeight = 16.sp,
-        letterSpacing = 0.4.sp
+        letterSpacing = 0.25.sp
     ),
-    
-    // ===== LABEL STYLES (Buttons, Chips, Tags) =====
     labelLarge = TextStyle(
         fontFamily = PrimaryFontFamily,
-        fontWeight = FontWeight.SemiBold,
+        fontWeight = FontWeight.Medium,
         fontSize = 14.sp,
         lineHeight = 20.sp,
         letterSpacing = 0.1.sp
     ),
     labelMedium = TextStyle(
         fontFamily = PrimaryFontFamily,
-        fontWeight = FontWeight.SemiBold,
+        fontWeight = FontWeight.Medium,
         fontSize = 12.sp,
         lineHeight = 16.sp,
         letterSpacing = 0.5.sp
     ),
     labelSmall = TextStyle(
         fontFamily = PrimaryFontFamily,
-        fontWeight = FontWeight.Bold,
+        fontWeight = FontWeight.SemiBold,
         fontSize = 11.sp,
         lineHeight = 16.sp,
         letterSpacing = 0.5.sp
     )
 )
 
-// ===== ADDITIONAL TYPOGRAPHY - Material 3 Compliant =====
-// For custom use cases not covered by standard Material 3 scale
+// For large numeric displays (time values, counters)
+val NumericDisplayStyle = TextStyle(
+    fontFamily = PrimaryFontFamily,
+    fontWeight = FontWeight.Bold,
+    fontSize = 36.sp,
+    lineHeight = 40.sp,
+    letterSpacing = (-0.5).sp
+)
 
 val CaptionTypography = TextStyle(
     fontFamily = PrimaryFontFamily,

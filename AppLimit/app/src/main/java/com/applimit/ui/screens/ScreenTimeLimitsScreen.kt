@@ -1,78 +1,84 @@
 package com.applimit.ui.screens
 
 import android.content.Context
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Remove
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Slider
+import androidx.compose.material3.Switch
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableLongStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.applimit.LanguageManager
 import com.applimit.tracking.UsageRepository
-import com.applimit.ui.theme.PrimaryFontFamily
+import com.applimit.ui.components.CircularProgressRing
+import com.applimit.ui.components.SafeTimeGuardTopAppBar
+import com.applimit.ui.theme.ProgressSizes
+import com.applimit.ui.theme.SemanticBalance
+import com.applimit.ui.theme.SemanticBlocking
+import com.applimit.ui.theme.SemanticWarning
 import kotlinx.coroutines.delay
 import kotlin.math.min
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScreenTimeLimitsScreen(language: String, onBack: () -> Unit) {
-    val context = androidx.compose.ui.platform.LocalContext.current
-    val prefs = remember {
-        context.getSharedPreferences("safetimeguard_settings", Context.MODE_PRIVATE)
-    }
+    val context = LocalContext.current
+    val prefs = remember { context.getSharedPreferences("safetimeguard_settings", Context.MODE_PRIVATE) }
     val usageRepository = remember { UsageRepository.getInstance(context) }
 
     var dailyEnabled by remember { mutableStateOf(false) }
-    var dailyHours by remember { mutableStateOf(6) }
-    var dailyMinutes by remember { mutableStateOf(0) }
+    var dailyHours by remember { mutableStateOf(6f) }
     var weeklyEnabled by remember { mutableStateOf(false) }
-    var weeklyHours by remember { mutableStateOf(20) }
-    var weeklyMinutes by remember { mutableStateOf(0) }
-
-    var sessionTimeToday by remember { mutableStateOf(0L) }
-    var sessionTimeWeek by remember { mutableStateOf(0L) }
+    var weeklyHours by remember { mutableStateOf(20f) }
+    var sessionTimeToday by remember { mutableLongStateOf(0L) }
+    var sessionTimeWeek by remember { mutableLongStateOf(0L) }
 
     LaunchedEffect(Unit) {
-        val dailyLimitMinutes = prefs.getInt("screen_time_daily_limit_minutes", 0)
-        val weeklyLimitMinutes = prefs.getInt("screen_time_weekly_limit_minutes", 0)
         dailyEnabled = prefs.getBoolean("screen_time_daily_enabled", false)
         weeklyEnabled = prefs.getBoolean("screen_time_weekly_enabled", false)
-
-        if (dailyLimitMinutes > 0) {
-            dailyHours = dailyLimitMinutes / 60
-            dailyMinutes = dailyLimitMinutes % 60
-        }
-        if (weeklyLimitMinutes > 0) {
-            weeklyHours = weeklyLimitMinutes / 60
-            weeklyMinutes = weeklyLimitMinutes % 60
-        }
+        val dailyMin = prefs.getInt("screen_time_daily_limit_minutes", 360)
+        val weeklyMin = prefs.getInt("screen_time_weekly_limit_minutes", 1200)
+        dailyHours = (dailyMin / 60f).coerceIn(0.5f, 23f)
+        weeklyHours = (weeklyMin / 60f).coerceIn(1f, 168f)
     }
 
-    LaunchedEffect(dailyEnabled, dailyHours, dailyMinutes) {
-        val totalMinutes = (dailyHours * 60 + dailyMinutes).coerceAtLeast(0)
+    LaunchedEffect(dailyEnabled, dailyHours) {
         prefs.edit()
             .putBoolean("screen_time_daily_enabled", dailyEnabled)
-            .putInt("screen_time_daily_limit_minutes", totalMinutes)
+            .putInt("screen_time_daily_limit_minutes", (dailyHours * 60).toInt())
             .apply()
     }
 
-    LaunchedEffect(weeklyEnabled, weeklyHours, weeklyMinutes) {
-        val totalMinutes = (weeklyHours * 60 + weeklyMinutes).coerceAtLeast(0)
+    LaunchedEffect(weeklyEnabled, weeklyHours) {
         prefs.edit()
             .putBoolean("screen_time_weekly_enabled", weeklyEnabled)
-            .putInt("screen_time_weekly_limit_minutes", totalMinutes)
+            .putInt("screen_time_weekly_limit_minutes", (weeklyHours * 60).toInt())
             .apply()
     }
 
@@ -84,329 +90,159 @@ fun ScreenTimeLimitsScreen(language: String, onBack: () -> Unit) {
         }
     }
 
-    fun formatTime(millis: Long): String {
-        val totalSeconds = millis / 1000
-        val hours = totalSeconds / 3600
-        val minutes = (totalSeconds % 3600) / 60
-        return when {
-            hours > 0 -> "${hours}h ${minutes}m"
-            minutes > 0 -> "${minutes}m"
-            else -> "0m"
-        }
+    fun formatTime(ms: Long): String {
+        val s = ms / 1000; val h = s / 3600; val m = (s % 3600) / 60
+        return if (h > 0) "${h}h ${m}m" else if (m > 0) "${m}m" else "0m"
     }
 
-    val dailyLimitMinutes = dailyHours * 60 + dailyMinutes
-    val weeklyLimitMinutes = weeklyHours * 60 + weeklyMinutes
-    val dailyUsedMinutes = (sessionTimeToday / 60000L).toInt()
-    val weeklyUsedMinutes = (sessionTimeWeek / 60000L).toInt()
-    val dailyPercent = if (dailyEnabled && dailyLimitMinutes > 0) {
-        min(1f, dailyUsedMinutes.toFloat() / dailyLimitMinutes)
-    } else 0f
-    val weeklyPercent = if (weeklyEnabled && weeklyLimitMinutes > 0) {
-        min(1f, weeklyUsedMinutes.toFloat() / weeklyLimitMinutes)
-    } else 0f
+    val dailyLimitMs = (dailyHours * 3_600_000f).toLong()
+    val weeklyLimitMs = (weeklyHours * 3_600_000f).toLong()
+    val dailyProgress = if (dailyEnabled && dailyLimitMs > 0) min(1f, sessionTimeToday.toFloat() / dailyLimitMs) else 0f
+    val weeklyProgress = if (weeklyEnabled && weeklyLimitMs > 0) min(1f, sessionTimeWeek.toFloat() / weeklyLimitMs) else 0f
 
-    val gradientBrush = Brush.verticalGradient(
-        colors = listOf(
-            Color(0xFF0F1419),
-            Color(0xFF1A2A3F)
-        )
-    )
+    fun ringColor(progress: Float): Color = when {
+        progress >= 0.9f -> SemanticBlocking
+        progress >= 0.7f -> SemanticWarning
+        else -> SemanticBalance
+    }
 
-    Box(modifier = Modifier.fillMaxSize().background(gradientBrush)) {
-        Column(modifier = Modifier.fillMaxSize()) {
-            Surface(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(
-                        Brush.verticalGradient(
-                            colors = listOf(
-                                Color(0xFF00B4DB).copy(alpha = 0.1f),
-                                Color(0xFF00D4AA).copy(alpha = 0.08f)
-                            )
-                        )
-                    ),
-                color = Color.Transparent,
-                shadowElevation = 0.dp
-            ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    IconButton(onClick = onBack) {
-                        Icon(
-                            imageVector = Icons.Default.ArrowBack,
-                            contentDescription = LanguageManager.getString("go_back", language),
-                            tint = Color(0xFFFFFFFF)
-                        )
-                    }
-                    Text(
-                        text = LanguageManager.getString("screen_time_management", language),
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color(0xFFFFFFFF),
-                        modifier = Modifier.weight(1f)
-                    )
-                }
-            }
+    Scaffold(
+        topBar = {
+            SafeTimeGuardTopAppBar(
+                title = LanguageManager.getString("screen_time_management", language),
+                onNavigateBack = onBack
+            )
+        },
+        containerColor = MaterialTheme.colorScheme.background
+    ) { innerPadding ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
+                .verticalScroll(rememberScrollState())
+                .padding(horizontal = 16.dp, vertical = 8.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            LimitCard(
+                title = LanguageManager.getString("daily_limit", language),
+                description = LanguageManager.getString("daily_limit_desc", language),
+                enabled = dailyEnabled,
+                onEnabledChange = { dailyEnabled = it },
+                hours = dailyHours,
+                maxHours = 23f,
+                onHoursChange = { dailyHours = it },
+                usedLabel = LanguageManager.getString("today_label", language),
+                usedValue = formatTime(sessionTimeToday),
+                limitLabel = LanguageManager.getString("limit_label", language),
+                limitValue = "${dailyHours.toInt()}h",
+                progress = dailyProgress,
+                ringColor = ringColor(dailyProgress)
+            )
 
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .verticalScroll(rememberScrollState())
-                    .padding(16.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp)
-            ) {
-                ScreenTimeLimitCard(
-                    title = LanguageManager.getString("daily_limit", language),
-                    description = LanguageManager.getString("daily_limit_desc", language),
-                    enabled = dailyEnabled,
-                    onEnabledChange = { dailyEnabled = it },
-                    hours = dailyHours,
-                    minutes = dailyMinutes,
-                    maxHours = 23,
-                    onHoursChange = { dailyHours = it },
-                    onMinutesChange = { dailyMinutes = it },
-                    usedLabel = LanguageManager.getString("today_label", language),
-                    usedValue = formatTime(sessionTimeToday),
-                    usedOfLimit = String.format(
-                        LanguageManager.getString("used_of_limit", language),
-                        formatTime(sessionTimeToday),
-                        if (dailyLimitMinutes > 0) "${dailyLimitMinutes / 60}h ${dailyLimitMinutes % 60}m" else "0m"
-                    ),
-                    percent = dailyPercent,
-                    language = language
-                )
+            LimitCard(
+                title = LanguageManager.getString("weekly_limit", language),
+                description = LanguageManager.getString("weekly_limit_desc", language),
+                enabled = weeklyEnabled,
+                onEnabledChange = { weeklyEnabled = it },
+                hours = weeklyHours,
+                maxHours = 168f,
+                onHoursChange = { weeklyHours = it },
+                usedLabel = LanguageManager.getString("this_week", language),
+                usedValue = formatTime(sessionTimeWeek),
+                limitLabel = LanguageManager.getString("limit_label", language),
+                limitValue = "${weeklyHours.toInt()}h",
+                progress = weeklyProgress,
+                ringColor = ringColor(weeklyProgress)
+            )
 
-                ScreenTimeLimitCard(
-                    title = LanguageManager.getString("weekly_limit", language),
-                    description = LanguageManager.getString("weekly_limit_desc", language),
-                    enabled = weeklyEnabled,
-                    onEnabledChange = { weeklyEnabled = it },
-                    hours = weeklyHours,
-                    minutes = weeklyMinutes,
-                    maxHours = 168,
-                    onHoursChange = { weeklyHours = it },
-                    onMinutesChange = { weeklyMinutes = it },
-                    usedLabel = LanguageManager.getString("this_week", language),
-                    usedValue = formatTime(sessionTimeWeek),
-                    usedOfLimit = String.format(
-                        LanguageManager.getString("used_of_limit", language),
-                        formatTime(sessionTimeWeek),
-                        if (weeklyLimitMinutes > 0) "${weeklyLimitMinutes / 60}h ${weeklyLimitMinutes % 60}m" else "0m"
-                    ),
-                    percent = weeklyPercent,
-                    language = language
-                )
-            }
+            Spacer(modifier = Modifier.height(16.dp))
         }
     }
 }
 
 @Composable
-private fun ScreenTimeLimitCard(
+private fun LimitCard(
     title: String,
     description: String,
     enabled: Boolean,
     onEnabledChange: (Boolean) -> Unit,
-    hours: Int,
-    minutes: Int,
-    maxHours: Int,
-    onHoursChange: (Int) -> Unit,
-    onMinutesChange: (Int) -> Unit,
+    hours: Float,
+    maxHours: Float,
+    onHoursChange: (Float) -> Unit,
     usedLabel: String,
     usedValue: String,
-    usedOfLimit: String,
-    percent: Float,
-    language: String = LanguageManager.ENGLISH
+    limitLabel: String,
+    limitValue: String,
+    progress: Float,
+    ringColor: Color
 ) {
-    Surface(
+    ElevatedCard(
         modifier = Modifier.fillMaxWidth(),
-        color = Color(0xFF00D4AA).copy(alpha = 0.1f),
-        shadowElevation = 2.dp
+        shape = MaterialTheme.shapes.large,
+        colors = CardDefaults.elevatedCardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerHigh),
+        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 2.dp)
     ) {
         Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
+            modifier = Modifier.padding(20.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
+            // Title + toggle
+            Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                 Column(modifier = Modifier.weight(1f)) {
-                    Text(
-                        text = title,
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color(0xFFFFFFFF),
-                        fontFamily = PrimaryFontFamily
-                    )
-                    Text(
-                        text = description,
-                        fontSize = 12.sp,
-                        color = Color(0xFF22D3EE),
-                        fontFamily = PrimaryFontFamily
-                    )
+                    Text(text = title, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onSurface)
+                    Text(text = description, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 2)
                 }
-                Switch(
-                    checked = enabled,
-                    onCheckedChange = onEnabledChange,
-                    colors = SwitchDefaults.colors(
-                        checkedThumbColor = Color(0xFF00D4AA),
-                        checkedTrackColor = Color(0xFF00D4AA).copy(alpha = 0.5f),
-                        uncheckedThumbColor = Color(0xFFFFFFFF).copy(alpha = 0.6f),
-                        uncheckedTrackColor = Color(0xFFFFFFFF).copy(alpha = 0.3f)
-                    )
-                )
+                Switch(checked = enabled, onCheckedChange = onEnabledChange)
             }
 
             if (enabled) {
+                // Progress ring + stats
                 Row(
                     modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(20.dp)
                 ) {
-                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    CircularProgressRing(
+                        progress = progress,
+                        progressColor = ringColor,
+                        trackColor = MaterialTheme.colorScheme.surfaceContainerHighest,
+                        strokeWidth = ProgressSizes.strokeMedium,
+                        modifier = Modifier.size(ProgressSizes.medium)
+                    ) {
                         Text(
-                            text = usedLabel,
-                            fontSize = 12.sp,
-                            color = Color(0xFF22D3EE)
-                        )
-                        Text(
-                            text = usedValue,
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = Color(0xFFFFFFFF)
+                            text = "${(progress * 100).toInt()}%",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.onBackground,
+                            fontWeight = FontWeight.Bold
                         )
                     }
-                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Text(
-                            text = LanguageManager.getString("limit_label", language),
-                            fontSize = 12.sp,
-                            color = Color(0xFF22D3EE)
-                        )
-                        Text(
-                            text = "${hours}h ${minutes}m",
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = Color(0xFFFFFFFF)
-                        )
+
+                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Column {
+                            Text(text = usedLabel, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            Text(text = usedValue, style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.onSurface)
+                        }
+                        Column {
+                            Text(text = limitLabel, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            Text(text = limitValue, style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.primary)
+                        }
                     }
                 }
 
-                LinearProgressIndicator(
-                    progress = { percent },
-                    modifier = Modifier.fillMaxWidth().height(6.dp),
-                    color = Color(0xFF00D4AA),
-                    trackColor = Color(0xFF00D4AA).copy(alpha = 0.2f)
-                )
-
-                Text(
-                    text = usedOfLimit,
-                    fontSize = 12.sp,
-                    color = Color(0xFF22D3EE),
-                    textAlign = TextAlign.Start
-                )
-
-                LimitStepper(
-                    language = language,
-                    hours = hours,
-                    minutes = minutes,
-                    maxHours = maxHours,
-                    onHoursChange = onHoursChange,
-                    onMinutesChange = onMinutesChange
-                )
-            }
-        }
-    }
-}
-
-@Composable
-private fun LimitStepper(
-    language: String,
-    hours: Int,
-    minutes: Int,
-    maxHours: Int,
-    onHoursChange: (Int) -> Unit,
-    onMinutesChange: (Int) -> Unit
-) {
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        StepperBox(
-            label = LanguageManager.getString("hour", language),
-            value = hours,
-            minValue = 0,
-            maxValue = maxHours,
-            onValueChange = onHoursChange,
-            modifier = Modifier
-                .weight(1f)
-                .padding(horizontal = 4.dp)
-        )
-        StepperBox(
-            label = LanguageManager.getString("minute", language),
-            value = minutes,
-            minValue = 0,
-            maxValue = 59,
-            onValueChange = onMinutesChange,
-            modifier = Modifier
-                .weight(1f)
-                .padding(horizontal = 4.dp)
-        )
-    }
-}
-
-@Composable
-private fun StepperBox(
-    modifier: Modifier = Modifier,
-    label: String,
-    value: Int,
-    minValue: Int,
-    maxValue: Int,
-    onValueChange: (Int) -> Unit
-) {
-    Surface(
-        modifier = modifier,
-        color = Color(0xFF1A2A3F).copy(alpha = 0.7f),
-        shape = RoundedCornerShape(12.dp)
-    ) {
-        Column(
-            modifier = Modifier.padding(12.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            Text(text = label, fontSize = 12.sp, color = Color(0xFF22D3EE))
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                IconButton(
-                    onClick = { if (value > minValue) onValueChange(value - 1) },
-                    modifier = Modifier.size(28.dp)
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Remove,
-                        contentDescription = null,
-                        tint = Color(0xFFFFFFFF)
+                // Slider for hours
+                Column {
+                    Text(text = "${hours.toInt()}h", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Medium)
+                    Slider(
+                        value = hours,
+                        onValueChange = onHoursChange,
+                        valueRange = 0.5f..maxHours,
+                        steps = ((maxHours - 0.5f) / 0.5f - 1).toInt().coerceAtLeast(0),
+                        modifier = Modifier.fillMaxWidth()
                     )
-                }
-                Text(
-                    text = value.toString(),
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White,
-                    modifier = Modifier.padding(horizontal = 8.dp)
-                )
-                IconButton(
-                    onClick = { if (value < maxValue) onValueChange(value + 1) },
-                    modifier = Modifier.size(28.dp)
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Add,
-                        contentDescription = null,
-                        tint = Color(0xFFFFFFFF)
-                    )
+                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                        Text("0.5h", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        Text("${maxHours.toInt()}h", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    }
                 }
             }
         }

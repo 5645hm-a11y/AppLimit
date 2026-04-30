@@ -12,6 +12,7 @@ import android.os.PowerManager
 import android.util.Log
 import android.view.accessibility.AccessibilityEvent
 import android.view.accessibility.AccessibilityNodeInfo
+import com.applimit.BuildConfig
 import com.applimit.AppBlockedActivity
 import com.applimit.SettingsProtectionActivity
 import com.applimit.data.BlockRule
@@ -70,7 +71,7 @@ class AppBlockerAccessibilityService : AccessibilityService() {
     override fun onCreate() {
         super.onCreate()
         isEnabled = true
-        Log.d(TAG, "AccessibilityService created")
+        if (BuildConfig.DEBUG) Log.d(TAG, "AccessibilityService created")
     }
 
     override fun onServiceConnected() {
@@ -107,7 +108,7 @@ class AppBlockerAccessibilityService : AccessibilityService() {
                 }
         setServiceInfo(info)
 
-        Log.i(TAG, "Accessibility service connected")
+        if (BuildConfig.DEBUG) Log.i(TAG, "Accessibility service connected")
     }
 
     override fun onAccessibilityEvent(event: AccessibilityEvent?) {
@@ -156,7 +157,7 @@ class AppBlockerAccessibilityService : AccessibilityService() {
 
         // Ignore system packages and our own app (except for Settings which we already checked above)
         if (isSystemPackage(packageName) || packageName == "com.applimit") {
-            Log.d(TAG, "Ignoring system/own package: $packageName")
+            if (BuildConfig.DEBUG) Log.d(TAG, "Ignoring system/own package: $packageName")
             return
         }
 
@@ -312,11 +313,12 @@ class AppBlockerAccessibilityService : AccessibilityService() {
                 }
             }.lowercase()
             
-            // DEBUG: Log EVERYTHING to see what's happening
-            Log.d(TAG, "🔍 SETTINGS EVENT - className: [$className]")
-            Log.d(TAG, "🔍 SETTINGS EVENT - allText length: ${allText.length}")
-            Log.d(TAG, "🔍 SETTINGS EVENT - allText preview: [${allText.take(300)}]")
-            Log.d(TAG, "🔍 SETTINGS EVENT - eventType: ${event.eventType}")
+            if (BuildConfig.DEBUG) {
+                Log.d(TAG, "🔍 SETTINGS EVENT - className: [$className]")
+                Log.d(TAG, "🔍 SETTINGS EVENT - allText length: ${allText.length}")
+                Log.d(TAG, "🔍 SETTINGS EVENT - allText preview: [${allText.take(300)}]")
+                Log.d(TAG, "🔍 SETTINGS EVENT - eventType: ${event.eventType}")
+            }
             
             // Check if this is our app's settings page  
             val hasOurAppIdentifier = allText.contains("applimit") ||
@@ -354,13 +356,15 @@ class AppBlockerAccessibilityService : AccessibilityService() {
                                           allText.contains("services") ||
                                           allText.contains("installed services"))
             
-            Log.d(TAG, "🔍 DETECTION - hasOurApp: $hasOurAppIdentifier, explicitDetails: $isExplicitAppDetailsPage, appList: $isAppListPage")
-            Log.d(TAG, "🔍 DETECTION - isAccessibilityRelated: $isAccessibilityRelated")
-            Log.d(TAG, "🔍 DETECTION - FINAL - isOurAppSettings: $isOurAppSettings, isAccessibilitySettings: $isAccessibilitySettings")
+            if (BuildConfig.DEBUG) {
+                Log.d(TAG, "🔍 DETECTION - hasOurApp: $hasOurAppIdentifier, explicitDetails: $isExplicitAppDetailsPage, appList: $isAppListPage")
+                Log.d(TAG, "🔍 DETECTION - isAccessibilityRelated: $isAccessibilityRelated")
+                Log.d(TAG, "🔍 DETECTION - FINAL - isOurAppSettings: $isOurAppSettings, isAccessibilitySettings: $isAccessibilitySettings")
+            }
             
             if (!isOurAppSettings && !isAccessibilitySettings) return
             
-            Log.w(TAG, "⚠️ BLOCKING SECURITY THREAT - className: $className, isOurApp: $isOurAppSettings, isAccessibility: $isAccessibilitySettings")
+            if (BuildConfig.DEBUG) Log.w(TAG, "⚠️ BLOCKING SECURITY THREAT - className: $className, isOurApp: $isOurAppSettings, isAccessibility: $isAccessibilitySettings")
             
             // Check if access is currently granted (within 30 seconds window)
             val prefs = getSharedPreferences("settings_protection", Context.MODE_PRIVATE)
@@ -369,12 +373,12 @@ class AppBlockerAccessibilityService : AccessibilityService() {
             
             if (now < accessGrantedUntil) {
                 val remainingSeconds = (accessGrantedUntil - now) / 1000
-                Log.d(TAG, "Settings access allowed - ${remainingSeconds}s remaining")
+                if (BuildConfig.DEBUG) Log.d(TAG, "Settings access allowed - ${remainingSeconds}s remaining")
                 return
             }
             
             // Access not granted - show PIN screen
-            Log.d(TAG, "Blocking settings access - PIN required")
+            if (BuildConfig.DEBUG) Log.d(TAG, "Blocking settings access - PIN required")
             showSettingsProtection()
         } catch (e: Exception) {
             Log.e(TAG, "Error checking settings access: ${e.message}", e)
@@ -385,7 +389,7 @@ class AppBlockerAccessibilityService : AccessibilityService() {
     private fun showSettingsProtection() {
         // Prevent multiple simultaneous displays
         if (isShowingSettingsProtection) {
-            Log.d(TAG, "Settings protection already showing - skipping")
+            if (BuildConfig.DEBUG) Log.d(TAG, "Settings protection already showing - skipping")
             return
         }
         
@@ -397,7 +401,7 @@ class AppBlockerAccessibilityService : AccessibilityService() {
                     flags = Intent.FLAG_ACTIVITY_NEW_TASK or
                            Intent.FLAG_ACTIVITY_CLEAR_TOP
                 }
-                Log.d(TAG, "🔒 Launching SettingsProtectionActivity via ACTION intent")
+                if (BuildConfig.DEBUG) Log.d(TAG, "🔒 Launching SettingsProtectionActivity via ACTION intent")
                 startActivity(intent)
                 
                 // Reset flag after 5 seconds
@@ -427,11 +431,11 @@ class AppBlockerAccessibilityService : AccessibilityService() {
         // Convert Android Calendar day (1=Sunday, 7=Saturday) to 0-indexed (0=Monday, 6=Sunday)
         val dayIndex = if (currentDayOfWeek == 1) 6 else currentDayOfWeek - 2
 
-        Log.d(TAG, "Current time: ${currentHour}:${currentMinute} on day $dayIndex, rule days: ${rule.days}")
+        if (BuildConfig.DEBUG) Log.d(TAG, "Current time: ${currentHour}:${currentMinute} on day $dayIndex, rule days: ${rule.days}")
 
         // Check if today is in the blocked days
         if (dayIndex !in rule.days) {
-            Log.d(TAG, "Today ($dayIndex) not in blocked days")
+            if (BuildConfig.DEBUG) Log.d(TAG, "Today ($dayIndex) not in blocked days")
             return false
         }
 
@@ -441,7 +445,7 @@ class AppBlockerAccessibilityService : AccessibilityService() {
         val endTime = rule.endHour * 60 + rule.endMinute
 
         val isInRange = currentTime in startTime..endTime
-        Log.d(TAG, "Current time $currentTime in range $startTime-$endTime: $isInRange")
+        if (BuildConfig.DEBUG) Log.d(TAG, "Current time $currentTime in range $startTime-$endTime: $isInRange")
         
         return isInRange
     }
@@ -519,7 +523,7 @@ class AppBlockerAccessibilityService : AccessibilityService() {
     }
 
     override fun onInterrupt() {
-        Log.d(TAG, "Accessibility service interrupted")
+        if (BuildConfig.DEBUG) Log.d(TAG, "Accessibility service interrupted")
     }
 
     override fun onDestroy() {
@@ -530,7 +534,7 @@ class AppBlockerAccessibilityService : AccessibilityService() {
         } catch (_: Exception) {
         }
         trackingScope.cancel()
-        Log.d(TAG, "Accessibility service destroyed")
+        if (BuildConfig.DEBUG) Log.d(TAG, "Accessibility service destroyed")
     }
 
     private fun trackAppSwitch(newPackageName: String) {

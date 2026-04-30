@@ -1,13 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-   Sample backup rules file; uncomment and customize as necessary.
-   See https://developer.android.com/guide/topics/data/autobackup
-   for details.
-   Note: This file is ignored for devices older than API 31
-   See https://developer.android.com/about/versions/12/backup-restore
--->
+<?xml version="1.0" encoding="utf-8"?>
 <full-backup-content>
-    <!--
-   <include domain="sharedpref" path="."/>
-   <exclude domain="sharedpref" path="device.xml"/>
--->
+    <!-- Exclude device-bound encrypted PIN storage -->
+    <exclude domain="sharedpref" path="secure_pin_prefs" />
+    <!-- Exclude session tokens and security state -->
+    <exclude domain="sharedpref" path="settings_protection" />
+    <exclude domain="sharedpref" path="safetimeguard_security" />
+    <!-- Exclude usage tracking (device-local) -->
+    <exclude domain="sharedpref" path="usage_tracking_state" />
 </full-backup-content>

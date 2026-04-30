@@ -1,19 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-   Sample data extraction rules file; uncomment and customize as necessary.
-   See https://developer.android.com/about/versions/12/backup-restore#xml-changes
-   for details.
--->
+<?xml version="1.0" encoding="utf-8"?>
 <data-extraction-rules>
     <cloud-backup>
-        <!-- TODO: Use <include> and <exclude> to control what is backed up.
-        <include .../>
-        <exclude .../>
-        -->
+        <!-- Exclude encrypted PIN prefs — keys are device-bound, useless on other devices -->
+        <exclude domain="sharedpref" path="secure_pin_prefs" />
+        <!-- Exclude session / grace-period tokens -->
+        <exclude domain="sharedpref" path="settings_protection" />
+        <exclude domain="sharedpref" path="safetimeguard_security" />
+        <!-- Exclude usage tracking state (device-local data) -->
+        <exclude domain="sharedpref" path="usage_tracking_state" />
     </cloud-backup>
-    <!--
     <device-transfer>
-        <include .../>
-        <exclude .../>
+        <!-- Allow rule transfer between devices, but not security state -->
+        <exclude domain="sharedpref" path="secure_pin_prefs" />
+        <exclude domain="sharedpref" path="settings_protection" />
+        <exclude domain="sharedpref" path="usage_tracking_state" />
     </device-transfer>
-    -->
 </data-extraction-rules>
