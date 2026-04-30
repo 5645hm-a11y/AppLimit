@@ -37,7 +37,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.applimit.LanguageManager
 import com.applimit.ui.theme.ProgressSizes
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @Composable
 fun SplashScreen(onComplete: () -> Unit, language: String = "en") {
@@ -57,16 +59,10 @@ fun SplashScreen(onComplete: () -> Unit, language: String = "en") {
         // 2. Title fades in + ring starts filling
         titleAlpha.animateTo(1f, animationSpec = tween(300, easing = FastOutSlowInEasing))
         // 3. Subtitle slides up
-        kotlinx.coroutines.coroutineScope {
-            kotlinx.coroutines.launch {
-                subtitleAlpha.animateTo(1f, animationSpec = tween(350, easing = FastOutSlowInEasing))
-            }
-            kotlinx.coroutines.launch {
-                subtitleOffset.animateTo(0f, animationSpec = tween(350, easing = FastOutSlowInEasing))
-            }
-            kotlinx.coroutines.launch {
-                ringAnim.animateTo(1f, animationSpec = tween(900, easing = FastOutSlowInEasing))
-            }
+        coroutineScope {
+            launch { subtitleAlpha.animateTo(1f, animationSpec = tween(350, easing = FastOutSlowInEasing)) }
+            launch { subtitleOffset.animateTo(0f, animationSpec = tween(350, easing = FastOutSlowInEasing)) }
+            launch { ringAnim.animateTo(1f, animationSpec = tween(900, easing = FastOutSlowInEasing)) }
         }
         delay(400)
         onComplete()
