@@ -1,21 +1,38 @@
-# Add project specific ProGuard rules here.
-# You can control the set of applied configuration files using the
-# proguardFiles setting in build.gradle.
-#
-# For more details, see
-#   http://developer.android.com/guide/developing/tools/proguard.html
+# AppLimit ProGuard / R8 rules
 
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
+# ── Stack traces (useful for crash reports) ──────────────────────────────────
+-keepattributes SourceFile,LineNumberTable
+-renamesourcefileattribute SourceFile
 
-# Uncomment this to preserve the line number information for
-# debugging stack traces.
-#-keepattributes SourceFile,LineNumberTable
+# ── Data classes used in JSON serialization (RuleStorage) ───────────────────
+-keep class com.applimit.data.BlockRule { *; }
+-keep class com.applimit.data.BlockType { *; }
+-keepclassmembers class com.applimit.data.BlockRule { *; }
 
-# If you keep the line number information, uncomment this to
-# hide the original source file name.
-#-renamesourcefileattribute SourceFile
+# ── Room database ─────────────────────────────────────────────────────────────
+-keep class * extends androidx.room.RoomDatabase
+-keep @androidx.room.Entity class *
+-keep @androidx.room.Dao interface *
+-dontwarn androidx.room.**
+
+# ── Accessibility service ─────────────────────────────────────────────────────
+-keep class com.applimit.services.AppBlockerAccessibilityService { *; }
+
+# ── Security crypto (EncryptedSharedPreferences / MasterKey) ─────────────────
+-keep class androidx.security.crypto.** { *; }
+-dontwarn androidx.security.crypto.**
+
+# ── Kotlin coroutines ─────────────────────────────────────────────────────────
+-keepnames class kotlinx.coroutines.internal.MainDispatcherFactory {}
+-keepnames class kotlinx.coroutines.CoroutineExceptionHandler {}
+-dontwarn kotlinx.coroutines.**
+
+# ── Jetpack Compose (AGP + R8 handle most of this automatically) ─────────────
+-dontwarn androidx.compose.**
+
+# ── Coil image loader ─────────────────────────────────────────────────────────
+-dontwarn okhttp3.**
+-dontwarn okio.**
+
+# ── Suppress common R8 warnings ───────────────────────────────────────────────
+-dontwarn java.lang.invoke.StringConcatFactory
