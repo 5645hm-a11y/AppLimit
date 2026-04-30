@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -33,8 +34,7 @@ import androidx.compose.ui.unit.dp
 import com.applimit.LanguageManager
 import com.applimit.security.SecurePinManager
 import com.applimit.security.SecurePrefs
-import com.applimit.ui.components.PinDotInput
-import com.applimit.ui.components.PinKeypad
+import com.applimit.ui.components.PinInputWithSystemKeyboard
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -58,7 +58,6 @@ fun PinVerificationScreen(
     val securityPrefs = SecurePrefs.get(context)
     val coroutineScope = rememberCoroutineScope()
 
-    // Countdown ticker
     LaunchedEffect(Unit) {
         while (true) {
             val now = System.currentTimeMillis()
@@ -111,49 +110,16 @@ fun PinVerificationScreen(
         color = MaterialTheme.colorScheme.background
     ) {
         BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
-            val screenHeight = maxHeight
-            val isSmall = screenHeight < 600.dp
-            val isVerySmall = screenHeight < 480.dp
-
-            val topSpacing = when {
-                isVerySmall -> 16.dp
-                isSmall     -> 40.dp
-                else        -> 88.dp
-            }
-            val iconSize = when {
-                isVerySmall -> 72.dp
-                isSmall     -> 96.dp
-                else        -> 120.dp
-            }
-            val iconContentSize = when {
-                isVerySmall -> 28.dp
-                isSmall     -> 38.dp
-                else        -> 48.dp
-            }
-            val afterIconSpacing = when {
-                isSmall -> 16.dp
-                else    -> 28.dp
-            }
-            val beforeKeypadSpacing = when {
-                isVerySmall -> 16.dp
-                isSmall     -> 24.dp
-                else        -> 40.dp
-            }
-            val keypadButtonHeight = when {
-                isVerySmall -> 52.dp
-                isSmall     -> 60.dp
-                else        -> 72.dp
-            }
-            val keypadRowSpacing = when {
-                isVerySmall -> 4.dp
-                isSmall     -> 6.dp
-                else        -> 8.dp
-            }
+            val isSmall = maxHeight < 600.dp
+            val topSpacing = if (isSmall) 48.dp else 88.dp
+            val iconSize = if (isSmall) 96.dp else 120.dp
+            val iconContentSize = if (isSmall) 38.dp else 48.dp
 
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(horizontal = 32.dp),
+                    .padding(horizontal = 32.dp)
+                    .imePadding(),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(0.dp)
             ) {
@@ -174,7 +140,7 @@ fun PinVerificationScreen(
                     }
                 }
 
-                Spacer(modifier = Modifier.height(afterIconSpacing))
+                Spacer(modifier = Modifier.height(if (isSmall) 16.dp else 28.dp))
 
                 Text(
                     text = LanguageManager.getString("verify_pin", language),
@@ -193,7 +159,7 @@ fun PinVerificationScreen(
                     maxLines = 2
                 )
 
-                Spacer(modifier = Modifier.height(if (isSmall) 20.dp else 36.dp))
+                Spacer(modifier = Modifier.height(32.dp))
 
                 if (lockoutSecsRemaining > 0) {
                     val lockoutTotal = 60f
@@ -218,11 +184,20 @@ fun PinVerificationScreen(
                         textAlign = TextAlign.Center
                     )
                 } else {
-                    PinDotInput(
+                    PinInputWithSystemKeyboard(
+                        value = pinInput,
+                        onValueChange = { new ->
+                            if (!isLoading) {
+                                isError = false
+                                errorMessage = ""
+                                pinInput = new
+                                if (new.length == PIN_LENGTH) verifyPin()
+                            }
+                        },
                         digitCount = PIN_LENGTH,
-                        enteredDigits = pinInput.length,
                         isError = isError,
-                        triggerShake = triggerShake
+                        triggerShake = triggerShake,
+                        modifier = Modifier.fillMaxWidth()
                     )
 
                     if (errorMessage.isNotEmpty()) {
@@ -234,29 +209,6 @@ fun PinVerificationScreen(
                             textAlign = TextAlign.Center
                         )
                     }
-
-                    Spacer(modifier = Modifier.height(beforeKeypadSpacing))
-
-                    PinKeypad(
-                        onDigitEntered = { digit ->
-                            if (pinInput.length < PIN_LENGTH && !isLoading) {
-                                isError = false
-                                errorMessage = ""
-                                pinInput += digit
-                                if (pinInput.length == PIN_LENGTH) verifyPin()
-                            }
-                        },
-                        onBackspace = {
-                            if (pinInput.isNotEmpty() && !isLoading) {
-                                pinInput = pinInput.dropLast(1)
-                                isError = false
-                                errorMessage = ""
-                            }
-                        },
-                        modifier = Modifier.fillMaxWidth(),
-                        buttonHeight = keypadButtonHeight,
-                        rowSpacing = keypadRowSpacing
-                    )
                 }
 
                 Spacer(modifier = Modifier.weight(1f))

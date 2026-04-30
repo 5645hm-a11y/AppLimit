@@ -62,8 +62,15 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
@@ -317,6 +324,57 @@ fun PinDotInput(
                 drawCircle(color = dotColor, radius = (dotSize / 2).toPx())
             }
         }
+    }
+}
+
+// ===== PIN INPUT WITH SYSTEM KEYBOARD =====
+
+@Composable
+fun PinInputWithSystemKeyboard(
+    value: String,
+    onValueChange: (String) -> Unit,
+    digitCount: Int = 6,
+    isError: Boolean = false,
+    triggerShake: Boolean = false,
+    modifier: Modifier = Modifier
+) {
+    val focusRequester = remember { FocusRequester() }
+
+    LaunchedEffect(Unit) {
+        focusRequester.requestFocus()
+    }
+
+    Box(
+        modifier = modifier
+            .clickable(
+                indication = null,
+                interactionSource = remember { MutableInteractionSource() }
+            ) { focusRequester.requestFocus() },
+        contentAlignment = Alignment.Center
+    ) {
+        // Invisible field — captures system keyboard input
+        BasicTextField(
+            value = value,
+            onValueChange = { raw ->
+                val digits = raw.filter { it.isDigit() }
+                if (digits.length <= digitCount) onValueChange(digits)
+            },
+            modifier = Modifier
+                .focusRequester(focusRequester)
+                .size(1.dp)
+                .alpha(0f),
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.NumberPassword,
+                imeAction = ImeAction.Done
+            )
+        )
+
+        PinDotInput(
+            digitCount = digitCount,
+            enteredDigits = value.length,
+            isError = isError,
+            triggerShake = triggerShake
+        )
     }
 }
 

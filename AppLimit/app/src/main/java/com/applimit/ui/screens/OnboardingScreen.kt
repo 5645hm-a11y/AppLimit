@@ -26,6 +26,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -60,8 +61,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.applimit.LanguageManager
 import com.applimit.security.SecurePinManager
-import com.applimit.ui.components.PinDotInput
-import com.applimit.ui.components.PinKeypad
+import androidx.compose.runtime.key
+import com.applimit.ui.components.PinInputWithSystemKeyboard
 
 private const val ONBOARDING_PIN_LENGTH = 6
 
@@ -235,7 +236,10 @@ private fun PinSetupScreen(language: String, onNext: (String) -> Unit) {
     val currentInput = if (isConfirmStep) confirmPin else enteredPin
 
     Column(
-        modifier = Modifier.fillMaxSize().padding(horizontal = 32.dp),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 32.dp)
+            .imePadding(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Spacer(modifier = Modifier.height(24.dp))
@@ -267,28 +271,16 @@ private fun PinSetupScreen(language: String, onNext: (String) -> Unit) {
 
         Spacer(modifier = Modifier.height(28.dp))
 
-        PinDotInput(
-            digitCount = ONBOARDING_PIN_LENGTH,
-            enteredDigits = currentInput.length,
-            isError = errorMessage.isNotEmpty(),
-            triggerShake = triggerShake
-        )
-
-        if (errorMessage.isNotEmpty()) {
-            Spacer(modifier = Modifier.height(12.dp))
-            Text(text = errorMessage, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error, textAlign = TextAlign.Center)
-        }
-
-        Spacer(modifier = Modifier.height(32.dp))
-
-        PinKeypad(
-            onDigitEntered = { digit ->
-                if (currentInput.length < ONBOARDING_PIN_LENGTH) {
+        // key(pinStep) forces re-creation on step change, re-triggering auto-focus
+        key(pinStep) {
+            PinInputWithSystemKeyboard(
+                value = currentInput,
+                onValueChange = { new ->
                     errorMessage = ""
                     if (isConfirmStep) {
-                        confirmPin += digit
-                        if (confirmPin.length == ONBOARDING_PIN_LENGTH) {
-                            if (confirmPin == enteredPin) {
+                        confirmPin = new
+                        if (new.length == ONBOARDING_PIN_LENGTH) {
+                            if (new == enteredPin) {
                                 onNext(enteredPin)
                             } else {
                                 triggerShake = !triggerShake
@@ -299,20 +291,23 @@ private fun PinSetupScreen(language: String, onNext: (String) -> Unit) {
                             }
                         }
                     } else {
-                        enteredPin += digit
-                        if (enteredPin.length == ONBOARDING_PIN_LENGTH) {
+                        enteredPin = new
+                        if (new.length == ONBOARDING_PIN_LENGTH) {
                             pinStep = 1
                         }
                     }
-                }
-            },
-            onBackspace = {
-                errorMessage = ""
-                if (isConfirmStep && confirmPin.isNotEmpty()) confirmPin = confirmPin.dropLast(1)
-                else if (!isConfirmStep && enteredPin.isNotEmpty()) enteredPin = enteredPin.dropLast(1)
-            },
-            modifier = Modifier.fillMaxWidth()
-        )
+                },
+                digitCount = ONBOARDING_PIN_LENGTH,
+                isError = errorMessage.isNotEmpty(),
+                triggerShake = triggerShake,
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
+
+        if (errorMessage.isNotEmpty()) {
+            Spacer(modifier = Modifier.height(12.dp))
+            Text(text = errorMessage, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error, textAlign = TextAlign.Center)
+        }
 
         Spacer(modifier = Modifier.weight(1f))
 
