@@ -326,7 +326,9 @@ fun PinDotInput(
 fun PinKeypad(
     onDigitEntered: (Char) -> Unit,
     onBackspace: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    buttonHeight: Dp = 72.dp,
+    rowSpacing: Dp = 8.dp
 ) {
     val keys = listOf(
         listOf('1', '2', '3'),
@@ -334,7 +336,7 @@ fun PinKeypad(
         listOf('7', '8', '9'),
         listOf(' ', '0', '\b')
     )
-    Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(8.dp)) {
+    Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(rowSpacing)) {
         keys.forEach { row ->
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -345,7 +347,8 @@ fun PinKeypad(
                         key = key,
                         onDigit = onDigitEntered,
                         onBack = onBackspace,
-                        modifier = Modifier.weight(1f)
+                        modifier = Modifier.weight(1f),
+                        buttonHeight = buttonHeight
                     )
                 }
             }
@@ -358,12 +361,13 @@ private fun PinKeyButton(
     key: Char,
     onDigit: (Char) -> Unit,
     onBack: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    buttonHeight: Dp = 72.dp
 ) {
     when (key) {
-        ' ' -> Spacer(modifier = modifier.height(72.dp))
+        ' ' -> Spacer(modifier = modifier.height(buttonHeight))
         '\b' -> Surface(
-            modifier = modifier.height(72.dp),
+            modifier = modifier.height(buttonHeight),
             shape = CircleShape,
             color = MaterialTheme.colorScheme.surfaceContainerHigh,
             onClick = onBack
@@ -378,7 +382,7 @@ private fun PinKeyButton(
             }
         }
         else -> Surface(
-            modifier = modifier.height(72.dp),
+            modifier = modifier.height(buttonHeight),
             shape = CircleShape,
             color = MaterialTheme.colorScheme.surfaceContainerHigh,
             onClick = { onDigit(key) }

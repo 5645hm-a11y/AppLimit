@@ -2,6 +2,7 @@ package com.applimit.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -109,126 +110,165 @@ fun PinVerificationScreen(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(horizontal = 32.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(0.dp)
-        ) {
-            Spacer(modifier = Modifier.height(88.dp))
+        BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
+            val screenHeight = maxHeight
+            val isSmall = screenHeight < 600.dp
+            val isVerySmall = screenHeight < 480.dp
 
-            // Lock icon in primaryContainer circle
-            Surface(
-                modifier = Modifier.size(120.dp),
-                shape = CircleShape,
-                color = MaterialTheme.colorScheme.primaryContainer
-            ) {
-                Box(contentAlignment = Alignment.Center) {
-                    Icon(
-                        imageVector = Icons.Default.Lock,
-                        contentDescription = null,
-                        tint = MaterialTheme.colorScheme.onPrimaryContainer,
-                        modifier = Modifier.size(48.dp)
-                    )
-                }
+            val topSpacing = when {
+                isVerySmall -> 16.dp
+                isSmall     -> 40.dp
+                else        -> 88.dp
+            }
+            val iconSize = when {
+                isVerySmall -> 72.dp
+                isSmall     -> 96.dp
+                else        -> 120.dp
+            }
+            val iconContentSize = when {
+                isVerySmall -> 28.dp
+                isSmall     -> 38.dp
+                else        -> 48.dp
+            }
+            val afterIconSpacing = when {
+                isSmall -> 16.dp
+                else    -> 28.dp
+            }
+            val beforeKeypadSpacing = when {
+                isVerySmall -> 16.dp
+                isSmall     -> 24.dp
+                else        -> 40.dp
+            }
+            val keypadButtonHeight = when {
+                isVerySmall -> 52.dp
+                isSmall     -> 60.dp
+                else        -> 72.dp
+            }
+            val keypadRowSpacing = when {
+                isVerySmall -> 4.dp
+                isSmall     -> 6.dp
+                else        -> 8.dp
             }
 
-            Spacer(modifier = Modifier.height(28.dp))
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = 32.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(0.dp)
+            ) {
+                Spacer(modifier = Modifier.height(topSpacing))
 
-            Text(
-                text = LanguageManager.getString("verify_pin", language),
-                style = MaterialTheme.typography.headlineMedium,
-                color = MaterialTheme.colorScheme.onBackground,
-                textAlign = TextAlign.Center
-            )
+                Surface(
+                    modifier = Modifier.size(iconSize),
+                    shape = CircleShape,
+                    color = MaterialTheme.colorScheme.primaryContainer
+                ) {
+                    Box(contentAlignment = Alignment.Center) {
+                        Icon(
+                            imageVector = Icons.Default.Lock,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.onPrimaryContainer,
+                            modifier = Modifier.size(iconContentSize)
+                        )
+                    }
+                }
 
-            Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(afterIconSpacing))
 
-            Text(
-                text = LanguageManager.getString("enter_your_pin", language),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                textAlign = TextAlign.Center,
-                maxLines = 2
-            )
-
-            Spacer(modifier = Modifier.height(36.dp))
-
-            if (lockoutSecsRemaining > 0) {
-                // Lockout state: progress bar countdown
-                val lockoutTotal = 60f
-                LinearProgressIndicator(
-                    progress = { lockoutSecsRemaining / lockoutTotal },
-                    modifier = Modifier.fillMaxWidth(),
-                    color = MaterialTheme.colorScheme.error,
-                    trackColor = MaterialTheme.colorScheme.errorContainer
-                )
-                Spacer(modifier = Modifier.height(12.dp))
                 Text(
-                    text = "$lockoutSecsRemaining ${LanguageManager.getString("seconds", language)}",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.error,
+                    text = LanguageManager.getString("verify_pin", language),
+                    style = MaterialTheme.typography.headlineMedium,
+                    color = MaterialTheme.colorScheme.onBackground,
                     textAlign = TextAlign.Center
                 )
+
                 Spacer(modifier = Modifier.height(8.dp))
+
                 Text(
-                    text = LanguageManager.getString("pin_locked_explanation", language),
-                    style = MaterialTheme.typography.bodySmall,
+                    text = LanguageManager.getString("enter_your_pin", language),
+                    style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    textAlign = TextAlign.Center
-                )
-            } else {
-                // Pin dot row
-                PinDotInput(
-                    digitCount = PIN_LENGTH,
-                    enteredDigits = pinInput.length,
-                    isError = isError,
-                    triggerShake = triggerShake
+                    textAlign = TextAlign.Center,
+                    maxLines = 2
                 )
 
-                if (errorMessage.isNotEmpty()) {
+                Spacer(modifier = Modifier.height(if (isSmall) 20.dp else 36.dp))
+
+                if (lockoutSecsRemaining > 0) {
+                    val lockoutTotal = 60f
+                    LinearProgressIndicator(
+                        progress = { lockoutSecsRemaining / lockoutTotal },
+                        modifier = Modifier.fillMaxWidth(),
+                        color = MaterialTheme.colorScheme.error,
+                        trackColor = MaterialTheme.colorScheme.errorContainer
+                    )
                     Spacer(modifier = Modifier.height(12.dp))
                     Text(
-                        text = errorMessage,
-                        style = MaterialTheme.typography.bodySmall,
+                        text = "$lockoutSecsRemaining ${LanguageManager.getString("seconds", language)}",
+                        style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.error,
                         textAlign = TextAlign.Center
                     )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = LanguageManager.getString("pin_locked_explanation", language),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        textAlign = TextAlign.Center
+                    )
+                } else {
+                    PinDotInput(
+                        digitCount = PIN_LENGTH,
+                        enteredDigits = pinInput.length,
+                        isError = isError,
+                        triggerShake = triggerShake
+                    )
+
+                    if (errorMessage.isNotEmpty()) {
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Text(
+                            text = errorMessage,
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.error,
+                            textAlign = TextAlign.Center
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(beforeKeypadSpacing))
+
+                    PinKeypad(
+                        onDigitEntered = { digit ->
+                            if (pinInput.length < PIN_LENGTH && !isLoading) {
+                                isError = false
+                                errorMessage = ""
+                                pinInput += digit
+                                if (pinInput.length == PIN_LENGTH) verifyPin()
+                            }
+                        },
+                        onBackspace = {
+                            if (pinInput.isNotEmpty() && !isLoading) {
+                                pinInput = pinInput.dropLast(1)
+                                isError = false
+                                errorMessage = ""
+                            }
+                        },
+                        modifier = Modifier.fillMaxWidth(),
+                        buttonHeight = keypadButtonHeight,
+                        rowSpacing = keypadRowSpacing
+                    )
                 }
 
-                Spacer(modifier = Modifier.height(40.dp))
+                Spacer(modifier = Modifier.weight(1f))
 
-                // Numeric keypad
-                PinKeypad(
-                    onDigitEntered = { digit ->
-                        if (pinInput.length < PIN_LENGTH && !isLoading) {
-                            isError = false
-                            errorMessage = ""
-                            pinInput += digit
-                            if (pinInput.length == PIN_LENGTH) verifyPin()
-                        }
-                    },
-                    onBackspace = {
-                        if (pinInput.isNotEmpty() && !isLoading) {
-                            pinInput = pinInput.dropLast(1)
-                            isError = false
-                            errorMessage = ""
-                        }
-                    },
-                    modifier = Modifier.fillMaxWidth()
+                Text(
+                    text = LanguageManager.getString("pin_required_continue", language),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f),
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.padding(bottom = 24.dp)
                 )
             }
-
-            Spacer(modifier = Modifier.weight(1f))
-
-            Text(
-                text = LanguageManager.getString("pin_required_continue", language),
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f),
-                textAlign = TextAlign.Center,
-                modifier = Modifier.padding(bottom = 24.dp)
-            )
         }
     }
 }
